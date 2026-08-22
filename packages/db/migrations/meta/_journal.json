@@ -15,6 +15,20 @@
       "when": 1787410582533,
       "tag": "0001_phase1_slice",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1787414895085,
+      "tag": "0002_webhook_hardening",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1787414989420,
+      "tag": "0003_billing_event_order",
+      "breakpoints": true
     }
   ]
 }

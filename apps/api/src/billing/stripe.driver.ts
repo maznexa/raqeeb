@@ -11,6 +11,7 @@ import Stripe from 'stripe';
 export interface StripeWebhookEvent {
   id: string;
   type: string;
+  created?: number; // Stripe event creation time (unix seconds) — used for ordering
   data: { object: Record<string, unknown> };
 }
 
@@ -94,15 +95,20 @@ export class RealStripeDriver implements StripeDriver {
     signature: string | undefined,
     webhookSecret: string | undefined,
   ): StripeWebhookEvent {
-    if (webhookSecret) {
-      if (!signature) throw new Error('Missing stripe-signature header');
-      return this.stripe.webhooks.constructEvent(
-        rawBody,
-        signature,
-        webhookSecret,
-      ) as unknown as StripeWebhookEvent;
+    // Fail CLOSED: a real Stripe key without a webhook secret must never accept an
+    // unverified event. env() already refuses to boot in that state; this is the
+    // defense-in-depth backstop so the driver can't be tricked into parseUnverified.
+    if (!webhookSecret) {
+      throw new Error(
+        'Refusing to process an unverified Stripe webhook: STRIPE_WEBHOOK_SECRET is not set',
+      );
     }
-    return parseUnverified(rawBody);
+    if (!signature) throw new Error('Missing stripe-signature header');
+    return this.stripe.webhooks.constructEvent(
+      rawBody,
+      signature,
+      webhookSecret,
+    ) as unknown as StripeWebhookEvent;
   }
 }
 

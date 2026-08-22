@@ -34,6 +34,9 @@ export const webhooks = pgTable(
     events: jsonb('events').notNull().default(sql`'["*"]'::jsonb`),
     status: text('status').notNull().default('active'), // active | suspended
     failureCount: integer('failure_count').notNull().default(0),
+    // Start of the current failure streak — suspension requires BOTH the count
+    // threshold AND a sustained window (anti "one burst suspends instantly").
+    firstFailureAt: timestamp('first_failure_at', { withTimezone: true }),
     lastSuccessAt: timestamp('last_success_at', { withTimezone: true }),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
   },

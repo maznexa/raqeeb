@@ -215,6 +215,10 @@ export class TenantsService {
   /**
    * Create an invitation. Scaffold: the invite URL is returned/logged; SMTP delivery
    * (Mailpit in dev) lands with the notifications module in P2.
+   *
+   * NOTE (billing): invitation ACCEPTANCE (P2) must call SeatSyncService.syncSeats()
+   * fire-and-forget when it creates a billable membership — until then the worker's
+   * daily seat reconciliation is the only push to Stripe.
    */
   async invite(ctx: TenantContext, input: InviteMemberInput) {
     const token = `raq_invite_${randomBytes(24).toString('base64url')}`;

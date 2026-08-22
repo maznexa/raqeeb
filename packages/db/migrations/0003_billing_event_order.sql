@@ -1,0 +1,1 @@
+ALTER TABLE "tenants" ADD COLUMN "last_billing_event_at" timestamp with time zone;

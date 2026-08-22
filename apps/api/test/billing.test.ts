@@ -94,8 +94,7 @@ beforeAll(async () => {
   const member = await makeMembership('member');
   await makeMembership('member', { status: 'suspended' }); // seat freed on deactivation
   await makeMembership('guest', { billable: false });
-  // Deliberately mis-set flag: the role exclusion must still keep clients free.
-  const client = await makeMembership('client', { billable: true });
+  const client = await makeMembership('client', { billable: false });
 
   ownerCtx = ctx(owner.id, 'owner');
   memberCtx = ctx(member.id, 'member');
@@ -115,8 +114,16 @@ afterAll(async () => {
 describe('billable seat counting', () => {
   it('counts only active billable seats — clients, guests, suspended never count', async () => {
     const status = await billing.status(ownerCtx);
-    // owner + admin + member; NOT: suspended member, guest, client (even with flag mis-set)
+    // owner + admin + member; NOT: suspended member, guest, client
     expect(status.billableSeats).toBe(3);
+  });
+
+  it('the DB itself rejects a billable client/guest seat (CHECK constraint)', async () => {
+    // Free client users are an invariant, not a convention: a mis-set flag can no
+    // longer exist, so the seat query's role exclusion is pure belt-and-braces.
+    await expect(makeMembership('client', { billable: true })).rejects.toThrow(
+      /memberships_client_guest_unbilled/,
+    );
   });
 
   it('reports plan/status defaults with readOnly=false', async () => {
@@ -171,7 +178,9 @@ describe('stripe webhook', () => {
 
     const t = await tenantRow();
     expect(t.planId).toBe('pro');
-    expect(t.subscriptionStatus).toBe('active');
+    // checkout links ids + plan only; subscriptionStatus is owned exclusively by
+    // customer.subscription.* events (a trialing checkout must not read 'active').
+    expect(t.subscriptionStatus).toBe('trialing');
     expect(t.stripeCustomerId).toBe(CUS);
     expect(t.stripeSubscriptionId).toBe(SUB);
 

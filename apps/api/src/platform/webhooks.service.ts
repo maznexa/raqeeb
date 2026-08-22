@@ -1,12 +1,20 @@
-import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  ForbiddenException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import type { CreateWebhookInput, WebhookDto } from '@raqeeb/contracts';
 import { schema, withTenant } from '@raqeeb/db';
-import { asc, eq } from 'drizzle-orm';
+import { asc, count, eq } from 'drizzle-orm';
 import { randomBytes } from 'node:crypto';
 import type { TenantContext } from '../auth/decorators';
 import { AuditService } from './audit.service';
 
 type WebhookRow = typeof schema.webhooks.$inferSelect;
+
+/** Cap on active webhook endpoints per tenant — bounds fan-out amplification. */
+const MAX_WEBHOOKS_PER_TENANT = 25;
 
 /**
  * Public webhook subscriptions (docs/05-api-design/04-webhooks.md).
@@ -31,6 +39,12 @@ export class WebhooksService {
     this.assertManager(ctx);
     const secret = `whsec_raq_${randomBytes(32).toString('base64url')}`;
     return withTenant(ctx.tenantId, async (db) => {
+      const [countRow] = await db.select({ value: count() }).from(schema.webhooks);
+      if ((countRow?.value ?? 0) >= MAX_WEBHOOKS_PER_TENANT) {
+        throw new BadRequestException(
+          `This workspace already has the maximum of ${MAX_WEBHOOKS_PER_TENANT} webhooks`,
+        );
+      }
       const [row] = await db
         .insert(schema.webhooks)
         .values({
@@ -84,10 +98,11 @@ export class WebhooksService {
 
   /** Re-enable a suspended subscription; delivery resumes from NEW events only. */
   async reactivate(ctx: TenantContext, id: string): Promise<WebhookDto> {
+    this.assertManager(ctx); // same owner/admin gate as create/remove
     return withTenant(ctx.tenantId, async (db) => {
       const [row] = await db
         .update(schema.webhooks)
-        .set({ status: 'active', failureCount: 0 })
+        .set({ status: 'active', failureCount: 0, firstFailureAt: null })
         .where(eq(schema.webhooks.id, id))
         .returning();
       if (!row) throw new NotFoundException('Webhook not found');

@@ -2,7 +2,7 @@
 
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useLocale, useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { api } from '../lib/api';
 import { avatarColor, initialsOf, relativeTime } from '../lib/format';
@@ -58,14 +58,22 @@ export function TaskDrawer({
 
   const open = Boolean(task);
 
+  // Closing must never lose a typed-but-unblurred edit: blur the active field first
+  // so its PATCH-on-blur fires, then close.
+  const flushAndClose = useCallback(() => {
+    const active = document.activeElement;
+    if (active instanceof HTMLElement) active.blur();
+    onClose();
+  }, [onClose]);
+
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key === 'Escape') flushAndClose();
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [open, onClose]);
+  }, [open, flushAndClose]);
 
   const patch = useMutation({
     mutationFn: ({ taskId, body }: { taskId: string; body: TaskPatch }) =>
@@ -96,7 +104,7 @@ export function TaskDrawer({
       <button
         aria-label={t('common.close')}
         tabIndex={-1}
-        onClick={onClose}
+        onClick={flushAndClose}
         className="fixed inset-0 z-40 cursor-default bg-sidebar-950/25"
       />
       <aside
@@ -116,7 +124,7 @@ export function TaskDrawer({
             onChange={(statusId) => send(task.id, { statusId })}
           />
           <button
-            onClick={onClose}
+            onClick={flushAndClose}
             aria-label={t('common.close')}
             className="rounded-md p-1 text-stone-400 transition-colors hover:bg-stone-100 hover:text-stone-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
           >

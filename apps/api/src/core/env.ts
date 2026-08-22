@@ -15,6 +15,19 @@ const envSchema = z.object({
   JWT_ACCESS_TTL: z.coerce.number().int().default(900), // seconds
   JWT_REFRESH_TTL: z.coerce.number().int().default(2_592_000), // 30 days
   WEB_ORIGIN: z.string().default('http://localhost:3000'),
+  // Billing: unset locally/CI → deterministic FakeStripeDriver. When a real key
+  // is present the webhook secret becomes mandatory (see superRefine) so a keyed
+  // deploy can never silently accept forged, unverified billing events.
+  STRIPE_SECRET_KEY: z.string().optional(),
+  STRIPE_WEBHOOK_SECRET: z.string().optional(),
+}).superRefine((val, ctx) => {
+  if (val.STRIPE_SECRET_KEY && !val.STRIPE_WEBHOOK_SECRET) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      path: ['STRIPE_WEBHOOK_SECRET'],
+      message: 'STRIPE_WEBHOOK_SECRET is required whenever STRIPE_SECRET_KEY is set',
+    });
+  }
 });
 
 export type Env = z.infer<typeof envSchema>;

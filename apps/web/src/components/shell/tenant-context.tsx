@@ -37,7 +37,9 @@ export function TenantProvider({ children }: { children: ReactNode }) {
   const switchTenant = (next: string) => {
     session.setTenant(next);
     setSlug(next);
-    void qc.invalidateQueries();
+    // Remove (not just invalidate) cached data: invalidated queries keep serving the
+    // previous tenant's rows until their refetch lands — a brief cross-tenant flash.
+    qc.removeQueries({ predicate: (q) => q.queryKey[0] !== 'me/tenants' });
   };
 
   return (

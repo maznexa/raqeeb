@@ -1,6 +1,7 @@
 import { sql } from 'drizzle-orm';
 import {
   boolean,
+  check,
   index,
   integer,
   pgTable,
@@ -30,6 +31,9 @@ export const tenants = pgTable(
     trialEndsAt: timestamp('trial_ends_at', { withTimezone: true }),
     stripeCustomerId: text('stripe_customer_id').unique(),
     stripeSubscriptionId: text('stripe_subscription_id').unique(),
+    // Stripe `created` of the last applied billing event — lets handlers ignore
+    // out-of-order deliveries (e.g. a delayed subscription.updated after a delete).
+    lastBillingEventAt: timestamp('last_billing_event_at', { withTimezone: true }),
     defaultLocale: text('default_locale').notNull().default('en'),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
     updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
@@ -61,6 +65,12 @@ export const memberships = pgTable(
     uniqueIndex('memberships_tenant_account_uq').on(t.tenantId, t.accountId),
     index('memberships_account_idx').on(t.accountId),
     index('memberships_tenant_idx').on(t.tenantId),
+    // Free client users are a product invariant, enforced at the DB, not just in
+    // the seat-count query: clients & guests can never occupy a billable seat.
+    check(
+      'memberships_client_guest_unbilled',
+      sql`${t.role} NOT IN ('client', 'guest') OR ${t.isBillableSeat} = false`,
+    ),
   ],
 );
 

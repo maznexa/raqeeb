@@ -1,6 +1,6 @@
 import { BadRequestException, Inject, Injectable } from '@nestjs/common';
 import { schema, systemDb } from '@raqeeb/db';
-import { eq } from 'drizzle-orm';
+import { eq, sql } from 'drizzle-orm';
 import { planForPrice } from './prices';
 import { STRIPE_DRIVER, type StripeDriver, type StripeWebhookEvent } from './stripe.driver';
 
@@ -66,31 +66,39 @@ export class StripeWebhookService {
   async handleEvent(event: StripeWebhookEvent): Promise<{ received: true; duplicate?: true }> {
     const db = systemDb();
 
-    // Dedupe FIRST: unique violation ⇒ already processed ⇒ ack immediately.
-    const inserted = await db
+    // Claim the event atomically. A brand-new event inserts; an event seen before
+    // but NOT yet marked processed (a prior handler crashed) is re-claimed via the
+    // conflict's setWhere so a Stripe retry actually reprocesses it — the old
+    // insert-first-DO-NOTHING form dropped such events forever. A fully-processed
+    // event matches neither branch → no row returned → true duplicate.
+    const claimed = await db
       .insert(schema.stripeEvents)
       .values({ id: event.id, type: event.type, payload: event })
-      .onConflictDoNothing()
+      .onConflictDoUpdate({
+        target: schema.stripeEvents.id,
+        set: { type: event.type },
+        setWhere: sql`${schema.stripeEvents.processedAt} IS NULL`,
+      })
       .returning({ id: schema.stripeEvents.id });
-    if (inserted.length === 0) return { received: true, duplicate: true };
+    if (claimed.length === 0) return { received: true, duplicate: true };
 
     const object = event.data?.object ?? {};
+    const eventAt =
+      typeof event.created === 'number' ? new Date(event.created * 1000) : undefined;
     switch (event.type) {
       case 'checkout.session.completed':
-        await this.onCheckoutCompleted(object);
+        await this.onCheckoutCompleted(object, eventAt);
         break;
       case 'customer.subscription.updated':
-        await this.onSubscriptionUpdated(object);
+        await this.onSubscriptionUpdated(object, eventAt);
         break;
       case 'customer.subscription.deleted':
-        await this.onSubscriptionDeleted(object);
+        await this.onSubscriptionDeleted(object, eventAt);
         break;
       default:
         break; // unhandled types are acked and recorded, nothing else
     }
 
-    // processedAt null after a crash ⇒ handler failed mid-flight; the daily
-    // reconciliation job is the convergence net (docs 03-billing-stripe.md).
     await db
       .update(schema.stripeEvents)
       .set({ processedAt: new Date() })
@@ -98,7 +106,15 @@ export class StripeWebhookService {
     return { received: true };
   }
 
-  private async onCheckoutCompleted(session: Record<string, unknown>): Promise<void> {
+  /** True when this event predates the last billing event already applied to the tenant. */
+  private isStale(tenant: { lastBillingEventAt: Date | null }, eventAt: Date | undefined): boolean {
+    return Boolean(eventAt && tenant.lastBillingEventAt && eventAt < tenant.lastBillingEventAt);
+  }
+
+  private async onCheckoutCompleted(
+    session: Record<string, unknown>,
+    _eventAt: Date | undefined,
+  ): Promise<void> {
     const meta = metadataOf(session);
     const tenantId =
       typeof session.client_reference_id === 'string'
@@ -112,21 +128,26 @@ export class StripeWebhookService {
     const customerId = asId(session.customer);
     const subscriptionId = asId(session.subscription);
 
+    // Link ids + plan only. subscriptionStatus is owned exclusively by the
+    // customer.subscription.* events, so a checkout that opens a trial is not
+    // clobbered to 'active' here (the following subscription event sets it right).
     await systemDb()
       .update(schema.tenants)
       .set({
         ...(customerId && { stripeCustomerId: customerId }),
         ...(subscriptionId && { stripeSubscriptionId: subscriptionId }),
         ...(planId && { planId }),
-        subscriptionStatus: 'active',
         updatedAt: new Date(),
       })
       .where(eq(schema.tenants.id, tenantId));
   }
 
-  private async onSubscriptionUpdated(sub: Record<string, unknown>): Promise<void> {
+  private async onSubscriptionUpdated(
+    sub: Record<string, unknown>,
+    eventAt: Date | undefined,
+  ): Promise<void> {
     const tenant = await this.findTenantForSubscription(sub);
-    if (!tenant) return;
+    if (!tenant || this.isStale(tenant, eventAt)) return;
 
     const status = mapSubscriptionStatus(sub.status);
     const items = sub.items as { data?: Array<{ price?: { id?: unknown } }> } | undefined;
@@ -142,23 +163,30 @@ export class StripeWebhookService {
         ...(planId && { planId }),
         ...(subscriptionId && { stripeSubscriptionId: subscriptionId }),
         ...(customerId && { stripeCustomerId: customerId }),
+        ...(eventAt && { lastBillingEventAt: eventAt }),
         updatedAt: new Date(),
       })
       .where(eq(schema.tenants.id, tenant.id));
   }
 
-  private async onSubscriptionDeleted(sub: Record<string, unknown>): Promise<void> {
+  private async onSubscriptionDeleted(
+    sub: Record<string, unknown>,
+    eventAt: Date | undefined,
+  ): Promise<void> {
     const tenant = await this.findTenantForSubscription(sub);
-    if (!tenant) return;
+    if (!tenant || this.isStale(tenant, eventAt)) return;
 
     // Deletion fires at period end: drop to Free entitlements, keep the
     // customer link for painless re-subscription. Nothing is ever deleted.
+    // lastBillingEventAt is stamped so a delayed subscription.updated that Stripe
+    // delivers out of order afterward is rejected as stale (no resurrection).
     await systemDb()
       .update(schema.tenants)
       .set({
         subscriptionStatus: 'canceled',
         planId: 'free',
         stripeSubscriptionId: null,
+        ...(eventAt && { lastBillingEventAt: eventAt }),
         updatedAt: new Date(),
       })
       .where(eq(schema.tenants.id, tenant.id));

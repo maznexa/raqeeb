@@ -20,10 +20,14 @@ export interface TenantState {
 export class TenantStateService {
   private cache = new Map<string, { state: TenantState; at: number }>();
   private static TTL_MS = 30_000;
+  /** Bound the per-process map (insertion-ordered eviction) — a long-lived API
+   *  process serving many tenants must not grow this monotonically. */
+  private static MAX_ENTRIES = 10_000;
 
   async get(tenantId: string): Promise<TenantState | undefined> {
     const hit = this.cache.get(tenantId);
     if (hit && Date.now() - hit.at < TenantStateService.TTL_MS) return hit.state;
+    if (hit) this.cache.delete(tenantId); // expired — drop instead of letting it linger
 
     const row = await systemDb().query.tenants.findFirst({
       where: eq(schema.tenants.id, tenantId),
@@ -35,6 +39,10 @@ export class TenantStateService {
       planId: row.planId,
       subscriptionStatus: row.subscriptionStatus,
     };
+    if (this.cache.size >= TenantStateService.MAX_ENTRIES) {
+      const oldest = this.cache.keys().next().value;
+      if (oldest) this.cache.delete(oldest);
+    }
     this.cache.set(tenantId, { state, at: Date.now() });
     return state;
   }

@@ -70,7 +70,7 @@ When payments fail, Stripe Smart Retries + our messaging run for ~14 days
 | State | Product behavior |
 | --- | --- |
 | `active` / `trialing` | normal |
-| `past_due` | **Read-only mode**: all data readable, all views work, **export always available**; writes return `402` problem `subscription-past-due` with a fix-payment link; admins see the dunning banner with a one-click Customer Portal link. Realtime and notifications continue (read-side). |
+| `past_due` | **Read-only mode**: all data readable, all views work, **export always available**; writes return `403` problem "Workspace is read-only" (billing + auth routes exempt) with a fix-payment link; admins see the dunning banner with a one-click Customer Portal link. Realtime and notifications continue (read-side). |
 | `canceled` (post-dunning or voluntary) | drops to Free entitlements; if over Free limits, degradation rules apply (nothing deleted). Data export remains available indefinitely while the tenant exists. |
 | `suspended` (abuse/legal only — never billing) | access blocked, data retained per lifecycle doc |
 

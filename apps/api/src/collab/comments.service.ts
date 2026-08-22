@@ -1,7 +1,7 @@
 import { ForbiddenException, Injectable, NotFoundException } from '@nestjs/common';
 import type { CommentDto, CreateCommentInput, UpdateCommentInput } from '@raqeeb/contracts';
 import { schema, withTenant, type Db } from '@raqeeb/db';
-import { and, asc, eq, isNull } from 'drizzle-orm';
+import { and, asc, eq, isNull, sql } from 'drizzle-orm';
 import type { TenantContext } from '../auth/decorators';
 import { AuditService } from '../platform/audit.service';
 import { OutboxService } from '../platform/outbox.service';
@@ -23,10 +23,16 @@ export class CommentsService {
   async list(ctx: TenantContext, taskId: string): Promise<CommentDto[]> {
     return withTenant(ctx.tenantId, async (db) => {
       await this.requireTask(db, taskId);
+      // Per-tenant display name wins; the global account name is the fallback
+      // (accounts is a global table — no RLS — so this join is safe in-tenant).
       const rows = await db
-        .select({ comment: schema.comments, displayName: schema.memberships.displayName })
+        .select({
+          comment: schema.comments,
+          displayName: sql<string | null>`COALESCE(${schema.memberships.displayName}, ${schema.accounts.displayName})`,
+        })
         .from(schema.comments)
         .leftJoin(schema.memberships, eq(schema.memberships.id, schema.comments.authorMembershipId))
+        .leftJoin(schema.accounts, eq(schema.accounts.id, schema.memberships.accountId))
         .where(and(eq(schema.comments.taskId, taskId), isNull(schema.comments.deletedAt)))
         .orderBy(asc(schema.comments.createdAt));
       return rows.map((r) => this.toDto(r.comment, r.displayName));
@@ -134,11 +140,14 @@ export class CommentsService {
   }
 
   private async authorName(db: Db, membershipId: string): Promise<string> {
-    const m = await db.query.memberships.findFirst({
-      where: eq(schema.memberships.id, membershipId),
-      columns: { displayName: true },
-    });
-    return m?.displayName ?? '';
+    const [row] = await db
+      .select({
+        name: sql<string | null>`COALESCE(${schema.memberships.displayName}, ${schema.accounts.displayName})`,
+      })
+      .from(schema.memberships)
+      .leftJoin(schema.accounts, eq(schema.accounts.id, schema.memberships.accountId))
+      .where(eq(schema.memberships.id, membershipId));
+    return row?.name ?? '';
   }
 
   private toDto(row: CommentRow, displayName: string | null | undefined): CommentDto {

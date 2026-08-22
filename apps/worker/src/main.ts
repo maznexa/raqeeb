@@ -4,6 +4,7 @@ import { asc, eq, isNull } from 'drizzle-orm';
 import Redis from 'ioredis';
 import pino from 'pino';
 import { startSeatReconciliation } from './reconcile-seats';
+import { startRetentionSweep } from './retention';
 import { tenantProcessor } from './tenant-processor';
 import {
   closeWebhookDelivery,
@@ -76,9 +77,11 @@ async function main() {
   log.info('Raqeeb worker started (outbox publisher + webhook delivery + queues)');
   let stopping = false;
   const stopSeatReconciliation = startSeatReconciliation();
+  const stopRetentionSweep = startRetentionSweep();
   const stop = async () => {
     stopping = true;
     stopSeatReconciliation();
+    stopRetentionSweep();
     closeWebhookDelivery();
     await maintenanceWorker.close();
     await maintenanceQueue.close();
@@ -88,18 +91,25 @@ async function main() {
   process.on('SIGINT', stop);
   process.on('SIGTERM', stop);
 
+  // Stages are isolated: a failing publisher must not stop webhook fan-out, and a
+  // failing fan-out must not stop deliveries (review finding: single-try starvation).
   while (!stopping) {
     try {
       const n = await publishOutboxBatch();
       if (n > 0) log.debug({ published: n }, 'outbox batch published');
-      // Drain bursts: fan out until the cursor catches up, then attempt due deliveries.
-      let scanned: number;
-      do {
-        scanned = await fanoutOutboxToWebhooks();
-      } while (scanned > 0);
+    } catch (err) {
+      log.error({ err: (err as Error).message }, 'outbox publish failed');
+    }
+    try {
+      // Drain bursts with a bound so one huge backlog can't monopolize the tick.
+      for (let i = 0; i < 10 && (await fanoutOutboxToWebhooks()) > 0; i++);
+    } catch (err) {
+      log.error({ err: (err as Error).message }, 'webhook fanout failed');
+    }
+    try {
       await deliverDueWebhooks();
     } catch (err) {
-      log.error({ err: (err as Error).message }, 'worker tick failed');
+      log.error({ err: (err as Error).message }, 'webhook delivery failed');
     }
     await new Promise((r) => setTimeout(r, 2000));
   }

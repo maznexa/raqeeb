@@ -76,6 +76,12 @@ export const outboxEvents = pgTable(
     payload: jsonb('payload').notNull().default(sql`'{}'::jsonb`),
     createdAt: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
     publishedAt: timestamp('published_at', { withTimezone: true }),
+    // Webhook fan-out progress lives HERE, not in a Redis cursor: a durable
+    // per-row marker survives Redis flushes and never skips out-of-order commits.
+    fannedOutAt: timestamp('fanned_out_at', { withTimezone: true }),
   },
-  (t) => [index('outbox_unpublished_idx').on(t.publishedAt, t.id)],
+  (t) => [
+    index('outbox_unpublished_idx').on(t.publishedAt, t.id),
+    index('outbox_unfanned_idx').on(t.id).where(sql`fanned_out_at IS NULL`),
+  ],
 );

@@ -47,7 +47,7 @@ entitlements.consume(tenantId, 'automation_runs_month', 1)      // metered → o
   point means one place to audit, one place to log, one place the UI can trust.
 - Denials return problem type `entitlement-required` with the feature name and the
   minimum plan that includes it — the API itself is an upsell surface
-  (`402`-adjacent but semantically `403` + problem detail; billing-state blocks use 402).
+  (plan gates and billing-state blocks both use `403` + problem detail — implemented in ReadOnlyGuard).
 - Every denial and degradation increments a per-feature metric — quota pressure is a
   **sales signal**, routed to the growth dashboard, not just an ops counter.
 

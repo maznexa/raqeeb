@@ -11,10 +11,13 @@ import {
   computeSignature,
   deliverDueWebhooks,
   fanoutOutboxToWebhooks,
+  isPrivateAddress,
+  isSafeDeliveryUrl,
   matchesAnyFilter,
   matchEventFilter,
   nextBackoff,
   SUSPEND_FAILURE_THRESHOLD,
+  SUSPEND_WINDOW_MS,
 } from '../../worker/src/webhook-delivery';
 import type { TenantContext } from '../src/auth/decorators';
 import { AuditService } from '../src/platform/audit.service';
@@ -29,6 +32,8 @@ import { WebhooksService } from '../src/platform/webhooks.service';
 process.env.DATABASE_URL ??= 'postgres://raqeeb_app:raqeeb_app@localhost:5432/raqeeb';
 process.env.DATABASE_URL_SYSTEM ??= 'postgres://raqeeb_system:raqeeb_system@localhost:5432/raqeeb';
 process.env.REDIS_URL ??= 'redis://localhost:6379';
+// Delivery targets the local 127.0.0.1 sink; opt out of the SSRF private-range block.
+process.env.WEBHOOK_ALLOW_PRIVATE ??= '1';
 
 // ---- pure functions --------------------------------------------------------------
 
@@ -59,22 +64,49 @@ describe('matchEventFilter', () => {
 describe('computeSignature', () => {
   const secret = 'whsec_raq_test-secret';
   const body = '{"id":1,"type":"task.created"}';
+  const ts = 1_700_000_000;
 
-  it('is deterministic and hex-encoded with the sha256= prefix', () => {
-    const sig = computeSignature(secret, body);
-    expect(sig).toMatch(/^sha256=[0-9a-f]{64}$/);
-    expect(computeSignature(secret, body)).toBe(sig);
+  it('is deterministic and formatted t=<unix>,v1=<hmac>', () => {
+    const sig = computeSignature(secret, body, ts);
+    expect(sig).toMatch(/^t=1700000000,v1=[0-9a-f]{64}$/);
+    expect(computeSignature(secret, body, ts)).toBe(sig);
   });
 
-  it('is verifiable by a receiver with plain node crypto over the raw body', () => {
-    const expected = `sha256=${createHmac('sha256', secret).update(body).digest('hex')}`;
-    expect(computeSignature(secret, body)).toBe(expected);
+  it('is verifiable by a receiver signing "<t>.<rawBody>" with plain node crypto', () => {
+    const v1 = createHmac('sha256', secret).update(`${ts}.${body}`).digest('hex');
+    expect(computeSignature(secret, body, ts)).toBe(`t=${ts},v1=${v1}`);
   });
 
-  it('changes with either the secret or the body', () => {
-    const sig = computeSignature(secret, body);
-    expect(computeSignature('whsec_raq_other', body)).not.toBe(sig);
-    expect(computeSignature(secret, body + ' ')).not.toBe(sig);
+  it('changes with the secret, the body, or the timestamp (replay protection)', () => {
+    const sig = computeSignature(secret, body, ts);
+    expect(computeSignature('whsec_raq_other', body, ts)).not.toBe(sig);
+    expect(computeSignature(secret, body + ' ', ts)).not.toBe(sig);
+    expect(computeSignature(secret, body, ts + 1)).not.toBe(sig);
+  });
+});
+
+describe('SSRF protection', () => {
+  it('flags loopback, private, link-local, ULA, and metadata addresses', () => {
+    for (const ip of ['127.0.0.1', '10.1.2.3', '172.16.0.1', '192.168.1.1', '169.254.169.254', '::1', 'fd00::1', 'fe80::1']) {
+      expect(isPrivateAddress(ip)).toBe(true);
+    }
+  });
+
+  it('allows genuine public addresses', () => {
+    for (const ip of ['8.8.8.8', '1.1.1.1', '2606:4700:4700::1111']) {
+      expect(isPrivateAddress(ip)).toBe(false);
+    }
+  });
+
+  it('rejects non-https and private-resolving targets when private is not allowed', async () => {
+    expect(await isSafeDeliveryUrl('http://example.com/hook', { allowPrivate: false })).toBe(false);
+    expect(await isSafeDeliveryUrl('https://127.0.0.1/hook', { allowPrivate: false })).toBe(false);
+    expect(await isSafeDeliveryUrl('https://localhost/hook', { allowPrivate: false })).toBe(false);
+    expect(await isSafeDeliveryUrl('not a url', { allowPrivate: false })).toBe(false);
+  });
+
+  it('honors the allowPrivate escape hatch for local development', async () => {
+    expect(await isSafeDeliveryUrl('http://127.0.0.1:9000/hook', { allowPrivate: true })).toBe(true);
   });
 });
 
@@ -272,7 +304,10 @@ describe('webhook delivery pipeline', () => {
     expect(hit).toBeDefined();
     expect(hit!.path).toBe('/ok');
     expect(hit!.headers['x-raqeeb-event']).toBe('task.created');
-    expect(hit!.headers['x-raqeeb-signature']).toBe(computeSignature(okHook.secret, hit!.body));
+    const sig = hit!.headers['x-raqeeb-signature'] as string;
+    const sigMatch = sig.match(/^t=(\d+),v1=[0-9a-f]{64}$/);
+    expect(sigMatch).not.toBeNull();
+    expect(sig).toBe(computeSignature(okHook.secret, hit!.body, Number(sigMatch![1])));
     const envelope = JSON.parse(hit!.body);
     expect(envelope.type).toBe('task.created');
     expect(envelope.entityType).toBe('task');
@@ -312,11 +347,15 @@ describe('webhook delivery pipeline', () => {
     expect(failHookAfter!.status).toBe('active');
   }, 30_000);
 
-  it('suspends the webhook at the failure threshold and terminally fails the delivery', async () => {
+  it('suspends only after a sustained failure window, and does not terminally park deliveries', async () => {
     const doomed = await service.create(a.owner, { url: `${baseUrl}/fail`, events: ['*'] });
+    // At the count threshold with a streak that started >4h ago → this failure suspends.
     await systemDb()
       .update(schema.webhooks)
-      .set({ failureCount: SUSPEND_FAILURE_THRESHOLD - 1 })
+      .set({
+        failureCount: SUSPEND_FAILURE_THRESHOLD - 1,
+        firstFailureAt: new Date(Date.now() - SUSPEND_WINDOW_MS - 60_000),
+      })
       .where(eq(schema.webhooks.id, doomed.id));
     const [delivery] = await systemDb()
       .insert(schema.webhookDeliveries)
@@ -340,14 +379,15 @@ describe('webhook delivery pipeline', () => {
     expect(hookAfter!.status).toBe('suspended');
     expect(hookAfter!.failureCount).toBe(SUSPEND_FAILURE_THRESHOLD);
 
+    // The delivery keeps a retry time (not terminally nulled): reactivation resumes it.
     const [deliveryAfter] = await systemDb()
       .select()
       .from(schema.webhookDeliveries)
       .where(eq(schema.webhookDeliveries.id, delivery!.id));
     expect(deliveryAfter!.status).toBe('failed');
-    expect(deliveryAfter!.nextRetryAt).toBeNull();
+    expect(deliveryAfter!.nextRetryAt).not.toBeNull();
 
-    // Once suspended, further due deliveries are parked without an HTTP attempt.
+    // While suspended, new due deliveries are NOT claimed — no HTTP attempt, left pending.
     const [parked] = await systemDb()
       .insert(schema.webhookDeliveries)
       .values({
@@ -366,9 +406,38 @@ describe('webhook delivery pipeline', () => {
       .select()
       .from(schema.webhookDeliveries)
       .where(eq(schema.webhookDeliveries.id, parked!.id));
-    expect(parkedAfter!.status).toBe('failed');
-    expect(parkedAfter!.nextRetryAt).toBeNull();
+    expect(parkedAfter!.status).toBe('pending');
     expect(received.filter((r) => r.headers['x-raqeeb-delivery'] === parked!.id)).toHaveLength(0);
     expect(received.length).toBe(hits);
+  }, 30_000);
+
+  it('does NOT suspend on a burst that has not been failing long enough', async () => {
+    const flappy = await service.create(a.owner, { url: `${baseUrl}/fail`, events: ['*'] });
+    // Count threshold reached but the streak started just now → window not elapsed.
+    await systemDb()
+      .update(schema.webhooks)
+      .set({ failureCount: SUSPEND_FAILURE_THRESHOLD - 1, firstFailureAt: new Date() })
+      .where(eq(schema.webhooks.id, flappy.id));
+    await systemDb()
+      .insert(schema.webhookDeliveries)
+      .values({
+        tenantId: a.tenantId,
+        webhookId: flappy.id,
+        outboxEventId: 0,
+        eventType: 'task.created',
+        payload: {},
+        status: 'pending',
+        nextRetryAt: new Date(),
+      });
+
+    await deliverDueWebhooks();
+
+    const [after] = await systemDb()
+      .select()
+      .from(schema.webhooks)
+      .where(eq(schema.webhooks.id, flappy.id));
+    expect(after!.status).toBe('active'); // still delivering — a brief outage isn't fatal
+    expect(after!.failureCount).toBe(SUSPEND_FAILURE_THRESHOLD);
+    await service.remove(a.owner, flappy.id);
   }, 30_000);
 });

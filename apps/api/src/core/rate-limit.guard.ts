@@ -46,9 +46,19 @@ export class RateLimitGuard implements CanActivate {
     private readonly tenantState: TenantStateService,
   ) {}
 
+  /** Redis-down breaker: after a failure, skip Redis entirely for a cooldown so an
+   *  outage costs one fast failure per window instead of a latency tax per request. */
+  private skipRedisUntil = 0;
+  private static BREAKER_COOLDOWN_MS = 30_000;
+
   private client(): Redis {
     if (!this.redis) {
-      this.redis = new Redis(env().REDIS_URL, { maxRetriesPerRequest: 1, connectTimeout: 2_000 });
+      this.redis = new Redis(env().REDIS_URL, {
+        maxRetriesPerRequest: 1,
+        connectTimeout: 2_000,
+        commandTimeout: 250, // a slow Redis must not become a per-request latency tax
+        enableOfflineQueue: false, // fail fast while disconnected instead of buffering
+      });
       // Connection errors surface per-request as fail-open; keep the emitter quiet.
       this.redis.on('error', () => undefined);
     }
@@ -91,6 +101,11 @@ export class RateLimitGuard implements CanActivate {
     const resetSeconds = Math.max(1, Math.ceil(((epochMinute + 1) * WINDOW_MS - now) / 1000));
     const key = `raqeeb:rl:${bucket}:${epochMinute}`;
 
+    if (Date.now() < this.skipRedisUntil) {
+      this.setHeaders(res, limit, limit, resetSeconds); // breaker open — unmetered window
+      return true;
+    }
+
     let count: number;
     try {
       const results = await this.client()
@@ -101,11 +116,13 @@ export class RateLimitGuard implements CanActivate {
       const [err, value] = results?.[0] ?? [new Error('rate-limit pipeline aborted'), undefined];
       if (err) throw err;
       count = Number(value);
+      this.skipRedisUntil = 0;
     } catch (error) {
+      this.skipRedisUntil = Date.now() + RateLimitGuard.BREAKER_COOLDOWN_MS;
       this.logger.warn(
-        `Redis unavailable for rate limiting, failing open: ${
-          error instanceof Error ? error.message : String(error)
-        }`,
+        `Redis unavailable for rate limiting, failing open for ${
+          RateLimitGuard.BREAKER_COOLDOWN_MS / 1000
+        }s: ${error instanceof Error ? error.message : String(error)}`,
       );
       this.setHeaders(res, limit, limit, resetSeconds); // count unknown — report a full window
       return true;
