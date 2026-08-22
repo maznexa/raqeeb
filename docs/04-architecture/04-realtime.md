@@ -8,13 +8,13 @@
 
 ```mermaid
 flowchart LR
-    TX["Domain mutation\nwithTenant tx"] -->|"same transaction\nINSERT outbox_events"| OB[("outbox_events\n(Postgres)")]
-    OB -->|"poller: SELECT ... WHERE published_at IS NULL\nORDER BY seq LIMIT n (system role)"| PUB["Publisher\n(api process, leader-elected)"]
+    TX["Domain mutation<br/>withTenant tx"] -->|"same transaction<br/>INSERT outbox_events"| OB[("outbox_events<br/>(Postgres)")]
+    OB -->|"poller: SELECT ... WHERE published_at IS NULL<br/>ORDER BY seq LIMIT n (system role)"| PUB["Publisher<br/>(api process, leader-elected)"]
     PUB -->|"PUBLISH raqeeb:events:{tenant_id}"| REDIS[("Redis pub/sub")]
     PUB -->|"mark published_at"| OB
-    REDIS --> GW1["Socket.IO gateway\n(api instance 1)"]
-    REDIS --> GW2["Socket.IO gateway\n(api instance N)"]
-    GW1 --> R1["rooms\ntenant:{id} · project:{id}"]
+    REDIS --> GW1["Socket.IO gateway<br/>(api instance 1)"]
+    REDIS --> GW2["Socket.IO gateway<br/>(api instance N)"]
+    GW1 --> R1["rooms<br/>tenant:{id} · project:{id}"]
     GW2 --> R2["rooms"]
     OB -.->|"same rows feed"| WH["webhooks-delivery queue (P2)"]
 ```

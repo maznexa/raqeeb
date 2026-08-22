@@ -8,14 +8,14 @@
 
 ```mermaid
 flowchart TD
-    P0["P0 Scaffold\nWave A schema · RLS · auth · tasks CRUD\nmulti-homing · en/ar · PAT API"]
+    P0["P0 Scaffold<br/>Wave A schema · RLS · auth · tasks CRUD<br/>multi-homing · en/ar · PAT API"]
 
-    BILL["P1 Billing & entitlement gates\nStripe · trials · dunning · rate limits"]
-    CF["P2 Custom fields\n(typed EAV + JSONB cache)"]
+    BILL["P1 Billing & entitlement gates<br/>Stripe · trials · dunning · rate limits"]
+    CF["P2 Custom fields<br/>(typed EAV + JSONB cache)"]
     VIEWS["P2 Saved views · Board/Table/Calendar"]
     COMM["P2 Comments · activity · notifications"]
     RT["P2 Realtime UI · webhooks GA · FTS"]
-    TIME["P3 Time tracking\ntimer · timesheets · approvals · locking"]
+    TIME["P3 Time tracking<br/>timer · timesheets · approvals · locking"]
     RATES["P3 Rate hierarchy + cost periods"]
     FIN["P3 Budgets · retainers · profitability · EAC"]
     DEP["P4 Dependency auto-reschedule + Gantt/baselines"]
@@ -26,8 +26,8 @@ flowchart TD
     INTAKE["P5 Forms → blueprints"]
     PORTAL["P5 Client portal + permission matrix"]
     PROOF["P5 Proofing + approvals"]
-    DASH["P6 Dashboards · portfolios · goals\nEverything view · invoicing"]
-    ENT["P7 Enterprise & AI\nSAML/SCIM · audit UI · OAuth2 · MCP · AI"]
+    DASH["P6 Dashboards · portfolios · goals<br/>Everything view · invoicing"]
+    ENT["P7 Enterprise & AI<br/>SAML/SCIM · audit UI · OAuth2 · MCP · AI"]
 
     P0 --> BILL
     P0 --> CF
