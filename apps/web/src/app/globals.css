@@ -7,10 +7,40 @@
 }
 
 body {
-  @apply bg-stone-50 text-stone-900 antialiased;
+  @apply bg-stone-50 font-sans text-stone-900 antialiased;
 }
 
 /* Arabic gets its own comfortable line-height */
 html[dir='rtl'] body {
   line-height: 1.7;
+}
+
+/* Thin, unobtrusive scrollbars inside the shell's scroll regions */
+.scroll-slim {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(0 0 0 / 0.2) transparent;
+}
+.scroll-slim::-webkit-scrollbar {
+  width: 6px;
+  height: 8px;
+}
+.scroll-slim::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background: rgb(0 0 0 / 0.18);
+}
+.scroll-slim-dark {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(255 255 255 / 0.15) transparent;
+}
+.scroll-slim-dark::-webkit-scrollbar {
+  width: 6px;
+}
+.scroll-slim-dark::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background: rgb(255 255 255 / 0.15);
+}
+
+/* Native date inputs keep the calendar icon on the end side in RTL */
+html[dir='rtl'] input[type='date'] {
+  text-align: start;
 }

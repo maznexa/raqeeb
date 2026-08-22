@@ -3,7 +3,13 @@ import { Queue, Worker } from 'bullmq';
 import { asc, eq, isNull } from 'drizzle-orm';
 import Redis from 'ioredis';
 import pino from 'pino';
+import { startSeatReconciliation } from './reconcile-seats';
 import { tenantProcessor } from './tenant-processor';
+import {
+  closeWebhookDelivery,
+  deliverDueWebhooks,
+  fanoutOutboxToWebhooks,
+} from './webhook-delivery';
 
 const log = pino({ level: process.env.NODE_ENV === 'production' ? 'info' : 'debug' });
 const REDIS_URL = process.env.REDIS_URL ?? 'redis://localhost:6379';
@@ -67,10 +73,13 @@ maintenanceWorker.on('failed', (job, err) =>
 );
 
 async function main() {
-  log.info('Raqeeb worker started (outbox publisher + maintenance queue)');
+  log.info('Raqeeb worker started (outbox publisher + webhook delivery + queues)');
   let stopping = false;
+  const stopSeatReconciliation = startSeatReconciliation();
   const stop = async () => {
     stopping = true;
+    stopSeatReconciliation();
+    closeWebhookDelivery();
     await maintenanceWorker.close();
     await maintenanceQueue.close();
     publisher.disconnect();
@@ -83,8 +92,14 @@ async function main() {
     try {
       const n = await publishOutboxBatch();
       if (n > 0) log.debug({ published: n }, 'outbox batch published');
+      // Drain bursts: fan out until the cursor catches up, then attempt due deliveries.
+      let scanned: number;
+      do {
+        scanned = await fanoutOutboxToWebhooks();
+      } while (scanned > 0);
+      await deliverDueWebhooks();
     } catch (err) {
-      log.error({ err: (err as Error).message }, 'outbox publish failed');
+      log.error({ err: (err as Error).message }, 'worker tick failed');
     }
     await new Promise((r) => setTimeout(r, 2000));
   }

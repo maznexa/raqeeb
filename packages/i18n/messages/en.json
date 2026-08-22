@@ -8,6 +8,7 @@
     "delete": "Delete",
     "search": "Search",
     "language": "Language",
+    "close": "Close",
     "error": "Something went wrong. Please try again."
   },
   "auth": {
@@ -32,6 +33,27 @@
     "settings": "Settings",
     "switchTenant": "Switch organization"
   },
+  "shell": {
+    "collapseSidebar": "Collapse sidebar",
+    "expandSidebar": "Expand sidebar",
+    "accountMenu": "Account menu",
+    "soon": "Soon",
+    "noSpaces": "No spaces yet.",
+    "workspaces": "Your organizations"
+  },
+  "home": {
+    "welcome": "Welcome back",
+    "subtitle": "Here's what's happening across your workspace.",
+    "openProject": "Open project"
+  },
+  "views": {
+    "list": "List",
+    "board": "Board"
+  },
+  "board": {
+    "dropHere": "Drop tasks here",
+    "emptyColumn": "Nothing here yet"
+  },
   "tasks": {
     "newTask": "New task",
     "addTask": "Add task",
@@ -42,6 +64,11 @@
     "dueDate": "Due date",
     "startDate": "Start date",
     "estimate": "Estimate",
+    "estimateMinutes": "Estimate (minutes)",
+    "description": "Description",
+    "descriptionPlaceholder": "Add a more detailed description…",
+    "details": "Task details",
+    "titleLabel": "Title",
     "noSection": "(No section)",
     "subtasks": "Subtasks",
     "dependencies": "Dependencies",
@@ -52,7 +79,18 @@
     "priorityNormal": "Normal",
     "priorityLow": "Low",
     "milestone": "Milestone",
-    "approval": "Approval"
+    "approval": "Approval",
+    "emptySection": "No tasks here yet — add one above.",
+    "overdue": "Overdue",
+    "openTask": "Open task"
+  },
+  "comments": {
+    "title": "Comments",
+    "empty": "No comments yet — start the conversation.",
+    "placeholder": "Write a comment…",
+    "send": "Comment",
+    "edited": "edited",
+    "justNow": "just now"
   },
   "projects": {
     "newProject": "New project",

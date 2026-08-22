@@ -8,6 +8,7 @@
     "delete": "حذف",
     "search": "بحث",
     "language": "اللغة",
+    "close": "إغلاق",
     "error": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
   },
   "auth": {
@@ -32,6 +33,27 @@
     "settings": "الإعدادات",
     "switchTenant": "تبديل المؤسسة"
   },
+  "shell": {
+    "collapseSidebar": "طيّ الشريط الجانبي",
+    "expandSidebar": "فتح الشريط الجانبي",
+    "accountMenu": "قائمة الحساب",
+    "soon": "قريبًا",
+    "noSpaces": "لا توجد مساحات بعد.",
+    "workspaces": "مؤسساتك"
+  },
+  "home": {
+    "welcome": "مرحبًا بعودتك",
+    "subtitle": "إليك ما يجري في مساحة عملك.",
+    "openProject": "فتح المشروع"
+  },
+  "views": {
+    "list": "قائمة",
+    "board": "لوحة"
+  },
+  "board": {
+    "dropHere": "أفلت المهام هنا",
+    "emptyColumn": "لا شيء هنا بعد"
+  },
   "tasks": {
     "newTask": "مهمة جديدة",
     "addTask": "إضافة مهمة",
@@ -42,6 +64,11 @@
     "dueDate": "تاريخ الاستحقاق",
     "startDate": "تاريخ البدء",
     "estimate": "التقدير",
+    "estimateMinutes": "التقدير (بالدقائق)",
+    "description": "الوصف",
+    "descriptionPlaceholder": "أضف وصفًا أكثر تفصيلًا…",
+    "details": "تفاصيل المهمة",
+    "titleLabel": "العنوان",
     "noSection": "(بدون قسم)",
     "subtasks": "المهام الفرعية",
     "dependencies": "الاعتماديات",
@@ -52,7 +79,18 @@
     "priorityNormal": "عادية",
     "priorityLow": "منخفضة",
     "milestone": "مَعلَم",
-    "approval": "موافقة"
+    "approval": "موافقة",
+    "emptySection": "لا توجد مهام هنا بعد — أضف واحدة من الأعلى.",
+    "overdue": "متأخرة",
+    "openTask": "فتح المهمة"
+  },
+  "comments": {
+    "title": "التعليقات",
+    "empty": "لا توجد تعليقات بعد — ابدأ النقاش.",
+    "placeholder": "اكتب تعليقًا…",
+    "send": "تعليق",
+    "edited": "معدَّل",
+    "justNow": "الآن"
   },
   "projects": {
     "newProject": "مشروع جديد",

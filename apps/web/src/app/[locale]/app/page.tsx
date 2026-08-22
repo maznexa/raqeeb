@@ -1,125 +1,98 @@
 'use client';
 
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
-import { useEffect, useState } from 'react';
-import { api, session } from '../../../lib/api';
-import { Link, useRouter } from '../../../i18n/navigation';
-import { LocaleSwitcher } from '../../../components/locale-switcher';
-
-interface MyTenant {
-  tenantId: string;
-  name: string;
-  slug: string;
-  role: string;
-}
-interface Project {
-  id: string;
-  name: string;
-  key: string;
-  color: string | null;
-  clientId: string | null;
-}
+import { api } from '../../../lib/api';
+import type { Me, Project, Space } from '../../../lib/types';
+import { Link } from '../../../i18n/navigation';
+import { useTenant } from '../../../components/shell/tenant-context';
+import { Skeleton } from '../../../components/task-bits';
 
 export default function AppHome() {
   const t = useTranslations();
-  const router = useRouter();
-  const qc = useQueryClient();
+  const { slug } = useTenant();
 
-  // localStorage is read only after mount — SSG markup and first client render
-  // must match (React #418), so tenant selection lives in state, not in render.
-  const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
-
-  const tenants = useQuery({
-    queryKey: ['me/tenants'],
-    queryFn: () => api<MyTenant[]>('/me/tenants', { tenant: false }),
+  const me = useQuery({
+    queryKey: ['me'],
+    queryFn: () => api<Me>('/auth/me', { tenant: false }),
   });
-
-  useEffect(() => {
-    if (session.tenantSlug) {
-      setSelectedSlug(session.tenantSlug);
-    } else if (tenants.data?.length) {
-      session.setTenant(tenants.data[0]!.slug);
-      setSelectedSlug(tenants.data[0]!.slug);
-    }
-  }, [tenants.data]);
-
+  const spaces = useQuery({
+    queryKey: ['spaces', slug],
+    queryFn: () => api<Space[]>('/spaces'),
+    enabled: Boolean(slug),
+  });
   const projects = useQuery({
-    queryKey: ['projects', selectedSlug],
+    queryKey: ['projects', slug],
     queryFn: () => api<Project[]>('/projects'),
-    enabled: Boolean(selectedSlug),
+    enabled: Boolean(slug),
   });
+
+  const firstName = me.data?.account?.displayName?.split(/\s+/)[0];
 
   return (
-    <main className="mx-auto max-w-3xl p-6">
-      <header className="mb-8 flex items-center justify-between border-b border-stone-200 pb-4">
-        <h1 className="text-xl font-bold text-brand-700">{t('common.appName')}</h1>
-        <div className="flex items-center gap-4">
-          <LocaleSwitcher />
-          <button
-            onClick={() => {
-              session.clear();
-              router.push('/login');
-            }}
-            className="text-sm text-stone-500 hover:text-stone-800"
-          >
-            {t('auth.signOut')}
-          </button>
-        </div>
+    <div className="mx-auto max-w-5xl px-6 py-8">
+      <header className="mb-8">
+        <h1 className="text-2xl font-bold tracking-tight text-stone-900">
+          {t('home.welcome')}
+          {firstName ? `, ${firstName}` : ''}
+        </h1>
+        <p className="mt-1 text-sm text-stone-500">{t('home.subtitle')}</p>
       </header>
 
-      <section className="mb-8">
-        <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-stone-500">
-          {t('nav.switchTenant')}
-        </h2>
-        <div className="flex flex-wrap gap-2">
-          {tenants.data?.map((tn) => (
-            <button
-              key={tn.tenantId}
-              onClick={() => {
-                session.setTenant(tn.slug);
-                setSelectedSlug(tn.slug);
-                void qc.invalidateQueries();
-              }}
-              className={
-                tn.slug === selectedSlug
-                  ? 'rounded-full bg-brand-500 px-3 py-1 text-sm font-semibold text-white'
-                  : 'rounded-full border border-stone-300 px-3 py-1 text-sm hover:border-brand-500'
-              }
-            >
-              {tn.name}
-            </button>
-          ))}
+      {(spaces.isLoading || projects.isLoading) && (
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <Skeleton className="h-24" />
+          <Skeleton className="h-24" />
+          <Skeleton className="h-24" />
         </div>
-      </section>
+      )}
 
-      <section>
-        <h2 className="mb-2 text-sm font-semibold uppercase tracking-wide text-stone-500">
-          {t('nav.projects')}
-        </h2>
-        {projects.isLoading && <p className="text-stone-500">{t('common.loading')}</p>}
-        {projects.data?.length === 0 && (
-          <p className="text-stone-500">{t('projects.noProjects')}</p>
-        )}
-        <ul className="flex flex-col gap-2">
-          {projects.data?.map((p) => (
-            <li key={p.id}>
-              <Link
-                href={`/app/projects/${p.id}`}
-                className="flex items-center gap-3 rounded-lg border border-stone-200 bg-white p-3 hover:border-brand-500"
-              >
-                <span
-                  className="inline-block h-3 w-3 rounded-full"
-                  style={{ backgroundColor: p.color ?? '#0f766e' }}
-                  aria-hidden
-                />
-                <span className="font-medium">{p.name}</span>
-                <span className="ms-auto text-xs font-mono text-stone-400">{p.key}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
-    </main>
+      {projects.data?.length === 0 && (
+        <p className="rounded-md border border-dashed border-stone-300 bg-white px-4 py-8 text-center text-sm text-stone-500">
+          {t('projects.noProjects')}
+        </p>
+      )}
+
+      {spaces.data?.map((space) => {
+        const spaceProjects = projects.data?.filter((p) => p.spaceId === space.id) ?? [];
+        if (spaceProjects.length === 0) return null;
+        return (
+          <section key={space.id} className="mb-8">
+            <h2 className="mb-3 flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-stone-500">
+              <span aria-hidden>{space.icon ?? '◨'}</span>
+              {space.name}
+              <span className="rounded-full bg-stone-200 px-2 py-0.5 text-[11px] font-semibold tabular-nums text-stone-600">
+                {spaceProjects.length}
+              </span>
+            </h2>
+            <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {spaceProjects.map((p) => (
+                <li key={p.id}>
+                  <Link
+                    href={`/app/projects/${p.id}`}
+                    className="group flex h-full flex-col overflow-hidden rounded-md border border-stone-200 bg-white shadow-card transition-colors hover:border-brand-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
+                  >
+                    <span
+                      aria-hidden
+                      className="h-1.5 w-full"
+                      style={{ backgroundColor: p.color ?? '#0f766e' }}
+                    />
+                    <span className="flex flex-1 flex-col gap-1 p-4">
+                      <span className="font-semibold text-stone-800 transition-colors group-hover:text-brand-600">
+                        {p.name}
+                      </span>
+                      <span className="font-mono text-xs text-stone-400">{p.key}</span>
+                      <span className="mt-2 text-xs font-medium text-brand-500 opacity-0 transition-opacity group-hover:opacity-100">
+                        {t('home.openProject')} <span aria-hidden className="inline-block rtl:-scale-x-100">→</span>
+                      </span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        );
+      })}
+    </div>
   );
 }
