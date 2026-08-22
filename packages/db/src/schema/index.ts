@@ -5,3 +5,5 @@ export * from './workflows';
 export * from './containers';
 export * from './tasks';
 export * from './platform';
+export * from './collab';
+export * from './integrations';

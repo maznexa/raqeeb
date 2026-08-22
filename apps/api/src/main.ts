@@ -6,7 +6,8 @@ import { env } from './core/env';
 
 async function bootstrap() {
   const e = env(); // fail fast on invalid configuration
-  const app = await NestFactory.create(AppModule, { bufferLogs: true });
+  // rawBody: Stripe webhook signature verification needs the exact request bytes
+  const app = await NestFactory.create(AppModule, { bufferLogs: true, rawBody: true });
   app.useLogger(app.get(Logger));
   app.setGlobalPrefix('api/v1');
   app.enableCors({
