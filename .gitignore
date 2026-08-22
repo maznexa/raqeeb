@@ -27,3 +27,6 @@ coverage/
 .idea/
 .vscode/*
 !.vscode/extensions.json
+
+# runtime state
+*.rdb
