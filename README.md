@@ -9,6 +9,16 @@ layer agencies need — bilingual (English + Arabic, full RTL) from day one.
 > six products, PRDs, the unified domain model (D1–D10), architecture, API design, SaaS
 > commercial layer, and the Phase 0–7 roadmap.
 
+## ▶️ Continuing this project (CLI, desktop, web — anywhere)
+
+This repo is fully self-contained. To resume work in a new session:
+
+1. **[STATUS.md](./STATUS.md)** — where the project stands, what's next, fresh-clone setup,
+   dev logins and API token.
+2. **[CLAUDE.md](./CLAUDE.md)** — commands and the invariants no change may break
+   (loaded automatically by Claude Code).
+3. In the repo, just say: **"Read STATUS.md and continue with the next roadmap item."**
+
 ## Monorepo layout
 
 ```
