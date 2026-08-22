@@ -1,0 +1,63 @@
+{
+  "common": {
+    "appName": "رقيب",
+    "loading": "جارٍ التحميل…",
+    "save": "حفظ",
+    "cancel": "إلغاء",
+    "create": "إنشاء",
+    "delete": "حذف",
+    "search": "بحث",
+    "language": "اللغة",
+    "error": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
+  },
+  "auth": {
+    "signIn": "تسجيل الدخول",
+    "signUp": "إنشاء حساب",
+    "signOut": "تسجيل الخروج",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "displayName": "اسمك",
+    "workspaceName": "اسم المؤسسة",
+    "signInTitle": "تسجيل الدخول إلى رقيب",
+    "signUpTitle": "أنشئ حسابك في رقيب",
+    "noAccount": "ليس لديك حساب؟",
+    "haveAccount": "لديك حساب بالفعل؟",
+    "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة."
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "spaces": "المساحات",
+    "projects": "المشاريع",
+    "myTasks": "مهامي",
+    "settings": "الإعدادات",
+    "switchTenant": "تبديل المؤسسة"
+  },
+  "tasks": {
+    "newTask": "مهمة جديدة",
+    "addTask": "إضافة مهمة",
+    "taskTitlePlaceholder": "ما الذي يجب إنجازه؟",
+    "status": "الحالة",
+    "assignees": "المكلَّفون",
+    "priority": "الأولوية",
+    "dueDate": "تاريخ الاستحقاق",
+    "startDate": "تاريخ البدء",
+    "estimate": "التقدير",
+    "noSection": "(بدون قسم)",
+    "subtasks": "المهام الفرعية",
+    "dependencies": "الاعتماديات",
+    "multiHomedHint": "تظهر هذه المهمة أيضًا في {count, plural, one {مشروع آخر واحد} two {مشروعين آخرين} few {# مشاريع أخرى} many {# مشروعًا آخر} other {# مشروع آخر}}.",
+    "taskCount": "{count, plural, =0 {لا توجد مهام} one {مهمة واحدة} two {مهمتان} few {# مهام} many {# مهمة} other {# مهمة}}",
+    "priorityUrgent": "عاجلة",
+    "priorityHigh": "مرتفعة",
+    "priorityNormal": "عادية",
+    "priorityLow": "منخفضة",
+    "milestone": "مَعلَم",
+    "approval": "موافقة"
+  },
+  "projects": {
+    "newProject": "مشروع جديد",
+    "allProjects": "جميع المشاريع",
+    "client": "العميل",
+    "noProjects": "لا توجد مشاريع بعد — أنشئ مشروعك الأول."
+  }
+}

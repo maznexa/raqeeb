@@ -1,0 +1,63 @@
+{
+  "common": {
+    "appName": "Raqeeb",
+    "loading": "Loading…",
+    "save": "Save",
+    "cancel": "Cancel",
+    "create": "Create",
+    "delete": "Delete",
+    "search": "Search",
+    "language": "Language",
+    "error": "Something went wrong. Please try again."
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "signUp": "Create account",
+    "signOut": "Sign out",
+    "email": "Email",
+    "password": "Password",
+    "displayName": "Your name",
+    "workspaceName": "Organization name",
+    "signInTitle": "Sign in to Raqeeb",
+    "signUpTitle": "Create your Raqeeb account",
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+    "invalidCredentials": "Invalid email or password."
+  },
+  "nav": {
+    "home": "Home",
+    "spaces": "Spaces",
+    "projects": "Projects",
+    "myTasks": "My tasks",
+    "settings": "Settings",
+    "switchTenant": "Switch organization"
+  },
+  "tasks": {
+    "newTask": "New task",
+    "addTask": "Add task",
+    "taskTitlePlaceholder": "What needs to be done?",
+    "status": "Status",
+    "assignees": "Assignees",
+    "priority": "Priority",
+    "dueDate": "Due date",
+    "startDate": "Start date",
+    "estimate": "Estimate",
+    "noSection": "(No section)",
+    "subtasks": "Subtasks",
+    "dependencies": "Dependencies",
+    "multiHomedHint": "This task also appears in {count, plural, one {# other project} other {# other projects}}.",
+    "taskCount": "{count, plural, =0 {No tasks} one {# task} two {# tasks} few {# tasks} many {# tasks} other {# tasks}}",
+    "priorityUrgent": "Urgent",
+    "priorityHigh": "High",
+    "priorityNormal": "Normal",
+    "priorityLow": "Low",
+    "milestone": "Milestone",
+    "approval": "Approval"
+  },
+  "projects": {
+    "newProject": "New project",
+    "allProjects": "All projects",
+    "client": "Client",
+    "noProjects": "No projects yet — create your first one."
+  }
+}

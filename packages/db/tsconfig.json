@@ -1,0 +1,9 @@
+{
+  "extends": "../config/tsconfig.node.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler"
+  },
+  "include": ["src", "test", "drizzle.config.ts", "tsup.config.ts", "vitest.config.ts"]
+}

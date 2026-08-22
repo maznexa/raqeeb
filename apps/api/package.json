@@ -1,0 +1,37 @@
+{
+  "name": "@raqeeb/api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Raqeeb API — NestJS modular monolith",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "pnpm build && node dist/main.js",
+    "start": "node dist/main.js",
+    "lint": "eslint src",
+    "typecheck": "tsc -p tsconfig.build.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@nestjs/common": "^10.4.15",
+    "@nestjs/core": "^10.4.15",
+    "@nestjs/jwt": "^10.2.0",
+    "@nestjs/platform-express": "^10.4.15",
+    "@node-rs/argon2": "^2.0.2",
+    "@raqeeb/contracts": "workspace:*",
+    "@raqeeb/db": "workspace:*",
+    "fractional-indexing": "^3.2.0",
+    "ioredis": "^5.4.2",
+    "nestjs-pino": "^4.2.0",
+    "pino": "^9.6.0",
+    "pino-http": "^10.3.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.5",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "@raqeeb/config",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Shared tsconfig/eslint presets for the Raqeeb monorepo",
+  "files": [
+    "tsconfig.base.json",
+    "tsconfig.node.json",
+    "tsconfig.nest.json"
+  ],
+  "scripts": {
+    "build": "true",
+    "lint": "true",
+    "typecheck": "true",
+    "test": "true"
+  }
+}
