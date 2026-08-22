@@ -28,7 +28,6 @@ export class ProblemDetailsFilter implements ExceptionFilter {
       return;
     }
 
-    // eslint-disable-next-line no-console
     console.error('Unhandled exception:', exception);
     res
       .status(HttpStatus.INTERNAL_SERVER_ERROR)

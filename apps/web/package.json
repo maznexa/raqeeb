@@ -1,0 +1,33 @@
+{
+  "name": "@raqeeb/web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Raqeeb web app — Next.js App Router, English + Arabic (RTL)",
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "start": "next start",
+    "lint": "eslint src",
+    "typecheck": "tsc --noEmit",
+    "test": "true"
+  },
+  "dependencies": {
+    "@raqeeb/contracts": "workspace:*",
+    "@raqeeb/i18n": "workspace:*",
+    "@tanstack/react-query": "^5.62.11",
+    "clsx": "^2.1.1",
+    "next": "^15.1.4",
+    "next-intl": "^3.26.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.4",
+    "@types/react-dom": "^19.0.2",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2"
+  }
+}

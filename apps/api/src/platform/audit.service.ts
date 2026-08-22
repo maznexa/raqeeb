@@ -28,7 +28,6 @@ export class AuditService {
   /** Fire-and-forget variant for paths without an open transaction. */
   log(tenantId: string, entry: AuditEntry): void {
     void withTenant(tenantId, (db) => this.logIn(db, tenantId, entry)).catch((err) => {
-      // eslint-disable-next-line no-console
       console.error('[audit] write failed:', err);
     });
   }
