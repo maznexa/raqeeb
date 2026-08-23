@@ -249,9 +249,9 @@ section[id]{scroll-margin-top:86px}
 /* donut + bars */
 .donut{position:relative;width:132px;height:132px;margin:0 auto}
 .donut svg{transform:rotate(-90deg)}
-.donut .dn{position:absolute;inset:0;display:grid;place-items:center;text-align:center;line-height:1.15}
-.donut .dn b{font-family:var(--display);font-weight:640;font-size:1.9rem;letter-spacing:-.03em;display:block}
-.donut .dn span{font-size:var(--fs-micro);color:var(--muted);font-weight:600}
+.donut .dn{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;text-align:center;line-height:1.1}
+.donut .dn b{font-family:var(--display);font-weight:640;font-size:1.85rem;letter-spacing:-.03em;line-height:1;display:block}
+.donut .dn span{font-size:var(--fs-micro);color:var(--muted);font-weight:600;line-height:1.2;display:block}
 .barmini{display:flex;align-items:flex-end;gap:4px;height:60px;margin-top:12px}
 .barmini i{flex:1;border-radius:3px 3px 0 0;background:var(--v200);display:block}
 .barmini i.hi{background:var(--v500)}
