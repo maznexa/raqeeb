@@ -1,0 +1,164 @@
+<script>
+(function(){
+  "use strict";
+  function boot(){
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+    /* sticky header */
+    var hdr = document.getElementById('hdr');
+    if(hdr){
+      var onScroll = function(){ hdr.classList.toggle('scrolled', window.scrollY > 8); };
+      onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+    }
+
+    /* mega menus: hover, click and keyboard, and usable on touch */
+    document.querySelectorAll('.nav-item[data-mega]').forEach(function(item){
+      var btn = item.querySelector('.nav-btn');
+      function open(v){ item.classList.toggle('open', v); btn.setAttribute('aria-expanded', v?'true':'false'); }
+      item.addEventListener('mouseenter', function(){ if(!window.matchMedia('(hover:none)').matches) open(true); });
+      item.addEventListener('mouseleave', function(){ open(false); });
+      btn.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); open(!item.classList.contains('open')); });
+      item.addEventListener('keydown', function(e){ if(e.key==='Escape'){ open(false); btn.focus(); } });
+    });
+    document.addEventListener('click', function(e){
+      if(!e.target.closest('.nav-item[data-mega]')){
+        document.querySelectorAll('.nav-item.open').forEach(function(i){
+          i.classList.remove('open'); i.querySelector('.nav-btn').setAttribute('aria-expanded','false');
+        });
+      }
+    });
+
+    /* mobile sheet */
+    var sheet=document.getElementById('msheet'), mt=document.getElementById('menuToggle'), mc=document.getElementById('mclose');
+    function openSheet(v){
+      if(!sheet) return;
+      sheet.classList.toggle('open', v);
+      sheet.setAttribute('aria-hidden', v?'false':'true');
+      if(mt) mt.setAttribute('aria-expanded', v?'true':'false');
+      document.body.style.overflow = v ? 'hidden' : '';
+    }
+    if(mt) mt.addEventListener('click', function(){ openSheet(true); });
+    if(mc) mc.addEventListener('click', function(){ openSheet(false); });
+    document.querySelectorAll('[data-mnav]').forEach(function(a){ a.addEventListener('click', function(){ openSheet(false); }); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') openSheet(false); });
+
+    /* hero console tabs */
+    var tabs=[].slice.call(document.querySelectorAll('.contab'));
+    var crumb=document.getElementById('crumbView');
+    function selectTab(tab){
+      tabs.forEach(function(t){
+        var on = t===tab;
+        t.setAttribute('aria-selected', on?'true':'false');
+        var panel=document.getElementById(t.getAttribute('aria-controls'));
+        if(panel) panel.hidden = !on;
+      });
+      if(crumb) crumb.textContent = tab.textContent.trim();
+      var idx = tabs.indexOf(tab)+1;
+      document.querySelectorAll('.rail a[data-rail]').forEach(function(a){
+        a.classList.toggle('on', a.getAttribute('data-rail')===String(idx));
+      });
+    }
+    tabs.forEach(function(tab,i){
+      tab.addEventListener('click', function(){ selectTab(tab); });
+      tab.addEventListener('keydown', function(e){
+        var n=null;
+        if(e.key==='ArrowRight') n=tabs[(i+1)%tabs.length];
+        if(e.key==='ArrowLeft')  n=tabs[(i-1+tabs.length)%tabs.length];
+        if(n){ e.preventDefault(); n.focus(); selectTab(n); }
+      });
+    });
+
+    /* pricing toggles */
+    var cycle='annual', curr='usd';
+    function fmt(v){ return curr==='usd' ? ('$'+v) : ('SAR '+v); }
+    function paint(){
+      document.querySelectorAll('[data-price]').forEach(function(el){
+        var v=el.getAttribute('data-'+curr+'-'+(cycle==='annual'?'a':'m'));
+        if(v!==null) el.textContent=fmt(v);
+      });
+      document.querySelectorAll('[data-sarnote]').forEach(function(el){
+        var v=el.getAttribute('data-sar-'+(cycle==='annual'?'a':'m'));
+        el.style.visibility = curr==='usd' ? '' : 'hidden';
+        el.textContent = 'about SAR '+v+' per user, month';
+      });
+    }
+    function wireSeg(id, apply){
+      var box=document.getElementById(id); if(!box) return;
+      box.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click', function(){
+          box.querySelectorAll('button').forEach(function(x){ x.setAttribute('aria-checked','false'); });
+          b.setAttribute('aria-checked','true'); apply(b); paint();
+        });
+      });
+    }
+    wireSeg('cycle', function(b){ cycle=b.dataset.cycle; });
+    wireSeg('curr',  function(b){ curr=b.dataset.curr; });
+    paint();
+
+    /* language switch, honest state */
+    function langNote(e){
+      if(e) e.preventDefault();
+      var t=document.createElement('div');
+      t.lang='ar'; t.dir='rtl';
+      t.textContent='النسخة العربية الكاملة بواجهة من اليمين إلى اليسار تصدر هذا الربع.';
+      t.style.cssText='position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#1E1233;color:#fff;'+
+        'padding:13px 20px;border-radius:12px;font-family:"IBM Plex Sans Arabic",sans-serif;font-size:14px;font-weight:600;'+
+        'z-index:200;box-shadow:0 14px 44px rgba(20,9,35,.42);max-width:90vw;text-align:center';
+      document.body.appendChild(t);
+      setTimeout(function(){ t.remove(); }, 3600);
+    }
+    ['langsw','langsw2'].forEach(function(id){
+      var el=document.getElementById(id); if(el) el.addEventListener('click', langNote);
+    });
+
+    /* demo form */
+    var form=document.getElementById('demoForm');
+    if(form) form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var msg=document.getElementById('formMsg');
+      var fn=document.getElementById('fn').value.trim();
+      var em=document.getElementById('em').value.trim();
+      msg.style.display='block';
+      if(!fn || !/.+@.+\..+/.test(em)){
+        msg.style.color='#F3C9BE';
+        msg.textContent='Please add your first name and a work email so we can reply.';
+        return;
+      }
+      /* TODO before launch: POST to the scheduling endpoint */
+      msg.style.color='#C9F0DD';
+      msg.textContent='Thank you. We will reply within one business day with two time slots.';
+      form.querySelector('button[type=submit]').textContent='Request sent';
+    });
+
+    /* footer anchors jump instantly, header anchors glide */
+    document.querySelectorAll('.foot a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        var t=document.querySelector(a.getAttribute('href'));
+        if(t){ e.preventDefault(); t.scrollIntoView({behavior:'auto',block:'start'}); }
+      });
+    });
+
+    /* reveals, staggered inside each block */
+    var revs=[].slice.call(document.querySelectorAll('.rev'));
+    if('IntersectionObserver' in window && !reduce){
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(!en.isIntersecting) return;
+          en.target.classList.add('in');
+          io.unobserve(en.target);
+        });
+      },{threshold:.08, rootMargin:'0px 0px -5% 0px'});
+      revs.forEach(function(el){ io.observe(el); });
+    } else {
+      revs.forEach(function(el){ el.classList.add('in'); });
+    }
+  }
+
+  try{
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  }catch(err){
+    document.querySelectorAll('.rev').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>

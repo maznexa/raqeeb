@@ -1,0 +1,1758 @@
+<title>Raqeb</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Raqeb connects delivery, capacity, time, clients and margin for project led service teams. See the whole operation in one place.">
+<meta name="theme-color" content="#6657EE">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='847 0 396 458'%3E%3Cpath fill='%236657EE' d='M1051.4 0q67.7 3.4 118.7 46.4c39.5 33.3 64.6 81.9 68.5 133.6q.3 4.3.3 18.7 0 11.1-.8 18.7c-7.9 74-58.6 137.7-128.5 162.8q-42.8 15.3-89.3 10.1c-87.1-9.8-157.3-78.3-170.5-164.7q-2.6-17.2-1.9-38.9c1.2-34.2 12.4-68.5 30.7-96.6C909.5 42.5 958 10.6 1014.1 2.1q4.5-.7 19.2-2.1zM895.8 194.2c-.8 81.6 65.2 147.2 146.3 148 81.2.8 148.5-63.4 149.4-145 .8-81.6-65.2-147.2-146.3-148-81.2-.8-148.5 63.4-149.4 145z'/%3E%3Cpath fill='%236657EE' d='M1219.6 458h-198.2c-34.8-1.5-33.6-51.1.4-51.1q174.6.1 194 .1c16 0 27.8 11.8 26.2 28q-1.5 15-15.3 21.1z'/%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Raqeb, the operating view for project led service teams">
+<meta property="og:description" content="Execution, capacity, time, clients and commercial health in one connected view.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400..700&family=Inter:wght@400..700&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
+<script>document.documentElement.className+=' js';document.documentElement.lang='en';document.documentElement.dir='ltr';</script>
+<style>
+/* ==========================================================
+   RAQEB marketing homepage.
+   House rule: no em dash, no en dash, anywhere.
+   ========================================================== */
+:root{
+  color-scheme: light;
+  /* violet ramp: one axis, tokenised */
+  --v50:#F1EFFE; --v100:#E4E0FC; --v200:#CBC3F8; --v300:#AB9FF2; --v400:#8B7BEC;
+  --v500:#6657EE; --v600:#5B4BD6; --v700:#4D40C4; --v800:#3A2E92;
+  /* plum ramp */
+  --p900:#150C25; --p800:#1E1233; --p700:#271941; --p600:#3A2168; --p400:#6B5A8E; --p200:#CFC8E6;
+  --violet:var(--v500); --violet2:var(--v600); --violet-ink:var(--v700); --lilac:var(--v100);
+  --plum:var(--p800); --plum3:var(--p900);
+  /* grounds */
+  --white:#fff; --bg:#F5F4F9; --stage:#EDEBF4; --line:#E9E6F1; --line2:#DCD8EA;
+  /* ink */
+  --ink:#171320; --ink2:#3D3750; --muted:#66607A; --muted2:#6B6579;
+  /* status, ink pairs meet AA on their own tint */
+  --mintBg:#DCF0E7; --mintIc:#1B6E4E; --amberBg:#FAEECF; --amberIc:#8A6410;
+  --coralBg:#FBE0D8; --coralIc:#A83C22;
+  /* type */
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --display:'Inter Tight','Inter',-apple-system,'Segoe UI',sans-serif;
+  --arabic:'IBM Plex Sans Arabic','Noto Sans Arabic','Segoe UI',sans-serif;
+  --fs-micro:.6875rem; --fs-xs:.8125rem; --fs-sm:.875rem; --fs-base:1rem;
+  --fs-lead:1.125rem; --fs-h4:1.125rem; --fs-h3:1.5rem;
+  --fs-chapter:clamp(1.75rem,1.2rem + 1.9vw,2.5rem);
+  --fs-h2:clamp(2rem,1.35rem + 2.2vw,3rem);
+  --fs-h1:clamp(2.5rem,1.5rem + 3.6vw,4.25rem);
+  /* widths and rhythm */
+  --w-text:760px; --w-content:1200px; --w-wide:1440px;
+  --s-tight:64px; --s-base:96px; --s-wide:130px;
+  --shadow-sm:0 1px 2px rgba(23,19,32,.05),0 2px 8px rgba(23,19,32,.04);
+  --shadow:0 10px 34px rgba(37,25,64,.10),0 2px 8px rgba(37,25,64,.05);
+  --shadow-lg:0 30px 70px rgba(30,18,51,.18),0 8px 22px rgba(30,18,51,.08);
+}
+*{box-sizing:border-box}
+html{overflow-x:clip}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:var(--fs-base);line-height:1.55;letter-spacing:-.006em;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:clip}
+h1,h2,h3,h4,h5,.mh,.ph,.fh,.dtitle{font-family:var(--display);font-weight:640;margin:0;text-wrap:balance;letter-spacing:-.022em;line-height:1.14}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+table{border-collapse:collapse}
+[lang="ar"],.ar{font-family:var(--arabic)}
+.tnum,table,.kv,.mono{font-variant-numeric:tabular-nums}
+:focus-visible{outline:2.5px solid var(--violet);outline-offset:2px;border-radius:6px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;inset-inline-start:-9999px;top:8px;z-index:200}
+.skip:focus{inset-inline-start:8px;padding:10px 14px;background:var(--violet);color:#fff;border-radius:10px;font-weight:600}
+section[id]{scroll-margin-top:86px}
+
+.wrap{max-width:var(--w-content);margin:0 auto;padding:0 28px}
+.center{max-width:var(--w-text);margin:0 auto;text-align:center}
+.section{padding:var(--s-base) 0}
+.section.stage{background:var(--stage)}
+.section.plain{background:var(--bg)}
+.section.stage,.section.plain{padding-top:var(--s-tight)}
+.eyebrow{font-weight:600;font-size:var(--fs-micro);letter-spacing:.14em;text-transform:uppercase;color:var(--p600);display:inline-flex;align-items:center}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--violet);margin-inline-end:9px}
+.eyebrow.dk{color:var(--p200)}
+.h2{font-size:var(--fs-h2);font-weight:600;margin-top:16px}
+.lead{margin-top:16px;font-size:var(--fs-lead);line-height:1.5;color:var(--muted)}
+.center .lead{margin-inline:auto;max-width:54ch}
+@media (max-width:1080px){.section{padding:var(--s-tight) 0}}
+@media (max-width:640px){.section{padding:56px 0}.wrap{padding:0 18px}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:var(--fs-sm);
+  padding:12px 20px;border-radius:11px;transition:background .16s,box-shadow .16s,border-color .16s;min-height:44px}
+.btn svg{width:16px;height:16px}
+.btn-primary{background:var(--violet);color:#fff;box-shadow:0 1px 2px rgba(23,19,32,.10)}
+.btn-primary:hover{background:var(--violet2);box-shadow:0 3px 10px rgba(23,19,32,.16)}
+.btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line2);box-shadow:var(--shadow-sm)}
+.btn-ghost:hover{border-color:var(--v300);color:var(--violet-ink)}
+.btn-onplum{background:rgba(255,255,255,.09);color:#fff;border:1px solid rgba(255,255,255,.24)}
+.btn-onplum:hover{background:rgba(255,255,255,.17)}
+.lnk{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:var(--fs-sm);color:var(--violet-ink)}
+.lnk svg{width:15px;height:15px;transition:transform .16s}
+.lnk:hover svg{transform:translateX(3px)}
+
+/* brand marks */
+.wordmark{display:block;height:26px;width:auto;color:currentColor}
+.qmark{display:block;height:26px;width:auto}
+
+/* ============ HEADER ============ */
+.hdr{position:sticky;top:0;z-index:80;background:rgba(245,244,249,.86);backdrop-filter:saturate(1.5) blur(14px);
+  border-bottom:1px solid transparent;transition:border-color .2s,box-shadow .2s}
+.hdr.scrolled{border-color:var(--line2);box-shadow:0 6px 22px rgba(30,18,51,.05)}
+.hdr-in{display:flex;align-items:center;gap:12px;height:70px;max-width:var(--w-wide);margin:0 auto;padding:0 28px}
+.brand{display:flex;align-items:center;color:var(--ink);flex:0 0 auto}
+.nav-main{display:flex;align-items:center;gap:2px;margin-inline-start:22px}
+.nav-item{position:relative}
+.nav-btn{display:inline-flex;align-items:center;gap:5px;padding:10px 13px;border-radius:10px;font-weight:500;font-size:var(--fs-sm);color:var(--ink2);transition:background .15s,color .15s}
+.nav-btn:hover,.nav-btn[aria-expanded="true"]{background:var(--v50);color:var(--violet-ink)}
+.nav-btn .chev{width:13px;height:13px;transition:transform .2s}
+.nav-btn[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.hdr-actions{margin-inline-start:auto;display:flex;align-items:center;gap:8px}
+.langsw{display:inline-flex;align-items:center;gap:6px;padding:9px 12px;border-radius:10px;font-weight:600;font-size:var(--fs-xs);color:var(--ink2);border:1px solid var(--line2);background:#fff;min-height:40px}
+.langsw:hover{border-color:var(--v300);color:var(--violet-ink)}
+.signin{padding:10px 12px;border-radius:10px;font-weight:500;font-size:var(--fs-sm);color:var(--ink2)}
+.signin:hover{color:var(--violet-ink)}
+.hdr .btn{padding:10px 16px;min-height:40px}
+.mega{position:absolute;top:calc(100% + 12px);inset-inline-start:0;width:660px;background:#fff;border:1px solid var(--line);
+  border-radius:16px;box-shadow:var(--shadow-lg);padding:12px;opacity:0;visibility:hidden;transform:translateY(6px);
+  transition:opacity .18s,transform .18s,visibility .18s;z-index:90}
+.nav-item.open .mega{opacity:1;visibility:visible;transform:none}
+.mega-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.mega-a{display:flex;gap:11px;padding:11px;border-radius:11px;transition:background .15s}
+.mega-a:hover{background:var(--bg)}
+.mega-ic{flex:0 0 34px;width:34px;height:34px;border-radius:9px;background:var(--v50);display:grid;place-items:center;color:var(--violet-ink)}
+.mega-ic svg{width:17px;height:17px}
+.mega-a .mh{font-family:var(--sans);font-weight:600;font-size:var(--fs-sm);letter-spacing:-.01em;margin-bottom:2px}
+.mega-a p{font-size:var(--fs-xs);color:var(--muted);line-height:1.4}
+.mega-foot{margin-top:6px;padding:13px 14px;border-radius:12px;background:var(--p800);color:#fff;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.mega-foot p{font-size:var(--fs-xs);color:var(--p200)}
+.mega-foot strong{font-family:var(--display);font-weight:600;font-size:var(--fs-sm)}
+.menu-toggle{display:none}
+@media (max-width:1000px){
+  .nav-main,.signin,.hdr-actions .btn,.langsw{display:none}
+  .menu-toggle{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:11px;border:1px solid var(--line2);background:#fff}
+  .menu-toggle svg{width:20px;height:20px}
+}
+.msheet{position:fixed;inset:0;z-index:100;background:var(--bg);transform:translateY(-100%);visibility:hidden;
+  transition:transform .28s ease,visibility .28s;display:flex;flex-direction:column;padding:18px 22px;overflow-y:auto}
+.msheet.open{transform:none;visibility:visible}
+.msheet-top{display:flex;align-items:center;height:52px}
+.msheet .mclose{margin-inline-start:auto;width:44px;height:44px;border-radius:11px;border:1px solid var(--line2);display:grid;place-items:center;background:#fff}
+.msheet nav{display:flex;flex-direction:column;margin-top:18px}
+.msheet nav a{padding:15px 10px;font-family:var(--display);font-weight:600;font-size:1.15rem;border-bottom:1px solid var(--line)}
+.msheet .mact{margin-top:22px;display:flex;flex-direction:column;gap:10px}
+.msheet .mact .btn{width:100%}
+</style>
+<style>
+/* ============ PRODUCT SCENE SHELL ============ */
+.scene{position:relative}
+.scene-cap{margin-top:12px;font-size:var(--fs-micro);font-weight:600;letter-spacing:.02em;color:var(--muted2);display:flex;align-items:center;gap:8px}
+.scene-cap svg{width:13px;height:13px;color:var(--v400);flex:0 0 13px}
+.band .scene-cap{color:var(--p400)}
+.win{background:var(--white);border:1px solid var(--line2);border-radius:16px;box-shadow:var(--shadow-lg);overflow:hidden;container-type:inline-size}
+.band .win{border-color:rgba(255,255,255,.12)}
+.win-bar{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line);background:#FCFBFE}
+.win-bar .dots{display:flex;gap:6px;flex:0 0 auto}
+.win-bar .dots i{width:10px;height:10px;border-radius:50%;display:block;background:var(--line2)}
+.win-crumb{font-size:var(--fs-xs);color:var(--muted);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.win-crumb b{color:var(--ink);font-weight:600}
+.win-kbd{margin-inline-start:auto;display:inline-flex;align-items:center;gap:6px;font-size:var(--fs-micro);color:var(--muted2);
+  border:1px solid var(--line2);border-radius:7px;padding:3px 8px;background:#fff;flex:0 0 auto}
+@container (max-width:560px){.win-kbd{display:none}}
+.win-body{display:grid;grid-template-columns:196px 1fr}
+@container (max-width:720px){.win-body{grid-template-columns:56px 1fr}.rail .rl-txt,.rail .r-lab,.rail .r-foot div,.rail .rcount{display:none}.rail a{justify-content:center;padding:10px 0}}
+@container (max-width:420px){.win-body{grid-template-columns:1fr}.rail{display:none}}
+.rail{background:var(--plum);padding:16px 12px;display:flex;flex-direction:column;gap:3px}
+.rail .r-word{color:#fff;margin:2px 6px 14px}
+.rail .r-lab{font-size:var(--fs-micro);letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.58);font-weight:600;padding:0 8px;margin-bottom:8px}
+.rail a{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:9px;color:rgba(255,255,255,.68);font-weight:500;font-size:var(--fs-xs)}
+.rail a svg{width:16px;height:16px;flex:0 0 16px}
+.rail a.on{background:var(--v600);color:#fff}
+.rail .rcount{margin-inline-start:auto;font-size:var(--fs-micro);font-weight:600;color:rgba(255,255,255,.5)}
+.rail a.on .rcount{color:rgba(255,255,255,.85)}
+.rail .r-foot{margin-top:auto;display:flex;align-items:center;gap:10px;padding:12px 6px 2px;border-top:1px solid rgba(255,255,255,.09)}
+.rail .r-foot .av{width:30px;height:30px;border-radius:50%;background:var(--v500);display:grid;place-items:center;font-size:var(--fs-micro);font-weight:600;color:#fff;flex:0 0 30px}
+.rail .r-foot b{color:#fff;font-size:var(--fs-xs);font-weight:600;display:block;line-height:1.3}
+.rail .r-foot span{color:rgba(255,255,255,.45);font-size:var(--fs-micro)}
+.work{padding:16px;min-width:0}
+
+/* scene toolbar: the single highest leverage realism device */
+.tbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:14px}
+.seg-view{display:inline-flex;background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:2px}
+.seg-view button,.seg-view span{padding:5px 11px;border-radius:7px;font-size:var(--fs-xs);font-weight:600;color:var(--muted)}
+.seg-view .on{background:#fff;color:var(--ink);box-shadow:var(--shadow-sm)}
+.tchip{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:8px;border:1px solid var(--line2);background:#fff;font-size:var(--fs-xs);font-weight:500;color:var(--ink2)}
+.tchip svg{width:13px;height:13px;color:var(--muted2)}
+.tchip.act{border-color:var(--v300);background:var(--v50);color:var(--violet-ink)}
+.tchip .x{color:var(--muted2);font-weight:600}
+.tbar .right{margin-inline-start:auto;display:flex;align-items:center;gap:8px}
+.avstack{display:flex}
+.avstack .av{width:26px;height:26px;border-radius:50%;border:2px solid #fff;margin-inline-start:-8px;display:grid;place-items:center;font-size:var(--fs-micro);font-weight:600;color:#fff}
+.win .btn-primary{box-shadow:none;font-size:var(--fs-xs);padding:7px 12px;border-radius:9px;min-height:32px}
+@container (max-width:560px){.tbar .right .btn-primary .lbl{display:none}}
+
+/* KPI row */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@container (max-width:820px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}
+.kpi .kt{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.kpi .kic{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;flex:0 0 26px}
+.kpi .kic svg{width:14px;height:14px}
+.kpi .kl{font-size:var(--fs-micro);font-weight:600;color:var(--muted);letter-spacing:.01em}
+.kpi .kv{font-family:var(--display);font-weight:640;font-size:1.6rem;letter-spacing:-.03em;line-height:1}
+.kpi .krow{display:flex;align-items:baseline;gap:8px;margin-top:5px}
+.kpi .kd{font-size:var(--fs-micro);font-weight:600;display:inline-flex;align-items:center;gap:3px}
+.kpi .kd.up{color:var(--mintIc)} .kpi .kd.dn{color:var(--coralIc)} .kpi .kd.fl{color:var(--muted2)}
+.kpi .ks{font-size:var(--fs-micro);color:var(--muted2);margin-top:4px}
+.kspark{display:block;width:100%;height:22px;margin-top:8px}
+.ic-lilac{background:var(--v50);color:var(--violet-ink)} .ic-amber{background:var(--amberBg);color:var(--amberIc)}
+.ic-mint{background:var(--mintBg);color:var(--mintIc)} .ic-coral{background:var(--coralBg);color:var(--coralIc)}
+
+/* panels */
+.pgrid2{display:grid;grid-template-columns:1.5fr 1fr;gap:12px;margin-top:12px}
+.pgrid-eq{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+@container (max-width:820px){.pgrid2,.pgrid-eq{grid-template-columns:1fr}}
+.panel{border:1px solid var(--line);border-radius:13px;background:#fff;padding:14px}
+.p-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.p-head .ph{font-family:var(--sans);font-weight:600;font-size:var(--fs-sm);letter-spacing:-.01em}
+.p-head .p-sub{font-size:var(--fs-micro);color:var(--muted2);display:block;font-weight:500;margin-top:1px}
+.p-head .right{margin-inline-start:auto;display:flex;align-items:center;gap:7px}
+.tag{font-size:var(--fs-micro);font-weight:600;color:var(--muted2)}
+.ilink{font-size:var(--fs-micro);font-weight:600;color:var(--violet-ink);display:inline-flex;align-items:center;gap:4px}
+.ilink svg{width:11px;height:11px}
+
+/* chips */
+.chip{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;border-radius:100px;font-size:var(--fs-micro);font-weight:600;white-space:nowrap}
+.chip i{width:6px;height:6px;border-radius:50%;display:block;flex:0 0 6px}
+.chip.ok{background:var(--mintBg);color:var(--mintIc)}.chip.ok i{background:var(--mintIc)}
+.chip.warn{background:var(--amberBg);color:var(--amberIc)}.chip.warn i{background:var(--amberIc)}
+.chip.risk{background:var(--coralBg);color:var(--coralIc)}.chip.risk i{background:var(--coralIc)}
+.chip.neu{background:var(--bg);color:var(--muted)}.chip.neu i{background:var(--muted2)}
+.chip.vio{background:var(--v50);color:var(--violet-ink)}.chip.vio i{background:var(--violet)}
+
+/* signals */
+.sigrow{display:flex;align-items:center;gap:11px;padding:10px 0;border-top:1px solid var(--line)}
+.sigrow:first-of-type{border-top:none}
+.sigrow .num{width:22px;height:22px;border-radius:6px;display:grid;place-items:center;font-size:var(--fs-micro);font-weight:600;flex:0 0 22px}
+.sigrow .sc{flex:1;min-width:0}
+.sigrow .sc b{font-size:var(--fs-xs);font-weight:600;display:block}
+.sigrow .sc span{font-size:var(--fs-micro);color:var(--muted)}
+.sigrow .sa{font-size:var(--fs-micro);font-weight:600;color:var(--violet-ink);white-space:nowrap;display:inline-flex;align-items:center;gap:4px}
+.sigrow .sa svg{width:11px;height:11px}
+@container (max-width:520px){.sigrow .sa span{display:none}}
+
+/* donut + bars */
+.donut{position:relative;width:132px;height:132px;margin:0 auto}
+.donut svg{transform:rotate(-90deg)}
+.donut .dn{position:absolute;inset:0;display:grid;place-items:center;text-align:center;line-height:1.15}
+.donut .dn b{font-family:var(--display);font-weight:640;font-size:1.9rem;letter-spacing:-.03em;display:block}
+.donut .dn span{font-size:var(--fs-micro);color:var(--muted);font-weight:600}
+.barmini{display:flex;align-items:flex-end;gap:4px;height:60px;margin-top:12px}
+.barmini i{flex:1;border-radius:3px 3px 0 0;background:var(--v200);display:block}
+.barmini i.hi{background:var(--v500)}
+.axrow{display:flex;justify-content:space-between;font-size:var(--fs-micro);color:var(--muted2);margin-top:6px;font-weight:500}
+
+/* tables */
+.tblwrap{overflow-x:auto;overscroll-behavior-x:contain}
+.tblwrap .dt{min-width:560px}
+.dt{width:100%;font-size:var(--fs-xs)}
+.dt th{text-align:start;font-weight:600;color:var(--muted);font-size:var(--fs-micro);padding:0 8px 8px;white-space:nowrap}
+.dt td{padding:9px 8px;border-top:1px solid var(--line);vertical-align:middle}
+.dt tbody tr.sel td{background:var(--v50)}
+.dt .pj{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px;display:block}
+.dt .who{color:var(--muted)}
+.prog{height:6px;border-radius:100px;background:var(--stage);overflow:hidden;min-width:56px}
+.prog i{display:block;height:100%;background:var(--violet);border-radius:100px}
+.avm{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:var(--fs-micro);font-weight:600;color:#fff;flex:0 0 22px}
+.avm.a1{background:var(--v500)} .avm.a2{background:var(--mintIc)} .avm.a3{background:var(--amberIc)} .avm.a4{background:var(--coralIc)} .avm.a5{background:var(--p600)}
+.withav{display:inline-flex;align-items:center;gap:7px}
+.morerow{padding:9px 8px;border-top:1px solid var(--line);font-size:var(--fs-micro);color:var(--muted2);font-weight:600}
+
+/* board */
+.board{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+@container (max-width:760px){.board{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container (max-width:420px){.board{grid-template-columns:1fr}}
+.bcol{min-width:0}
+.col-h{display:flex;align-items:center;gap:7px;font-size:var(--fs-micro);font-weight:600;color:var(--muted);margin-bottom:8px;padding:0 2px}
+.col-h i{width:7px;height:7px;border-radius:2px;display:block;flex:0 0 7px}
+.col-h .c{margin-inline-start:auto;background:var(--bg);color:var(--muted);border-radius:20px;padding:1px 7px}
+.tk{background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px;margin-bottom:7px;box-shadow:var(--shadow-sm)}
+.tk.sel{border-color:var(--violet);box-shadow:0 0 0 2px var(--v100)}
+.tk .tlab{display:inline-block;font-size:var(--fs-micro);font-weight:600;padding:1px 6px;border-radius:5px;margin-bottom:5px}
+.tk .tt{font-size:var(--fs-xs);font-weight:600;line-height:1.35}
+.tk .tsub{display:flex;align-items:center;gap:9px;margin-top:7px;font-size:var(--fs-micro);color:var(--muted2);font-weight:500}
+.tk .tsub span{display:inline-flex;align-items:center;gap:3px}
+.tk .tsub svg{width:11px;height:11px}
+.tk .tm{display:flex;align-items:center;gap:6px;margin-top:8px}
+.pr{font-size:var(--fs-micro);font-weight:600;padding:1px 6px;border-radius:5px}
+.pr.hi{background:var(--coralBg);color:var(--coralIc)}.pr.me{background:var(--amberBg);color:var(--amberIc)}.pr.lo{background:var(--bg);color:var(--muted)}
+.tk .due{margin-inline-start:auto;font-size:var(--fs-micro);color:var(--muted2);font-weight:600}
+.tk .due.late{color:var(--coralIc)}
+.subprog{display:flex;align-items:center;gap:6px;margin-top:7px;font-size:var(--fs-micro);color:var(--muted2);font-weight:600}
+.subprog .prog{flex:1;height:4px;min-width:0}
+
+/* drawer */
+.drawer{border:1px solid var(--line2);border-radius:13px;background:#fff;box-shadow:var(--shadow);padding:14px}
+.drawer .dh{display:flex;align-items:center;gap:7px;margin-bottom:9px;flex-wrap:wrap}
+.drawer .dtitle{font-family:var(--display);font-weight:640;font-size:1.05rem;margin:2px 0 7px;letter-spacing:-.02em}
+.drawer .dl{font-size:var(--fs-xs);color:var(--muted);line-height:1.5}
+.drow{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:var(--fs-xs)}
+.drow .dk{color:var(--muted);width:74px;flex:0 0 74px}
+.dtabs{display:flex;gap:16px;border-bottom:1px solid var(--line);margin:10px 0 2px}
+.dtabs span{padding:7px 0;font-size:var(--fs-xs);font-weight:600;color:var(--muted2);border-bottom:2px solid transparent;margin-bottom:-1px}
+.dtabs .on{color:var(--violet-ink);border-bottom-color:var(--violet)}
+.timer{display:inline-flex;align-items:center;gap:7px;background:var(--p800);color:#fff;border-radius:9px;padding:6px 10px;font-family:var(--display);font-weight:600;font-size:var(--fs-xs);font-variant-numeric:tabular-nums}
+.timer .rec{width:8px;height:8px;border-radius:50%;background:#F08A6E;animation:rec 2s infinite}
+@keyframes rec{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* capacity planner */
+.capwrap{overflow-x:auto}
+.cap{width:100%;border-spacing:3px;border-collapse:separate;font-size:var(--fs-micro);min-width:520px}
+.cap th{font-weight:600;color:var(--muted);padding:2px;text-align:center;font-size:var(--fs-micro)}
+.cap th.wk small{display:block;color:var(--muted2);font-weight:500}
+.cap .pcell{text-align:start;min-width:150px;padding-inline-end:6px}
+.cap .pn{display:flex;align-items:center;gap:7px;font-weight:600;font-size:var(--fs-xs)}
+.cap .role{color:var(--muted2);margin-inline-start:29px;display:block}
+.cap .grouprow td{padding:10px 4px 4px;font-weight:600;color:var(--muted);font-size:var(--fs-micro);letter-spacing:.08em;text-transform:uppercase}
+.cell{height:32px;border-radius:7px;display:grid;place-items:center;font-weight:600;font-size:var(--fs-micro);position:relative}
+.cell.c0{background:var(--stage);color:var(--muted)}
+.cell.c1{background:var(--v100);color:var(--v800)}
+.cell.c2{background:var(--v300);color:var(--p900)}
+.cell.c3{background:var(--v500);color:#fff}
+.cell.over{background:var(--coralIc);color:#fff}
+.cell.leave{background:repeating-linear-gradient(45deg,var(--v50),var(--v50) 5px,var(--v100) 5px,var(--v100) 10px);color:var(--v800)}
+.capend{text-align:end;font-weight:600;font-size:var(--fs-xs);white-space:nowrap}
+.capend small{display:block;font-weight:500;font-size:var(--fs-micro)}
+.caplegend{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px;font-size:var(--fs-micro);color:var(--muted);align-items:center}
+.caplegend span{display:inline-flex;align-items:center;gap:6px}
+.caplegend i{width:12px;height:12px;border-radius:3px;display:block;box-shadow:inset 0 0 0 1px rgba(23,19,32,.12)}
+.hintbox{margin-top:12px;border:1px solid var(--v200);border-radius:12px;background:var(--v50);padding:12px;display:flex;gap:11px}
+.hintbox .hi{flex:0 0 30px;width:30px;height:30px;border-radius:8px;background:#fff;display:grid;place-items:center;color:var(--violet-ink)}
+.hintbox .hi svg{width:16px;height:16px}
+.hintbox b{font-size:var(--fs-xs);display:block}
+.hintbox p{font-size:var(--fs-micro);color:var(--ink2);margin-top:3px;line-height:1.5}
+.hintbox .verdicts{display:flex;gap:14px;margin-top:7px;flex-wrap:wrap}
+.hintbox .verdicts span{font-size:var(--fs-micro);font-weight:600;color:var(--violet-ink)}
+
+/* timesheet */
+.ts{width:100%;font-size:var(--fs-xs);min-width:520px}
+.ts th{font-weight:600;color:var(--muted);font-size:var(--fs-micro);padding:0 6px 8px;text-align:center}
+.ts th.l{text-align:start}
+.ts td{padding:7px 6px;border-top:1px solid var(--line);text-align:center}
+.ts td.l{text-align:start;font-weight:600}
+.ts td.l small{display:block;color:var(--muted2);font-weight:500;font-size:var(--fs-micro)}
+.hh{display:inline-block;min-width:34px;padding:3px 7px;border-radius:6px;background:var(--bg);font-weight:600;font-variant-numeric:tabular-nums}
+.hh.b{background:var(--v50);color:var(--violet-ink)}
+.hh.empty{background:transparent;border:1px dashed var(--line2);color:var(--muted2)}
+.ts tfoot td{border-top:2px solid var(--line2);font-weight:700;padding-top:9px}
+.ubar{display:flex;align-items:center;gap:10px;margin:9px 0}
+.ubar .ul{width:96px;flex:0 0 96px;font-size:var(--fs-xs);font-weight:600}
+.ubar .ut{flex:1;height:12px;border-radius:100px;background:var(--stage);overflow:hidden;position:relative}
+.ubar .ut i{display:block;height:100%;border-radius:100px;background:var(--v500)}
+.ubar .ut .tgt{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--p600)}
+.ubar .uv{width:40px;flex:0 0 40px;text-align:end;font-weight:600;font-size:var(--fs-xs)}
+
+/* money */
+.moneyrow{padding:10px 0;border-top:1px solid var(--line)}
+.moneyrow:first-child{border-top:none}
+.moneyrow .mt{display:flex;justify-content:space-between;align-items:baseline;font-size:var(--fs-xs);margin-bottom:6px;gap:10px}
+.moneyrow .mt small{color:var(--muted2);font-weight:500}
+.moneyrow .mt b{font-weight:600;font-variant-numeric:tabular-nums}
+.moneyrow .mb{height:7px;border-radius:100px;background:var(--stage);overflow:hidden}
+.moneyrow .mb i{display:block;height:100%;border-radius:100px}
+.combars{display:flex;align-items:flex-end;gap:8px;height:132px;padding-top:6px}
+.combars .cb{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:5px;height:100%}
+.combars .cb i{width:100%;border-radius:4px 4px 0 0;background:var(--v200);display:block}
+.combars .cb.hi i{background:var(--v500)}
+.combars .cb span{font-size:var(--fs-micro);color:var(--muted2);font-weight:500}
+
+/* heatmap */
+.heatwrap{overflow-x:auto;overscroll-behavior-x:contain}
+.heat{display:grid;grid-template-columns:auto repeat(6,minmax(34px,1fr));gap:4px;font-size:var(--fs-micro);min-width:300px}
+.heat .hx{color:var(--muted);font-weight:600;text-align:center;padding-bottom:2px}
+.heat .hy{color:var(--muted);font-weight:600;display:flex;align-items:center;padding-inline-end:8px;white-space:nowrap}
+.hcell{aspect-ratio:2/1;border-radius:6px;display:grid;place-items:center;font-weight:600;min-height:26px;font-size:var(--fs-micro);line-height:1;font-family:var(--sans);letter-spacing:0;overflow:hidden}
+.hcell.lv0{background:var(--mintBg);color:var(--mintIc)}
+.hcell.lv1{background:var(--amberBg);color:var(--amberIc)}
+.hcell.lv2{background:var(--coralBg);color:var(--coralIc)}
+.hcell.lvn{background:var(--stage);color:var(--muted2)}
+
+/* gantt */
+.gantt{min-width:560px}
+.gt-head{display:grid;grid-template-columns:150px 1fr;font-size:var(--fs-micro);color:var(--muted);font-weight:600;border-bottom:1px solid var(--line);padding-bottom:7px;margin-bottom:6px}
+.gt-months{display:grid;grid-template-columns:repeat(6,1fr);text-align:center}
+.gt-row{display:grid;grid-template-columns:150px 1fr;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)}
+.gt-name{font-size:var(--fs-xs);font-weight:600;display:flex;align-items:center;gap:7px;padding-inline-end:10px}
+.gt-name small{color:var(--muted2);font-weight:500}
+.gt-track{position:relative;height:26px;background:linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:16.666% 100%}
+.gt-bar{position:absolute;top:3px;height:18px;border-radius:5px;background:var(--v600);display:flex;align-items:center;padding:0 7px;font-size:var(--fs-micro);line-height:1;color:#fff;font-weight:600;overflow:hidden;white-space:nowrap}
+.gt-bar.done{background:var(--v200);color:var(--v800)}
+.gt-bar.risk{background:var(--coralIc)}
+.gt-ms{position:absolute;top:3px;width:11px;height:11px;background:var(--p800);transform:rotate(45deg) translateY(4px);border-radius:2px}
+.gt-today{position:absolute;top:-6px;bottom:-6px;width:2px;background:var(--violet);z-index:2}
+</style>
+<style>
+/* ============ HERO ============ */
+.hero{position:relative;background:linear-gradient(180deg,#FBFAFE 0%,#F1EFF8 62%,var(--bg) 100%);padding:56px 0 0;border-bottom:1px solid var(--line)}
+.hero-in{max-width:var(--w-content);margin:0 auto;padding:0 28px}
+.hero-top{max-width:920px}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;padding:5px 13px 5px 6px;border-radius:100px;background:#fff;
+  border:1px solid var(--line2);font-size:var(--fs-xs);color:var(--ink2);font-weight:600;margin-bottom:22px}
+.hero-badge .d{width:18px;height:18px;border-radius:50%;background:var(--mintBg);display:grid;place-items:center;flex:0 0 18px}
+.hero-badge .d i{width:6px;height:6px;border-radius:50%;background:var(--mintIc);display:block}
+.hero h1{font-size:var(--fs-h1);font-weight:560;letter-spacing:-.035em;line-height:1.05;max-width:17ch}
+.hero h1 em{font-style:normal;color:var(--violet)}
+.hero-sub{margin-top:20px;max-width:56ch;font-size:var(--fs-lead);color:var(--muted);line-height:1.5}
+.hero-cta{margin-top:26px;display:flex;gap:11px;flex-wrap:wrap}
+.hero-avail{margin-top:16px;font-size:var(--fs-xs);color:var(--muted);display:grid;grid-template-columns:14px 1fr;gap:8px;align-items:start;max-width:52ch}
+.hero-avail svg{margin-top:3px}
+.hero-avail svg{width:14px;height:14px;color:var(--mintIc);flex:0 0 14px}
+.hero-stage{position:relative;max-width:var(--w-content);margin:38px auto 0;padding:0 28px 78px}
+@media (max-width:640px){.hero{padding-top:36px}.hero-in,.hero-stage{padding-inline:18px}.hero-stage{padding-bottom:52px;margin-top:26px}}
+
+/* hero console tabs */
+.contabs{display:flex;gap:7px;margin-bottom:14px;flex-wrap:wrap}
+.contab{padding:9px 15px;border-radius:100px;background:#fff;border:1px solid var(--line2);font-size:var(--fs-xs);font-weight:600;color:var(--ink2);min-height:40px}
+.contab:hover{border-color:var(--v300)}
+.contab[aria-selected="true"]{background:var(--p800);border-color:var(--p800);color:#fff}
+.conpanel[hidden]{display:none}
+.toast{position:absolute;inset-inline-end:14px;bottom:26px;z-index:6;background:#fff;border:1px solid var(--line2);border-radius:13px;
+  box-shadow:var(--shadow-lg);padding:11px 14px;display:flex;align-items:center;gap:11px;max-width:296px}
+.toast .ti{width:34px;height:34px;border-radius:9px;background:var(--mintBg);display:grid;place-items:center;color:var(--mintIc);flex:0 0 34px}
+.toast .ti svg{width:17px;height:17px}
+.toast .tl{font-size:var(--fs-micro);letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);font-weight:600}
+.toast .tt{font-size:var(--fs-xs);font-weight:600}
+.toast .tv{margin-inline-start:6px;font-family:var(--display);font-weight:640;color:var(--mintIc);font-size:1rem}
+@media (max-width:760px){.toast{position:static;max-width:none;margin-top:12px}}
+
+/* ============ FLOW STRIP ============ */
+.flowwrap{margin-top:36px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:30px 26px;box-shadow:var(--shadow-sm)}
+.flow-svg{width:100%;height:auto;display:block}
+.flow-labels{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:4px}
+@media (max-width:860px){.flow-labels{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.flow-labels{grid-template-columns:1fr}}
+.flab .n{font-family:var(--display);font-weight:640;font-size:var(--fs-xs);color:var(--p600)}
+.flab h3{font-family:var(--sans);font-weight:600;font-size:var(--fs-sm);margin:3px 0 4px;letter-spacing:-.01em}
+.flab p{font-size:var(--fs-xs);color:var(--muted);line-height:1.45}
+
+/* ============ CHAPTERS ============ */
+/* composition A: narrow copy left, wide scene right that bleeds to the viewport edge */
+.chap-bleed{display:grid;grid-template-columns:minmax(300px,382px) minmax(0,1fr);gap:48px;align-items:center}
+.chap-bleed .scene{margin-inline-end:calc(-1 * max(28px, (100vw - var(--w-content)) / 2 + 28px))}
+@media (max-width:1080px){.chap-bleed{grid-template-columns:1fr;gap:26px}.chap-bleed .scene{margin-inline-end:0}}
+/* composition B: centered copy, then full content-width scene */
+.chap-stack .chap-copy{max-width:var(--w-text);margin:0 auto 34px;text-align:center}
+.chap-stack .chap-copy .eyebrow{justify-content:center}
+/* composition C: scene left bleeding, copy right */
+.chap-bleed-l{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,382px);gap:48px;align-items:center}
+.chap-bleed-l .scene{margin-inline-start:calc(-1 * max(28px, (100vw - var(--w-content)) / 2 + 28px))}
+@media (max-width:1080px){.chap-bleed-l{grid-template-columns:1fr;gap:26px}.chap-bleed-l .scene{margin-inline-start:0}.chap-bleed-l .chap-copy{order:-1}}
+.chap-copy h2{font-size:var(--fs-chapter);font-weight:620;margin-top:14px}
+.chap-copy .lead{font-size:var(--fs-base);margin-top:14px}
+.benes{margin:22px 0 22px;display:flex;flex-direction:column;gap:15px}
+.bene{display:flex;gap:11px;align-items:flex-start}
+.bene .bi{flex:0 0 28px;width:28px;height:28px;border-radius:8px;background:var(--v50);display:grid;place-items:center;color:var(--violet-ink);margin-top:1px}
+.bene .bi svg{width:15px;height:15px}
+.bene b{font-weight:600;font-size:var(--fs-sm);display:block}
+.bene p{font-size:var(--fs-xs);color:var(--muted);margin-top:2px;line-height:1.5}
+.band .bene .bi{background:rgba(255,255,255,.1);color:var(--v200)}
+.band .bene b{color:#fff} .band .bene p{color:var(--p200)}
+.band{background:var(--plum3);color:#fff}
+.band h2,.band h3{color:#fff}
+.band .lead{color:var(--p200)}
+.band .lnk{color:var(--v200)}
+
+/* ============ CAPABILITY GRID ============ */
+.caps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:36px}
+@media (max-width:900px){.caps{grid-template-columns:1fr}}
+.capcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;transition:border-color .18s,box-shadow .18s}
+.capcard:hover{border-color:var(--line2);box-shadow:var(--shadow)}
+.capcard .ch{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+.capcard .ci{width:36px;height:36px;border-radius:10px;background:var(--p800);display:grid;place-items:center;color:var(--v200);flex:0 0 36px}
+.capcard .ci svg{width:18px;height:18px}
+.capcard h3{font-family:var(--sans);font-weight:600;font-size:var(--fs-h4);letter-spacing:-.015em}
+.capcard ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px}
+.capcard li{display:flex;gap:9px;font-size:var(--fs-sm);color:var(--ink2);line-height:1.45}
+.capcard li svg{width:14px;height:14px;color:var(--v500);flex:0 0 14px;margin-top:3px}
+
+/* ============ SOLUTIONS ============ */
+.sol{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;margin-top:34px}
+.solrow{display:grid;grid-template-columns:236px 1fr auto;gap:22px;align-items:center;padding:22px 26px;border-top:1px solid var(--line);transition:background .16s}
+.solrow:first-child{border-top:none}
+.solrow:hover{background:var(--bg)}
+.solrow .st{display:flex;align-items:center;gap:12px}
+.solrow .sic{width:42px;height:42px;border-radius:11px;background:var(--p800);display:grid;place-items:center;color:var(--v200);flex:0 0 42px}
+.solrow .sic svg{width:20px;height:20px}
+.solrow .st h3{font-family:var(--sans);font-weight:600;font-size:var(--fs-h4);letter-spacing:-.015em}
+.solrow .sd{color:var(--muted);font-size:var(--fs-sm);line-height:1.5}
+.stags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.stags span{font-size:var(--fs-micro);font-weight:600;color:var(--p600);background:#EDEAF4;padding:3px 9px;border-radius:100px}
+@media (max-width:860px){.solrow{grid-template-columns:1fr;gap:11px;padding:20px}.solrow .arrow{display:none}}
+
+/* ============ SECURITY ============ */
+.secgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:34px}
+@media (max-width:820px){.secgrid{grid-template-columns:1fr}}
+.seccard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;gap:13px}
+.seccard .si{width:34px;height:34px;border-radius:9px;background:var(--v50);display:grid;place-items:center;color:var(--violet-ink);flex:0 0 34px}
+.seccard .si svg{width:17px;height:17px}
+.seccard h3{font-family:var(--sans);font-weight:600;font-size:var(--fs-sm);letter-spacing:-.01em}
+.seccard p{font-size:var(--fs-xs);color:var(--muted);margin-top:4px;line-height:1.5}
+.secnote{margin-top:16px;font-size:var(--fs-xs);color:var(--muted2);text-align:center;max-width:74ch;margin-inline:auto;line-height:1.55}
+
+/* ============ REFUSALS ============ */
+.refuse-wrap{display:grid;grid-template-columns:minmax(0,430px) minmax(0,1fr);gap:64px;align-items:start}
+@media (max-width:940px){.refuse-wrap{grid-template-columns:1fr;gap:30px}}
+.refuse{list-style:none;padding:0;margin:0}
+.refuse li:first-child{border-top:1px solid rgba(255,255,255,.09)}
+.refuse li{font-family:var(--display);font-size:clamp(1.2rem,2.4vw,1.85rem);font-weight:600;color:var(--p400);
+  text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:var(--v500);
+  padding:15px 0;border-bottom:1px solid rgba(255,255,255,.09);letter-spacing:-.02em}
+.refuse-foot{margin-top:26px;font-size:var(--fs-lead);color:#fff;max-width:64ch;line-height:1.5}
+
+/* ============ PRICING ============ */
+.prctrl{display:flex;justify-content:center;gap:10px;margin:24px 0 34px;flex-wrap:wrap}
+.seg{display:inline-flex;background:#fff;border-radius:100px;padding:4px;border:1px solid var(--line2)}
+.seg button{padding:9px 16px;border-radius:100px;font-weight:600;font-size:var(--fs-xs);color:var(--muted);min-height:38px;display:inline-flex;align-items:center}
+.seg button[aria-checked="true"]{background:var(--violet);color:#fff}
+.segsave{margin-inline-start:7px;font-size:var(--fs-micro);font-weight:600;background:var(--mintBg);color:var(--mintIc);padding:2px 7px;border-radius:100px}
+.seg button[aria-checked="true"] .segsave{background:rgba(255,255,255,.22);color:#fff}
+.pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;align-items:stretch}
+@media (max-width:1000px){.pgrid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.pgrid{grid-template-columns:1fr}}
+.plan{border:1px solid var(--line);border-radius:16px;background:#fff;padding:22px 20px;display:flex;flex-direction:column;transition:border-color .18s,box-shadow .18s}
+.plan:hover{border-color:var(--line2);box-shadow:var(--shadow)}
+.plan.reco{border-color:var(--violet);box-shadow:0 12px 40px rgba(37,25,64,.12);position:relative}
+.plan .flagline{position:absolute;top:-10px;inset-inline-start:20px;background:var(--violet);color:#fff;font-size:var(--fs-micro);font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 10px;border-radius:100px}
+.plan h3{font-family:var(--display);font-weight:640;font-size:var(--fs-h4)}
+.plan .pd{font-size:var(--fs-xs);color:var(--muted);margin:5px 0 15px;min-height:2.8em;line-height:1.4}
+.plan .pp{display:flex;align-items:baseline;gap:4px}
+.plan .amt{font-family:var(--display);font-weight:640;font-size:2rem;letter-spacing:-.035em}
+.plan .per{font-size:var(--fs-xs);color:var(--muted)}
+.plan .psar{font-size:var(--fs-micro);color:var(--muted2);margin-top:4px;min-height:1.2em}
+.plan ul{list-style:none;padding:0;margin:16px 0 18px;display:flex;flex-direction:column;gap:8px}
+.plan li{display:flex;gap:8px;font-size:var(--fs-xs);color:var(--ink2);line-height:1.45}
+.plan li svg{width:14px;height:14px;color:var(--mintIc);flex:0 0 14px;margin-top:2px}
+.plan .btn{width:100%;margin-top:auto}
+.pricenote{margin-top:20px;text-align:center;font-size:var(--fs-xs);color:var(--muted);max-width:70ch;margin-inline:auto;line-height:1.6}
+
+/* ============ FAQ ============ */
+.faq{max-width:820px;margin:34px auto 0;border-top:1px solid var(--line2)}
+.faq details{border-bottom:1px solid var(--line2)}
+.faq summary{list-style:none;cursor:pointer;padding:18px 40px 18px 0;font-family:var(--display);font-weight:600;font-size:var(--fs-h4);position:relative;letter-spacing:-.015em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;inset-inline-end:8px;top:24px;width:10px;height:10px;border-inline-end:2px solid var(--muted);border-block-end:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(-135deg)}
+.faq p{padding:0 0 20px;font-size:var(--fs-sm);color:var(--muted);line-height:1.6;max-width:68ch}
+
+/* ============ FINAL CTA ============ */
+.finalcta{background:radial-gradient(120% 130% at 15% 0%,#3A2168,var(--p800) 46%,var(--p900));padding:104px 0}
+.cta-in{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+@media (max-width:900px){.cta-in{grid-template-columns:1fr;gap:28px}.finalcta{padding:64px 0}}
+.cta-in h2{font-size:var(--fs-h2);font-weight:600;margin-top:14px}
+.agenda{margin-top:22px}
+.agenda div{display:flex;gap:14px;align-items:baseline;padding:9px 0;border-top:1px solid rgba(255,255,255,.13);font-size:var(--fs-sm);color:#E6E1F4}
+.agenda .mins{font-family:var(--display);font-weight:640;color:var(--v200);width:70px;flex:0 0 70px}
+.demoform{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:24px}
+.demoform h3{color:#fff;font-size:var(--fs-h3);font-weight:620}
+.hostline{display:flex;align-items:center;gap:11px;margin:14px 0 18px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.12)}
+.hostline .av{width:38px;height:38px;border-radius:50%;background:var(--v500);display:grid;place-items:center;font-weight:600;color:#fff;font-size:var(--fs-xs);flex:0 0 38px}
+.hostline p{font-size:var(--fs-xs);color:var(--p200);line-height:1.45}
+.hostline b{color:#fff;font-weight:600;display:block;font-size:var(--fs-sm)}
+.ff{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+.ff .full{grid-column:1/-1}
+@media (max-width:560px){.ff{grid-template-columns:1fr}}
+.fld{display:flex;flex-direction:column;gap:6px}
+.fld label{font-size:var(--fs-micro);font-weight:600;color:#CFC7EC}
+.fld input,.fld select,.fld textarea{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.19);border-radius:10px;padding:11px 12px;
+  color:#fff;font-family:inherit;font-size:var(--fs-sm);min-height:44px}
+.fld textarea{resize:vertical;min-height:70px}
+.fld input::placeholder,.fld textarea::placeholder{color:#8F86B5}
+.fld input:focus-visible,.fld select:focus-visible,.fld textarea:focus-visible{outline:2.5px solid var(--v300);outline-offset:2px;border-color:var(--v400);background:rgba(255,255,255,.11)}
+.fld select option{color:#171320}
+.formnote{font-size:var(--fs-micro);color:#A99FD6;margin-top:12px;line-height:1.55}
+.formnote a{color:var(--v200);text-decoration:underline}
+.formmsg{margin-top:12px;font-size:var(--fs-xs);font-weight:600;display:none}
+.demoform .btn{width:100%;margin-top:14px}
+
+/* ============ FOOTER ============ */
+.foot{background:var(--p900);color:#CFC7EC;padding:70px 0 26px;border-top:1px solid rgba(255,255,255,.08)}
+.foot-grid{display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:30px}
+@media (max-width:860px){.foot-grid{grid-template-columns:1fr 1fr;gap:26px}}
+.foot-about{margin-top:14px;font-size:var(--fs-xs);color:#A99FD6;max-width:32ch;line-height:1.6}
+.foot-lock{display:flex;align-items:center;gap:12px;margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.09)}
+.foot-lock .ar-word{font-family:var(--arabic);font-size:1.35rem;color:#fff;font-weight:600;line-height:1}
+.foot-lock .sep{width:1px;height:22px;background:rgba(255,255,255,.18)}
+.foot .ph{font-family:var(--sans);font-weight:600;font-size:var(--fs-micro);letter-spacing:.1em;text-transform:uppercase;color:#8F86B5;margin-bottom:13px;display:block}
+.foot ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:9px}
+.foot ul a{font-size:var(--fs-xs);color:#CFC7EC;display:inline-block;padding:3px 0}
+.foot ul a:hover{color:#fff}
+.foot-bottom{margin-top:40px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;font-size:var(--fs-micro);color:#8F86B5}
+.foot-bottom b{color:#fff;font-weight:600}
+
+/* ============ MOTION ============ */
+.js .rev{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+.js .rev.in{opacity:1;transform:none}
+.js .rev.soft{transform:scale(.995)}
+.js .rev.soft.in{transform:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  .js .rev{opacity:1;transform:none}
+}
+</style>
+<style>
+/* official mark sizing. symbol ratio 2048:458 for the wordmark, 396:458 for the Q */
+.wordmark{display:block;height:26px;width:116px;color:var(--ink);--qv:var(--v500)}
+.foot .wordmark,.r-word,.r-qmark{--qv:var(--v300)}
+.hdr .wordmark{height:27px;width:121px}
+.r-word{height:18px;width:80px;color:#fff;margin:2px 6px 14px}
+.foot .wordmark{height:28px;width:125px;color:#fff}
+.capdot{width:5px;height:5px;border-radius:50%;background:var(--muted2);flex:0 0 5px}
+.band .capdot{background:var(--p400)}
+@container (max-width:720px){.r-word{display:none}.r-qmark{display:block}}
+.r-qmark{display:none;width:17px;height:20px;color:#fff;margin:2px 0 14px}
+</style>
+<!-- Official RAQEB wordmark. Letters inherit currentColor, the signature Q keeps brand violet. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="rq-word" viewBox="0 0 2048 458">
+<path fill="currentColor" d="M 191.22 0.00 Q 201.27 0.50 211.25 1.70 C 235.61 4.63 258.72 16.69 275.32 34.57 C 297.61 58.56 307.36 91.31 302.93 123.76 C 299.05 152.23 283.82 178.65 260.01 195.20 Q 246.80 204.38 232.65 209.39 Q 224.75 212.19 214.58 215.26 A 1.09 1.08 -26.8 0 0 214.02 216.94 Q 277.17 301.87 313.26 350.24 C 316.48 354.55 318.70 357.09 318.97 363.01 Q 319.25 369.26 316.45 375.17 C 313.05 382.32 304.32 387.18 296.66 388.63 C 284.41 390.94 276.43 384.50 269.44 375.05 Q 229.42 320.98 151.99 219.92 C 149.16 216.23 146.29 212.76 144.60 209.48 Q 136.92 194.59 145.78 179.47 Q 151.58 169.56 161.57 165.75 Q 166.03 164.05 174.01 164.57 Q 179.56 164.93 193.33 164.99 Q 205.08 165.03 212.45 162.93 C 234.20 156.74 249.51 139.07 252.58 116.58 C 253.86 107.16 253.15 95.61 249.27 86.65 Q 240.38 66.13 220.46 56.67 C 211.25 52.29 201.08 51.05 190.50 51.03 Q 74.46 50.90 32.48 51.11 C 25.99 51.15 17.94 50.75 12.41 47.08 Q 1.69 39.96 0.00 27.04 L 0.00 22.63 C 1.45 11.45 9.02 2.48 20.25 0.75 Q 23.54 0.24 26.90 0.00 L 191.22 0.00 Z"/>
+<path fill="currentColor" d="M 598.20 0.00 C 609.33 1.09 615.65 8.38 619.95 18.03 C 624.20 27.59 626.78 34.66 631.74 45.39 Q 710.64 216.37 768.64 341.60 Q 774.18 353.58 774.63 355.49 C 777.07 365.75 774.34 376.38 764.80 382.03 C 753.31 388.84 738.45 388.59 730.66 376.34 Q 727.14 370.80 725.53 367.26 Q 724.53 365.05 596.55 92.52 A 1.41 1.40 45.1 0 0 594.01 92.51 Q 535.38 216.85 467.71 360.74 C 464.61 367.34 461.60 373.66 457.47 378.94 C 449.94 388.56 435.99 387.76 426.00 382.19 C 414.59 375.83 412.14 361.86 417.36 350.62 Q 486.10 202.57 558.92 45.20 C 563.82 34.62 566.57 27.09 570.61 18.12 C 575.06 8.25 581.11 1.28 592.39 0.00 L 598.20 0.00 Z"/>
+<path fill="var(--qv, #6657EE)" d="M 1051.39 0.00 Q 1119.14 3.37 1170.10 46.39 C 1209.59 79.73 1234.68 128.35 1238.60 179.99 Q 1238.92 184.29 1238.92 198.65 Q 1238.91 209.73 1238.10 217.33 C 1230.17 291.39 1179.47 355.10 1109.61 380.12 Q 1066.82 395.44 1020.27 390.19 C 933.20 380.37 862.97 311.88 849.77 225.49 Q 847.14 208.30 847.89 186.64 C 849.07 152.42 860.23 118.11 878.53 90.00 C 909.48 42.46 957.96 10.62 1014.06 2.09 Q 1018.59 1.41 1033.25 0.00 L 1051.39 0.00 Z M 895.80 194.16 C 894.96 275.73 960.99 341.32 1042.14 342.16 C 1123.28 343.00 1190.65 278.78 1191.49 197.21 C 1192.33 115.63 1126.30 50.04 1045.16 49.21 C 964.01 48.37 896.64 112.59 895.80 194.16 Z"/>
+<path fill="currentColor" d="M 1594.99 0.00 Q 1598.72 0.24 1602.52 0.53 Q 1614.10 1.40 1620.68 9.65 C 1625.55 15.75 1626.52 22.57 1625.72 30.02 C 1624.73 39.29 1616.79 48.20 1607.71 50.38 Q 1604.19 51.22 1598.51 51.21 Q 1414.09 50.86 1377.75 51.16 C 1367.54 51.25 1359.65 51.05 1352.24 43.97 C 1343.09 35.24 1341.93 20.45 1349.49 10.27 Q 1356.98 0.17 1369.72 0.00 L 1594.99 0.00 Z"/>
+<path fill="currentColor" d="M 1904.38 0.00 Q 1914.72 0.55 1924.99 1.74 Q 1932.16 2.58 1937.60 4.24 C 1978.26 16.67 2007.83 50.91 2012.42 93.24 C 2015.58 122.44 2007.94 150.02 1991.15 173.67 A 1.65 1.64 36.9 0 0 1991.47 175.91 C 1999.73 182.46 2010.53 190.75 2017.97 198.65 Q 2045.41 227.73 2048.00 269.17 L 2048.00 281.22 C 2045.74 319.35 2024.15 353.37 1991.42 372.66 C 1981.45 378.54 1970.73 382.91 1958.77 384.88 Q 1946.00 386.98 1932.50 386.98 Q 1868.21 387.02 1787.77 386.99 C 1775.46 386.99 1765.00 387.53 1755.01 386.69 C 1749.18 386.19 1743.63 385.26 1738.74 382.31 Q 1729.83 376.94 1727.23 366.00 Q 1725.79 359.92 1725.80 353.25 Q 1726.20 212.29 1725.99 208.85 Q 1725.98 208.78 1725.75 199.66 Q 1725.58 193.12 1726.34 186.53 Q 1728.12 170.96 1742.76 165.83 Q 1745.50 164.87 1752.25 164.92 Q 1771.62 165.04 1880.99 164.99 C 1895.12 164.99 1904.12 164.48 1917.01 164.11 Q 1923.27 163.93 1928.69 161.69 Q 1948.04 153.70 1956.98 134.78 C 1965.71 116.32 1964.25 93.86 1953.69 76.52 C 1945.62 63.27 1933.59 54.50 1918.39 52.39 Q 1909.74 51.19 1898.75 51.07 Q 1882.91 50.90 1754.01 51.07 C 1747.99 51.07 1740.05 50.62 1735.17 46.75 C 1725.90 39.37 1723.42 29.33 1725.21 18.09 C 1726.07 12.67 1729.78 6.35 1734.85 3.62 Q 1741.22 0.19 1748.69 0.00 L 1904.38 0.00 Z M 1776.52 216.06 A 0.54 0.54 0.0 0 0 1775.99 216.60 Q 1776.01 250.06 1775.99 332.05 Q 1775.99 334.99 1778.79 334.99 Q 1844.04 335.02 1932.75 334.99 C 1945.85 334.99 1958.08 332.32 1969.27 325.25 C 1985.12 315.23 1995.46 298.60 1996.77 279.76 Q 1998.73 251.62 1978.98 232.32 Q 1965.94 219.58 1948.97 216.34 Q 1942.10 215.03 1933.25 215.01 Q 1917.50 214.96 1809.86 215.04 Q 1797.01 215.05 1793.14 215.31 Q 1783.75 215.95 1776.52 216.06 Z"/>
+<path fill="currentColor" d="M 26.62 162.07 Q 34.93 162.10 41.56 166.92 Q 52.28 174.69 52.16 188.76 Q 51.82 230.57 51.61 240.27 Q 51.58 241.53 51.56 242.78 Q 51.29 259.18 50.92 332.57 Q 50.91 333.18 51.09 345.91 Q 51.21 354.73 51.09 359.26 C 50.95 364.46 50.92 368.71 48.98 372.97 Q 44.78 382.20 35.81 385.76 Q 31.04 387.65 25.69 387.63 Q 20.34 387.61 15.59 385.68 Q 6.65 382.04 2.52 372.78 C 0.62 368.50 0.62 364.25 0.53 359.05 Q 0.44 354.52 0.64 345.70 Q 0.92 332.98 0.92 332.37 Q 1.15 258.97 1.01 242.57 Q 1.00 241.32 0.98 240.06 Q 0.85 230.36 0.85 188.55 Q 0.85 174.48 11.63 166.79 Q 18.30 162.04 26.62 162.07 Z"/>
+<rect fill="currentColor" x="1344.44" y="165.00" width="280.70" height="51.00" rx="24.10"/>
+<rect fill="currentColor" x="-140.93" y="-25.97" transform="translate(1485.87,361.07) rotate(0.1)" width="281.86" height="51.94" rx="25.43"/>
+<path fill="var(--qv, #6657EE)" d="M 1219.58 458.00 L 1021.36 458.00 C 986.59 456.48 987.79 406.91 1021.76 406.93 Q 1196.39 407.03 1215.75 407.03 C 1231.71 407.03 1243.57 418.87 1241.97 435.00 Q 1240.49 450.00 1226.70 456.14 Q 1225.40 456.72 1223.20 457.18 Q 1221.38 457.56 1219.58 458.00 Z"/>
+</symbol>
+<symbol id="rq-q" viewBox="847 0 396 458">
+<path fill="currentColor" d="M 1051.39 0.00 Q 1119.14 3.37 1170.10 46.39 C 1209.59 79.73 1234.68 128.35 1238.60 179.99 Q 1238.92 184.29 1238.92 198.65 Q 1238.91 209.73 1238.10 217.33 C 1230.17 291.39 1179.47 355.10 1109.61 380.12 Q 1066.82 395.44 1020.27 390.19 C 933.20 380.37 862.97 311.88 849.77 225.49 Q 847.14 208.30 847.89 186.64 C 849.07 152.42 860.23 118.11 878.53 90.00 C 909.48 42.46 957.96 10.62 1014.06 2.09 Q 1018.59 1.41 1033.25 0.00 L 1051.39 0.00 Z M 895.80 194.16 C 894.96 275.73 960.99 341.32 1042.14 342.16 C 1123.28 343.00 1190.65 278.78 1191.49 197.21 C 1192.33 115.63 1126.30 50.04 1045.16 49.21 C 964.01 48.37 896.64 112.59 895.80 194.16 Z"/>
+<path fill="currentColor" d="M 1219.58 458.00 L 1021.36 458.00 C 986.59 456.48 987.79 406.91 1021.76 406.93 Q 1196.39 407.03 1215.75 407.03 C 1231.71 407.03 1243.57 418.87 1241.97 435.00 Q 1240.49 450.00 1226.70 456.14 Q 1225.40 456.72 1223.20 457.18 Q 1221.38 457.56 1219.58 458.00 Z"/>
+</symbol>
+</defs></svg>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hdr" id="hdr">
+  <div class="hdr-in">
+    <a class="brand" href="#top" aria-label="Raqeb home"><svg class="wordmark" role="img" aria-label="Raqeb"><use href="#rq-word"/></svg></a>
+
+    <nav class="nav-main" aria-label="Primary">
+      <div class="nav-item" data-mega>
+        <button class="nav-btn" aria-expanded="false" aria-haspopup="true">Platform
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="mega">
+          <div class="mega-grid">
+            <a class="mega-a" href="#platform"><span class="mega-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg></span><div><b class="mh">How Raqeb works</b><p>One loop from request to margin.</p></div></a>
+            <a class="mega-a" href="#execution"><span class="mega-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="11" rx="1.5"/><rect x="17" y="4" width="4" height="7" rx="1.5"/></svg></span><div><b class="mh">Project delivery</b><p>Board, list, timeline and the task record.</p></div></a>
+            <a class="mega-a" href="#capacity"><span class="mega-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg></span><div><b class="mh">Capacity planning</b><p>Who is free, who is drowning, when.</p></div></a>
+            <a class="mega-a" href="#time"><span class="mega-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></span><div><b class="mh">Time and utilization</b><p>Timers, timesheets, billability.</p></div></a>
+            <a class="mega-a" href="#client"><span class="mega-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V8l7-4 7 4v13"/><path d="M17 21V11l4 2.2V21"/></svg></span><div><b class="mh">Clients and margin</b><p>Budgets, campaigns, cost, profitability.</p></div></a>
+            <a class="mega-a" href="#reports"><span class="mega-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16M8 16l3-4 3 2 4-6"/></svg></span><div><b class="mh">Reports</b><p>Signal first, then the cause behind it.</p></div></a>
+          </div>
+          <div class="mega-foot"><div><strong>Bring one real operating question</strong><p>We answer it inside the product, in 30 minutes.</p></div><a class="btn btn-primary" href="#demo">Book a walkthrough</a></div>
+        </div>
+      </div>
+      <div class="nav-item" data-mega>
+        <button class="nav-btn" aria-expanded="false" aria-haspopup="true">Solutions
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="mega" style="width:520px">
+          <div class="mega-grid">
+            <a class="mega-a" href="#solutions"><span class="mega-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21v-7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7"/><circle cx="12" cy="7" r="3.2"/></svg></span><div><b class="mh">Professional services</b><p>Protect delivery and margin per engagement.</p></div></a>
+            <a class="mega-a" href="#solutions"><span class="mega-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 11 18-5v12L3 13z"/></svg></span><div><b class="mh">Agencies</b><p>Campaigns, retainers, approvals, budgets.</p></div></a>
+            <a class="mega-a" href="#solutions"><span class="mega-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h6"/></svg></span><div><b class="mh">Project offices</b><p>One standard across every project.</p></div></a>
+            <a class="mega-a" href="#solutions"><span class="mega-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="4"/></svg></span><div><b class="mh">Operations teams</b><p>Recurring work that never slips.</p></div></a>
+          </div>
+        </div>
+      </div>
+      <a class="nav-btn" href="#pricing">Pricing</a>
+      <a class="nav-btn" href="#security">Security</a>
+    </nav>
+
+    <div class="hdr-actions">
+      <button class="langsw" id="langsw" lang="ar" aria-label="Switch to Arabic">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18"/></svg>
+        العربية</button>
+      <a class="signin" href="#">Sign in</a>
+      <a class="btn btn-primary" href="#demo">Book a walkthrough</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg></button>
+    </div>
+  </div>
+</header>
+
+<div class="msheet" id="msheet" aria-hidden="true">
+  <div class="msheet-top"><svg class="wordmark" role="img" aria-label="Raqeb"><use href="#rq-word"/></svg>
+    <button class="mclose" id="mclose" aria-label="Close menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></button></div>
+  <nav aria-label="Mobile">
+    <a href="#platform" data-mnav>How it works</a><a href="#execution" data-mnav>Project delivery</a>
+    <a href="#capacity" data-mnav>Capacity</a><a href="#time" data-mnav>Time</a>
+    <a href="#client" data-mnav>Clients and margin</a><a href="#solutions" data-mnav>Solutions</a>
+    <a href="#pricing" data-mnav>Pricing</a><a href="#security" data-mnav>Security</a>
+  </nav>
+  <div class="mact">
+    <a class="btn btn-ghost" href="#" data-mnav>Sign in</a>
+    <a class="btn btn-primary" href="#demo" data-mnav>Book a walkthrough</a>
+  </div>
+</div>
+
+<main id="main" aria-label="Raqeb product overview">
+<a id="top"></a>
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-in">
+    <div class="hero-top">
+      <span class="hero-badge"><span class="d"><i></i></span> Watch the work, never the people</span>
+      <h1>The work is on track. Is the <em>margin</em>?</h1>
+      <p class="hero-sub">Most teams answer the first in a project tool and the second in a spreadsheet, after the month has already closed. Raqeb keeps delivery, capacity, time and profitability on one screen, while you can still act on them.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#pricing">Start free for 5 people <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn-ghost" href="#demo">Book a walkthrough</a>
+      </div>
+      <p class="hero-avail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Available now, in English. The full Arabic and right to left interface ships this quarter.</p>
+    </div>
+  </div>
+
+  <div class="hero-stage rev soft">
+    <div class="contabs" role="tablist" aria-label="Console views">
+      <button class="contab" role="tab" aria-selected="true" aria-controls="cp-1" id="ct-1">Command center</button>
+      <button class="contab" role="tab" aria-selected="false" aria-controls="cp-2" id="ct-2">Capacity</button>
+      <button class="contab" role="tab" aria-selected="false" aria-controls="cp-3" id="ct-3">Commercial</button>
+      <button class="contab" role="tab" aria-selected="false" aria-controls="cp-4" id="ct-4">Portfolio</button>
+    </div>
+
+    <div class="win">
+      <div class="win-bar">
+        <span class="dots"><i></i><i></i><i></i></span>
+        <span class="win-crumb">Atlas <b id="crumbView">Command center</b></span>
+        <span class="win-kbd">Press <b>K</b> to jump anywhere</span>
+      </div>
+      <div class="win-body">
+        <aside class="rail">
+          <svg class="wordmark r-word" role="img" aria-label="Raqeb"><use href="#rq-word"/></svg><svg class="r-qmark" role="img" aria-label="Raqeb"><use href="#rq-q"/></svg>
+          <span class="r-lab">Atlas workspace</span>
+          <a class="on" data-rail="1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg><span class="rl-txt">Command center</span></a>
+          <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg><span class="rl-txt">My work</span><span class="rcount">12</span></a>
+          <a><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="11" rx="1.5"/><rect x="17" y="4" width="4" height="7" rx="1.5"/></svg><span class="rl-txt">Projects</span><span class="rcount">27</span></a>
+          <a data-rail="2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3.2"/><path d="M2 20v-1.6A4.4 4.4 0 0 1 6.4 14h5.2"/><circle cx="17" cy="9" r="2.6"/></svg><span class="rl-txt">People</span><span class="rcount">34</span></a>
+          <a data-rail="3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V8l7-4 7 4v13"/></svg><span class="rl-txt">Clients</span><span class="rcount">18</span></a>
+          <a data-rail="4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16M8 16l3-4 3 2 4-6"/></svg><span class="rl-txt">Reports</span></a>
+          <div class="r-foot"><span class="av">MY</span><div><b>Maya Y.</b><span>Operations lead</span></div></div>
+        </aside>
+
+        <div class="work">
+          <div class="tbar">
+            <span class="seg-view"><span class="on">Overview</span><span>Detail</span></span>
+            <span class="tchip act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg> Q3 delivery <b class="x">x</b></span>
+            <span class="tchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Last 30 days</span>
+            <span class="right">
+              <span class="avstack"><span class="av a1">LN</span><span class="av a2">OM</span><span class="av a3">SA</span><span class="av a5">+9</span></span>
+              <a class="btn btn-primary"><span class="lbl">New </span>work</a>
+            </span>
+          </div>
+
+          <!-- PANEL 1: command center -->
+          <div class="conpanel" id="cp-1" role="tabpanel" aria-labelledby="ct-1" tabindex="0">
+            <div class="kpis">
+              <div class="kpi"><div class="kt"><span class="kic ic-lilac"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16M8 15l3-4 4 3 4-6"/></svg></span><span class="kl">Delivery confidence</span></div>
+                <div class="krow"><span class="kv">86%</span><span class="kd up">+4 pts</span></div><div class="ks">4 of 27 projects need attention</div>
+                <svg class="kspark" viewBox="0 0 120 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,17 15,15 30,16 45,12 60,13 75,9 90,10 105,6 120,4" fill="none" stroke="#6657EE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="kpi"><div class="kt"><span class="kic ic-amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></span><span class="kl">Capacity, next 30 days</span></div>
+                <div class="krow"><span class="kv">76%</span><span class="kd fl">12 role weeks open</span></div><div class="ks">3 people above 95%</div>
+                <svg class="kspark" viewBox="0 0 120 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,10 15,12 30,9 45,11 60,8 75,12 90,7 105,9 120,8" fill="none" stroke="#8A6410" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="kpi"><div class="kt"><span class="kic ic-mint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5h4a2 2 0 0 1 0 4h-3a2 2 0 0 0 0 4h4"/></svg></span><span class="kl">Forecast margin</span></div>
+                <div class="krow"><span class="kv">31.4%</span><span class="kd up">+2.8 pts</span></div><div class="ks">Target 30.0% for the quarter</div>
+                <svg class="kspark" viewBox="0 0 120 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,18 15,16 30,17 45,13 60,14 75,10 90,8 105,7 120,4" fill="none" stroke="#1F7A57" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="kpi"><div class="kt"><span class="kic ic-coral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span><span class="kl">Decisions waiting</span></div>
+                <div class="krow"><span class="kv">7</span><span class="kd dn">3 due today</span></div><div class="ks">Approvals, scope and rates</div>
+                <svg class="kspark" viewBox="0 0 120 22" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,8 15,9 30,7 45,10 60,9 75,13 90,11 105,14 120,12" fill="none" stroke="#A83C22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            </div>
+            <div class="pgrid2">
+              <div class="panel">
+                <div class="p-head"><span class="ph">Where attention creates momentum<span class="p-sub">Ranked by hours at risk this week</span></span><span class="right"><span class="ilink">View all 9 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></div>
+                <div class="sigrow"><span class="num" style="background:var(--coralBg);color:var(--coralIc)">1</span><div class="sc"><b>Northstar launch</b><span>Client approval 3 days late, blocks 6 tasks</span></div><span class="sa">Protect milestone<span></span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+                <div class="sigrow"><span class="num" style="background:var(--amberBg);color:var(--amberIc)">2</span><div class="sc"><b>Product studio</b><span>Design demand exceeds capacity by 14h</span></div><span class="sa">Rebalance<span></span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+                <div class="sigrow"><span class="num" style="background:var(--v50);color:var(--violet-ink)">3</span><div class="sc"><b>Atlas retainer</b><span>Rate card 14 months old, margin down 3 pts</span></div><span class="sa">Review rates<span></span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+                <div class="sigrow"><span class="num" style="background:var(--bg);color:var(--muted)">4</span><div class="sc"><b>Namaa transformation</b><span>14 tasks have no estimate, forecast unreliable</span></div><span class="sa">Fix data<span></span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+                <div class="morerow">5 more signals, ranked</div>
+              </div>
+              <div class="panel">
+                <div class="p-head"><span class="ph">Delivery signal<span class="p-sub">Weighted by value at risk</span></span></div>
+                <div class="donut">
+                  <svg width="132" height="132" viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="15.9" fill="none" stroke="#EDEBF4" stroke-width="5"/><circle cx="21" cy="21" r="15.9" fill="none" stroke="#6657EE" stroke-width="5" stroke-dasharray="84 100" stroke-linecap="round"/></svg>
+                  <div class="dn"><b>84</b><span>of 100</span></div>
+                </div>
+                <div class="barmini" aria-hidden="true"><i style="height:38%"></i><i style="height:46%"></i><i style="height:42%"></i><i style="height:55%"></i><i style="height:50%"></i><i style="height:64%"></i><i style="height:60%"></i><i style="height:76%"></i><i class="hi" style="height:71%"></i><i class="hi" style="height:88%"></i></div>
+                <div class="axrow"><span>10 weeks ago</span><span>This week</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANEL 2: capacity -->
+          <div class="conpanel" id="cp-2" role="tabpanel" aria-labelledby="ct-2" tabindex="0" hidden>
+            <div class="panel">
+              <div class="p-head"><span class="ph">Capacity that respects reality<span class="p-sub">Availability, leave and task demand stay separate</span></span><span class="right"><span class="tag">Next 4 weeks</span></span></div>
+              <div class="capwrap" tabindex="0">
+                <table class="cap">
+                  <thead><tr><th class="pcell"></th><th class="wk">W36<small>Sep 1</small></th><th class="wk">W37<small>Sep 8</small></th><th class="wk">W38<small>Sep 15</small></th><th class="wk">W39<small>Sep 22</small></th><th class="capend">Booked<small>available weeks</small></th></tr></thead>
+                  <tbody>
+                    <tr class="grouprow"><td colspan="6">Design, 3 people</td></tr>
+                    <tr><td class="pcell"><span class="pn"><span class="avm a1">LN</span> Lina Noor</span><span class="role">Lead designer, 40h week</span></td><td><div class="cell c1">42%</div></td><td><div class="cell c2">61%</div></td><td><div class="cell c3">78%</div></td><td><div class="cell over">104%</div></td><td class="capend">71%<small style="color:var(--amberIc)">W39 over</small></td></tr>
+                    <tr><td class="pcell"><span class="pn"><span class="avm a2">OM</span> Omar Malik</span><span class="role">Product designer, 40h</span></td><td><div class="cell c2">55%</div></td><td><div class="cell c3">72%</div></td><td><div class="cell c3">80%</div></td><td><div class="cell leave">Leave</div></td><td class="capend">69%<small style="color:var(--mintIc)">3 weeks available</small></td></tr>
+                    <tr><td class="pcell"><span class="pn"><span class="avm a5">YK</span> Yara K.</span><span class="role">Motion, 24h week</span></td><td><div class="cell c0">18%</div></td><td><div class="cell c1">40%</div></td><td><div class="cell c2">63%</div></td><td><div class="cell c2">58%</div></td><td class="capend">45%<small style="color:var(--mintIc)">Has room</small></td></tr>
+                    <tr class="grouprow"><td colspan="6">Strategy and copy, 2 people</td></tr>
+                    <tr><td class="pcell"><span class="pn"><span class="avm a3">SA</span> Sara Ali</span><span class="role">Strategy lead, 40h</span></td><td><div class="cell c3">70%</div></td><td><div class="cell c3">83%</div></td><td><div class="cell c2">62%</div></td><td><div class="cell c1">38%</div></td><td class="capend">63%<small style="color:var(--mintIc)">Healthy</small></td></tr>
+                    <tr><td class="pcell"><span class="pn"><span class="avm a4">NH</span> Noura Hassan</span><span class="role">Copy lead, 32h week</span></td><td><div class="cell c3">81%</div></td><td><div class="cell over">112%</div></td><td><div class="cell c1">40%</div></td><td><div class="cell c2">58%</div></td><td class="capend">73%<small style="color:var(--coralIc)">W37 over</small></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="caplegend">
+                <span><i style="background:var(--stage)"></i> Under 30%</span><span><i style="background:var(--v100)"></i> 30 to 50</span>
+                <span><i style="background:var(--v300)"></i> 50 to 75</span><span><i style="background:var(--v500)"></i> 75 to 100</span>
+                <span><i style="background:var(--coralIc)"></i> Over capacity</span><span><i style="background:var(--v50)"></i> Approved leave</span>
+              </div>
+              <div class="hintbox">
+                <span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+                <div><b>Assigning "Welcome email flow", 8h, due Sep 19</b>
+                  <p>Lina is the usual owner, but her week 39 is already at 104%. Another 8h would take her to 124%. Sara has 15h free in week 38 and has shipped this template twice.</p>
+                  <div class="verdicts"><span>Earliest feasible: W38</span><span>Lina W39: 104% to 124%</span><span>Sara W38: 62% to 82%</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANEL 3: commercial -->
+          <div class="conpanel" id="cp-3" role="tabpanel" aria-labelledby="ct-3" tabindex="0" hidden>
+            <div class="pgrid-eq">
+              <div class="panel">
+                <div class="p-head"><span class="ph">Forecast margin<span class="p-sub">Atlas Retail, rolling 7 months</span></span><span class="right"><span class="chip ok"><i></i> +2.8</span></span></div>
+                <div style="font-family:var(--display);font-weight:640;font-size:1.9rem;letter-spacing:-.035em">31.4%</div>
+                <div class="combars" aria-hidden="true">
+                  <div class="cb"><i style="height:52%"></i><span>Feb</span></div><div class="cb"><i style="height:58%"></i><span>Mar</span></div>
+                  <div class="cb"><i style="height:54%"></i><span>Apr</span></div><div class="cb"><i style="height:68%"></i><span>May</span></div>
+                  <div class="cb"><i style="height:63%"></i><span>Jun</span></div><div class="cb"><i style="height:79%"></i><span>Jul</span></div>
+                  <div class="cb hi"><i style="height:96%"></i><span>Aug</span></div>
+                </div>
+              </div>
+              <div class="panel">
+                <div class="p-head"><span class="ph">Where the money sits<span class="p-sub">SAR, signed 312.0k this quarter</span></span></div>
+                <div class="moneyrow"><div class="mt"><span>Planned revenue <small>92% of signed</small></span><b>SAR 286.4k</b></div><div class="mb"><i style="width:92%;background:var(--v500)"></i></div></div>
+                <div class="moneyrow"><div class="mt"><span>Approved cost <small>63% of signed</small></span><b>SAR 196.2k</b></div><div class="mb"><i style="width:63%;background:var(--amberIc)"></i></div></div>
+                <div class="moneyrow"><div class="mt"><span>Forecast margin <small>31.4% of planned</small></span><b>SAR 90.0k</b></div><div class="mb"><i style="width:31%;background:var(--mintIc)"></i></div></div>
+                <div class="moneyrow"><div class="mt"><span>Uninvoiced work in progress</span><b>SAR 23.7k</b></div><div class="mb"><i style="width:8%;background:var(--muted2)"></i></div></div>
+                <div class="sigrow" style="border-top:1px solid var(--line);margin-top:6px"><span class="chip warn"><i></i> Watch</span><span class="sc" style="font-size:var(--fs-xs);color:var(--muted)">Autumn campaign is 8% over its approved budget</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- PANEL 4: portfolio -->
+          <div class="conpanel" id="cp-4" role="tabpanel" aria-labelledby="ct-4" tabindex="0" hidden>
+            <div class="panel">
+              <div class="p-head"><span class="ph">Portfolio health<span class="p-sub">27 active projects, 4 need attention</span></span><span class="right"><span class="ilink">Group by client <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="6 9 12 15 18 9"/></svg></span></span></div>
+              <div class="tblwrap" tabindex="0"><table class="dt">
+                <thead><tr><th>Project</th><th>Owner</th><th>Stage</th><th>Progress</th><th>Health</th><th>Margin</th><th>Next milestone</th></tr></thead>
+                <tbody>
+                  <tr class="sel"><td><span class="pj">Northstar launch</span></td><td class="who"><span class="withav"><span class="avm a1">LN</span> Lina N.</span></td><td class="who">Review</td><td><div class="prog"><i style="width:72%"></i></div></td><td><span class="chip warn"><i></i> At risk</span></td><td>28.4%</td><td class="who">Client approval, Sep 4</td></tr>
+                  <tr><td><span class="pj">Atlas rebrand</span></td><td class="who"><span class="withav"><span class="avm a3">SA</span> Sara A.</span></td><td class="who">Execution</td><td><div class="prog"><i style="width:88%"></i></div></td><td><span class="chip ok"><i></i> On track</span></td><td>34.1%</td><td class="who">Asset handover, Sep 9</td></tr>
+                  <tr><td><span class="pj">Namaa transformation</span></td><td class="who"><span class="withav"><span class="avm a2">OM</span> Omar M.</span></td><td class="who">Planning</td><td><div class="prog"><i style="width:34%"></i></div></td><td><span class="chip risk"><i></i> Off track</span></td><td class="who">no data</td><td class="who">Scope lock, Aug 29</td></tr>
+                  <tr><td><span class="pj">Meridian retainer</span></td><td class="who"><span class="withav"><span class="avm a4">NH</span> Noura H.</span></td><td class="who">Execution</td><td><div class="prog"><i style="width:56%"></i></div></td><td><span class="chip ok"><i></i> On track</span></td><td>30.9%</td><td class="who">Monthly report, Sep 1</td></tr>
+                  <tr><td><span class="pj">Vega campaign</span></td><td class="who"><span class="withav"><span class="avm a5">YK</span> Yara K.</span></td><td class="who">New</td><td><div class="prog"><i style="width:12%"></i></div></td><td><span class="chip neu"><i></i> Not started</span></td><td>32.0%</td><td class="who">Kickoff, Sep 2</td></tr>
+                </tbody>
+              </table></div>
+              <div class="morerow">22 more projects</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast"><span class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M4 15l6-6 4 3 6-8"/><path d="M20 4h-4M20 4v4"/></svg></span><div><div class="tl">Raqeb signal</div><div class="tt">Margin recovery found</div></div><span class="tv">+3.2</span></div>
+  </div>
+</section>
+<!-- ============ OPERATING MODEL ============ -->
+<section class="section" id="platform" style="padding:var(--s-wide) 0">
+  <div class="wrap">
+    <div class="center rev">
+      <span class="eyebrow">How Raqeb works</span>
+      <h2 class="h2">Five stages that already share their data.</h2>
+      <p class="lead">A request becomes tasks, tasks consume capacity, capacity is recorded as time, and time is what margin is made of. Break that chain and you get a monthly surprise. Raqeb keeps it whole.</p>
+    </div>
+    <div class="flowwrap rev">
+      <svg class="flow-svg" viewBox="0 0 1080 210" role="img" aria-label="Five connected stages: intake, delivery, capacity, recorded time and commercial outcome">
+        <path d="M108 100 H972" stroke="#DCD8EA" stroke-width="2"/>
+        <path d="M108 100 H972" stroke="#6657EE" stroke-width="2" stroke-dasharray="5 9" stroke-linecap="round" opacity=".85"/>
+        <g><circle cx="108" cy="100" r="40" fill="#fff" stroke="#CBC3F8" stroke-width="2"/><circle cx="108" cy="100" r="12" fill="#6657EE"/></g>
+        <g><circle cx="324" cy="100" r="40" fill="#fff" stroke="#CBC3F8" stroke-width="2"/><rect x="311" y="87" width="26" height="26" rx="6" fill="#6657EE"/></g>
+        <g><circle cx="540" cy="100" r="46" fill="#1E1233"/><rect x="523" y="84" width="9" height="32" rx="3" fill="#CBC3F8"/><rect x="536" y="93" width="9" height="23" rx="3" fill="#8B7BEC"/><rect x="549" y="76" width="9" height="40" rx="3" fill="#fff"/></g>
+        <g><circle cx="756" cy="100" r="40" fill="#fff" stroke="#CBC3F8" stroke-width="2"/><circle cx="756" cy="100" r="14" fill="none" stroke="#6657EE" stroke-width="3"/><path d="M756 92 v8 l6 4" stroke="#6657EE" stroke-width="3" fill="none" stroke-linecap="round"/></g>
+        <g><circle cx="972" cy="100" r="40" fill="#fff" stroke="#CBC3F8" stroke-width="2"/><path d="M958 108 l8 -10 6 5 10 -14" stroke="#6657EE" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+        <path d="M972 140 q0 48 -432 48 q-432 0 -432 -48" fill="none" stroke="#DCD8EA" stroke-width="1.5" stroke-dasharray="4 7"/>
+      </svg>
+      <div class="flow-labels">
+        <div class="flab"><div class="n">01</div><h3>A request arrives</h3><p>Scope, owner and the first real dates, before anyone promises a week.</p></div>
+        <div class="flab"><div class="n">02</div><h3>Work moves</h3><p>Board, list and timeline share one set of stages, so status is never retyped.</p></div>
+        <div class="flab"><div class="n">03</div><h3>Capacity answers</h3><p>Demand meets who is actually free, with leave and part time already counted.</p></div>
+        <div class="flab"><div class="n">04</div><h3>Time lands on the task</h3><p>A timer that runs where the work happens, not a Friday memory exercise.</p></div>
+        <div class="flab"><div class="n">05</div><h3>Margin becomes visible</h3><p>Utilization, billability and profit read from the same hours you already logged.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DELIVERY ============ -->
+<section class="section" id="execution">
+  <div class="wrap">
+    <div class="chap-bleed">
+      <div class="chap-copy rev">
+        <span class="eyebrow">Project delivery</span>
+        <h2>Nothing quietly slips.</h2>
+        <p class="lead">Every task carries its owner, stage, estimate and history, so the answer to "where is this" takes one glance instead of three messages.</p>
+        <div class="benes">
+          <div class="bene"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></span><div><b>The board tells you what is late</b><p>Overdue, blocked and ownerless work is flagged on the card, not buried in a filter.</p></div></div>
+          <div class="bene"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H8l-4 4z"/></svg></span><div><b>The whole record opens in place</b><p>Brief, subtasks, files, comments and logged time in a drawer, never a page you have to come back from.</p></div></div>
+          <div class="bene"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg></span><div><b>Board, list or timeline, one truth</b><p>Switch the view without rebuilding it. The stages, fields and permissions travel with you.</p></div></div>
+        </div>
+        <a class="lnk" href="#reports">See how delivery rolls into reporting <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+
+      <div class="scene rev soft">
+        <div class="win">
+          <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-crumb">Atlas / Northstar launch / <b>Board</b></span><span class="win-kbd">4 stages</span></div>
+          <div class="work">
+            <div class="tbar">
+              <span class="seg-view"><span class="on">Board</span><span>List</span><span>Timeline</span></span>
+              <span class="tchip act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="3"/><path d="M3 20v-1.5A4.5 4.5 0 0 1 7.5 14h3"/></svg> 5 assignees <b class="x">x</b></span>
+              <span class="tchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg> Group: stage</span>
+              <span class="right"><a class="btn btn-primary"><span class="lbl">New </span>task</a></span>
+            </div>
+            <div class="board">
+              <div class="bcol">
+                <div class="col-h"><i style="background:#B9B4C6"></i> New <span class="c">4</span></div>
+                <div class="tk"><span class="tlab" style="background:var(--v50);color:var(--violet-ink)">Content</span><div class="tt">Draft launch content calendar</div>
+                  <div class="tsub"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H8l-4 4z"/></svg>3</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15V5a2 2 0 0 0-2-2H9"/><path d="M3 9v10a2 2 0 0 0 2 2h10"/></svg>2</span><span>6h est</span></div>
+                  <div class="tm"><span class="pr me">Medium</span><span class="avm a2" style="width:19px;height:19px">OM</span><span class="due">Sep 12</span></div></div>
+                <div class="tk"><span class="tlab" style="background:var(--bg);color:var(--muted)">Research</span><div class="tt">Competitor pricing scan</div>
+                  <div class="tsub"><span>no estimate</span></div>
+                  <div class="tm"><span class="pr lo">Low</span><span class="due">no date</span></div></div>
+                <div class="tk"><div class="tt">Photography shortlist</div><div class="tsub"><span>4h est</span></div><div class="tm"><span class="pr lo">Low</span><span class="avm a5" style="width:19px;height:19px">YK</span><span class="due">Sep 15</span></div></div>
+                <div class="morerow" style="border:none;padding:4px 2px">1 more</div>
+              </div>
+              <div class="bcol">
+                <div class="col-h"><i style="background:var(--v500)"></i> In progress <span class="c">6</span></div>
+                <div class="tk sel"><span class="tlab" style="background:var(--coralBg);color:var(--coralIc)">Blocked</span><div class="tt">Landing page hero and sections</div>
+                  <div class="subprog"><span>5 of 8</span><span class="prog"><i style="width:62%"></i></span></div>
+                  <div class="tsub"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v12H8l-4 4z"/></svg>7</span><span>8h est, 5.2h logged</span></div>
+                  <div class="tm"><span class="pr hi">High</span><span class="avm a1" style="width:19px;height:19px">LN</span><span class="due late">2d late</span></div></div>
+                <div class="tk"><div class="tt">Welcome email flow</div>
+                  <div class="subprog"><span>2 of 6</span><span class="prog"><i style="width:33%"></i></span></div>
+                  <div class="tm"><span class="pr me">Medium</span><span class="avm a3" style="width:19px;height:19px">SA</span><span class="due">Sep 19</span></div></div>
+                <div class="tk"><div class="tt">Pricing page copy pass</div><div class="tsub"><span>3h est</span></div><div class="tm"><span class="pr me">Medium</span><span class="avm a4" style="width:19px;height:19px">NH</span><span class="due">Sep 8</span></div></div>
+                <div class="morerow" style="border:none;padding:4px 2px">3 more</div>
+              </div>
+              <div class="bcol">
+                <div class="col-h"><i style="background:var(--v300)"></i> Client review <span class="c">3</span></div>
+                <div class="tk"><span class="tlab" style="background:var(--amberBg);color:var(--amberIc)">Waiting 3d</span><div class="tt">Brand guideline v2</div>
+                  <div class="tsub"><span>sent Aug 29</span></div>
+                  <div class="tm"><span class="pr me">Medium</span><span class="avm a1" style="width:19px;height:19px">LN</span><span class="due">Sep 5</span></div></div>
+                <div class="tk"><div class="tt">Motion storyboard</div><div class="tm"><span class="pr lo">Low</span><span class="avm a5" style="width:19px;height:19px">YK</span><span class="due">Sep 6</span></div></div>
+                <div class="tk"><div class="tt">Media plan, September</div><div class="tm"><span class="pr me">Medium</span><span class="avm a3" style="width:19px;height:19px">SA</span><span class="due">Sep 7</span></div></div>
+              </div>
+              <div class="bcol">
+                <div class="col-h"><i style="background:var(--p600)"></i> Done <span class="c">12</span></div>
+                <div class="tk" style="opacity:.72"><div class="tt">Kickoff workshop notes</div><div class="tm"><span class="pr lo">Low</span><span class="due">Aug 20</span></div></div>
+                <div class="tk" style="opacity:.72"><div class="tt">Audience research deck</div><div class="tm"><span class="pr me">Medium</span><span class="due">Aug 22</span></div></div>
+                <div class="tk" style="opacity:.72"><div class="tt">Tone of voice guide</div><div class="tm"><span class="pr lo">Low</span><span class="due">Aug 25</span></div></div>
+                <div class="morerow" style="border:none;padding:4px 2px">9 more</div>
+              </div>
+            </div>
+
+            <div class="drawer" style="margin-top:12px">
+              <div class="dh"><span class="chip vio"><i></i> In progress</span><span class="pr hi">High</span><span class="chip risk"><i></i> Blocked by client approval</span><span class="tag" style="margin-inline-start:auto">NS-142</span></div>
+              <div class="dtitle">Landing page hero and sections</div>
+              <div class="dtabs"><span class="on">Brief</span><span>Subtasks 8</span><span>Comments 7</span><span>Time</span><span>Files 3</span></div>
+              <p class="dl" style="margin-top:10px">Build the hero, three feature sections and the pricing block from the approved v2 guideline. Copy must stay legible at 390px. Waiting on the client sign off from Aug 26 before the final section ships.</p>
+              <div class="drow"><span class="dk">Owner</span><span class="withav"><span class="avm a1">LN</span> Lina Noor</span><span class="tag" style="margin-inline-start:auto">Design</span></div>
+              <div class="drow"><span class="dk">Subtasks</span><span class="prog" style="max-width:150px"><i style="width:62%"></i></span><span class="tag">5 of 8 done</span></div>
+              <div class="drow"><span class="dk">Effort</span><span><b>8.0h</b> estimated</span><span class="tag">5.2h logged, 2.8h left</span></div>
+              <div class="drow"><span class="dk">Timer</span><span class="timer"><span class="rec"></span> 01:24:07</span><span class="tag">running since 09:12</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section class="section" id="timeline">
+  <div class="wrap">
+    <div class="chap-stack">
+      <div class="chap-copy rev">
+        <span class="eyebrow">Timeline</span>
+        <h2>See the collision before it happens.</h2>
+        <p class="lead">Every project on one timeline, with the milestones that matter and the moments two teams need the same person in the same week.</p>
+      </div>
+      <div class="scene rev soft">
+        <div class="win">
+          <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-crumb">Atlas / <b>Portfolio timeline</b></span><span class="win-kbd">Jul to Dec</span></div>
+          <div class="work">
+            <div class="tbar">
+              <span class="seg-view"><span>Board</span><span>List</span><span class="on">Timeline</span></span>
+              <span class="tchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg> Group: client</span>
+              <span class="tchip act">Milestones on <b class="x">x</b></span>
+              <span class="right"><span class="tag">Today, Sep 1</span></span>
+            </div>
+            <div style="overflow-x:auto" tabindex="0">
+              <div class="gantt">
+                <div class="gt-head"><div>Project</div><div class="gt-months"><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span></div></div>
+                <div class="gt-row"><div class="gt-name"><span class="avm a1">LN</span><div>Northstar launch<small>Atlas Retail</small></div></div>
+                  <div class="gt-track"><span class="gt-today" style="left:34%"></span><span class="gt-bar" style="left:20%;width:38%">Delivery, 72%</span><span class="gt-ms" style="left:57%"></span></div></div>
+                <div class="gt-row"><div class="gt-name"><span class="avm a3">SA</span><div>Atlas rebrand<small>Atlas Retail</small></div></div>
+                  <div class="gt-track"><span class="gt-today" style="left:34%"></span><span class="gt-bar done" style="left:0%;width:21%">Phase 1</span><span class="gt-bar" style="left:23%;width:32%">Phase 2</span><span class="gt-ms" style="left:54%"></span></div></div>
+                <div class="gt-row"><div class="gt-name"><span class="avm a2">OM</span><div>Namaa transformation<small>Namaa Group</small></div></div>
+                  <div class="gt-track"><span class="gt-today" style="left:34%"></span><span class="gt-bar risk" style="left:30%;width:40%">Scope not locked</span><span class="gt-ms" style="left:69%"></span></div></div>
+                <div class="gt-row"><div class="gt-name"><span class="avm a4">NH</span><div>Meridian retainer<small>Meridian Health</small></div></div>
+                  <div class="gt-track"><span class="gt-today" style="left:34%"></span><span class="gt-bar" style="left:0%;width:100%">Rolling monthly</span></div></div>
+                <div class="gt-row"><div class="gt-name"><span class="avm a5">YK</span><div>Vega campaign<small>Vega Studios</small></div></div>
+                  <div class="gt-track"><span class="gt-today" style="left:34%"></span><span class="gt-bar" style="left:52%;width:24%">Production</span><span class="gt-ms" style="left:75%"></span></div></div>
+              </div>
+            </div>
+            <div class="caplegend" style="margin-top:14px">
+              <span><i style="background:var(--v400)"></i> In flight</span><span><i style="background:var(--v200)"></i> Complete</span>
+              <span><i style="background:var(--coralIc)"></i> At risk</span><span><i style="background:var(--p800);border-radius:2px;transform:rotate(45deg)"></i> Milestone</span>
+              <span style="margin-inline-start:auto;color:var(--coralIc);font-weight:600">Lina Noor is committed to two projects in week 39</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ CAPACITY ============ -->
+<section class="section" id="capacity">
+  <div class="wrap">
+    <div class="chap-bleed-l">
+      <div class="scene rev soft">
+        <div class="win">
+          <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-crumb">Atlas / People / <b>Workload</b></span><span class="win-kbd">34 people</span></div>
+          <div class="work">
+            <div class="tbar">
+              <span class="seg-view"><span class="on">By person</span><span>By team</span><span>By project</span></span>
+              <span class="tchip act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg> Design and copy <b class="x">x</b></span>
+              <span class="tchip">Leave shown</span>
+              <span class="right"><span class="tag">Weeks 36 to 39</span></span>
+            </div>
+            <div class="capwrap" tabindex="0">
+              <table class="cap">
+                <thead><tr><th class="pcell">Person</th><th class="wk">W36<small>Sep 1</small></th><th class="wk">W37<small>Sep 8</small></th><th class="wk">W38<small>Sep 15</small></th><th class="wk">W39<small>Sep 22</small></th><th class="capend">Booked<small>available weeks</small></th></tr></thead>
+                <tbody>
+                  <tr class="grouprow"><td colspan="6">Design, 3 people, 104h weekly capacity</td></tr>
+                  <tr><td class="pcell"><span class="pn"><span class="avm a1">LN</span> Lina Noor</span><span class="role">Lead designer, 40h</span></td><td><div class="cell c1">42%</div></td><td><div class="cell c2">61%</div></td><td><div class="cell c3">78%</div></td><td><div class="cell over">104%</div></td><td class="capend">71%<small style="color:var(--amberIc)">W39 over by 2h</small></td></tr>
+                  <tr><td class="pcell"><span class="pn"><span class="avm a2">OM</span> Omar Malik</span><span class="role">Product designer, 40h</span></td><td><div class="cell c2">55%</div></td><td><div class="cell c3">72%</div></td><td><div class="cell c3">80%</div></td><td><div class="cell leave">Leave</div></td><td class="capend">69%<small style="color:var(--mintIc)">3 weeks available</small></td></tr>
+                  <tr><td class="pcell"><span class="pn"><span class="avm a5">YK</span> Yara Kamal</span><span class="role">Motion, 24h part time</span></td><td><div class="cell c0">18%</div></td><td><div class="cell c1">40%</div></td><td><div class="cell c2">63%</div></td><td><div class="cell c2">58%</div></td><td class="capend">45%<small style="color:var(--mintIc)">Has room</small></td></tr>
+                  <tr class="grouprow"><td colspan="6">Strategy and copy, 2 people, 72h weekly capacity</td></tr>
+                  <tr><td class="pcell"><span class="pn"><span class="avm a3">SA</span> Sara Ali</span><span class="role">Strategy lead, 40h</span></td><td><div class="cell c3">70%</div></td><td><div class="cell c3">83%</div></td><td><div class="cell c2">62%</div></td><td><div class="cell c1">38%</div></td><td class="capend">63%<small style="color:var(--mintIc)">Healthy</small></td></tr>
+                  <tr><td class="pcell"><span class="pn"><span class="avm a4">NH</span> Noura Hassan</span><span class="role">Copy lead, 32h</span></td><td><div class="cell c3">81%</div></td><td><div class="cell over">112%</div></td><td><div class="cell c1">40%</div></td><td><div class="cell c2">58%</div></td><td class="capend">73%<small style="color:var(--coralIc)">W37 over by 4h</small></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="caplegend">
+              <span><i style="background:var(--stage)"></i> Under 30%</span><span><i style="background:var(--v100)"></i> 30 to 50</span>
+              <span><i style="background:var(--v300)"></i> 50 to 75</span><span><i style="background:var(--v500)"></i> 75 to 100</span>
+              <span><i style="background:var(--coralIc)"></i> Over</span><span><i style="background:var(--v50)"></i> Approved leave</span>
+              <span style="margin-inline-start:auto">6 tasks in this view have no estimate</span>
+            </div>
+            <div class="hintbox">
+              <span class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span>
+              <div><b>Assigning "Welcome email flow", 8h, due Sep 19</b>
+                <p>Lina is the usual owner, but her week 39 is already at 104%. Another 8h would take her to 124%. Sara has 15h free in week 38 and has shipped this template twice before.</p>
+                <div class="verdicts"><span>Earliest feasible: W38</span><span>Lina W39: 104% to 124%</span><span>Sara W38: 62% to 82%</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="chap-copy rev">
+        <span class="eyebrow">Capacity</span>
+        <h2>Say yes to the date you can actually hit.</h2>
+        <p class="lead">Raqeb keeps contracted hours, part time patterns, approved leave and live task demand as four separate facts, then answers the only question that matters when a new brief lands.</p>
+        <div class="benes">
+          <div class="bene"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 9v11"/></svg></span><div><b>Part time and leave are not footnotes</b><p>A 24h week is 24h. Approved leave removes capacity instead of quietly absorbing it.</p></div></div>
+          <div class="bene"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></span><div><b>Pressure shows up weeks early</b><p>Over capacity, missing estimates and undated work surface while there is still room to move them.</p></div></div>
+          <div class="bene"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span><div><b>Assignment gives you an answer</b><p>Not a chart to interpret. The earliest feasible date, the cost of overriding it, and who else can take it.</p></div></div>
+        </div>
+        <a class="lnk" href="#time">Then see where the hours actually went <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIME, dark band ============ -->
+<section class="section band" id="time" style="padding:var(--s-wide) 0">
+  <div class="wrap">
+    <div class="chap-bleed">
+      <div class="chap-copy rev">
+        <span class="eyebrow dk">Time and utilization</span>
+        <h2>Timesheets people actually fill in.</h2>
+        <p class="lead">A timer that runs on the task, a week that fills itself in as work happens, and one number at the end that finance and delivery both trust.</p>
+        <div class="benes">
+          <div class="bene"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg></span><div><b>Start it where the work is</b><p>The timer lives on the task, survives a refresh, and remembers what it was for.</p></div></div>
+          <div class="bene"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16M8 16l3-4 3 2 4-6"/></svg></span><div><b>Billable is a fact, not a guess</b><p>Every hour carries its project, its category and whether a client is paying for it.</p></div></div>
+          <div class="bene"><span class="bi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>Estimates get better because you can see them miss</b><p>Estimated against logged, per person and per kind of work, so next quarter is quoted from evidence.</p></div></div>
+        </div>
+        <a class="lnk" href="#client">Follow the hours into margin <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+
+      <div class="scene rev soft">
+        <div class="win">
+          <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-crumb">Atlas / Time / <b>My week</b></span><span class="win-kbd">Submitted</span></div>
+          <div class="work">
+            <div class="tbar">
+              <span class="seg-view"><span class="on">My week</span><span>Company</span><span>Approvals</span></span>
+              <span class="tchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Aug 24 to Aug 28</span>
+              <span class="right"><span class="timer"><span class="rec"></span> 00:42:18</span><a class="btn btn-primary">Submit</a></span>
+            </div>
+            <div style="overflow-x:auto" tabindex="0">
+              <table class="ts">
+                <thead><tr><th class="l">Project and work type</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Total</th></tr></thead>
+                <tbody>
+                  <tr><td class="l">Northstar launch<small>Design, billable</small></td><td><span class="hh b">4.0</span></td><td><span class="hh b">4.5</span></td><td><span class="hh b">4.0</span></td><td><span class="hh b">4.5</span></td><td><span class="hh b">4.0</span></td><td><b>21.0</b></td></tr>
+                  <tr><td class="l">Atlas rebrand<small>Strategy, billable</small></td><td><span class="hh b">2.5</span></td><td><span class="hh b">2.5</span></td><td><span class="hh b">3.0</span></td><td><span class="hh b">2.5</span></td><td><span class="hh b">2.5</span></td><td><b>13.0</b></td></tr>
+                  <tr><td class="l">Internal operations<small>Admin, not billable</small></td><td><span class="hh">1.5</span></td><td><span class="hh">1.0</span></td><td><span class="hh">1.0</span></td><td><span class="hh">1.0</span></td><td><span class="hh">1.5</span></td><td><b>6.0</b></td></tr>
+                  <tr><td class="l" style="color:var(--muted2)">Add a row<small>Pick a project</small></td><td><span class="hh empty">+</span></td><td><span class="hh empty">+</span></td><td><span class="hh empty">+</span></td><td><span class="hh empty">+</span></td><td><span class="hh empty">+</span></td><td></td></tr>
+                </tbody>
+                <tfoot><tr><td class="l">Total, 40.0h contracted</td><td>8.0</td><td>8.0</td><td>8.0</td><td>8.0</td><td>8.0</td><td>40.0</td></tr></tfoot>
+              </table>
+            </div>
+            <div class="pgrid2">
+              <div class="panel">
+                <div class="p-head"><span class="ph">Utilization by team<span class="p-sub">Target 75%, marked on each bar</span></span><span class="right"><span class="tag">Week 36</span></span></div>
+                <div class="ubar"><span class="ul">Design</span><span class="ut"><i style="width:88%"></i><span class="tgt" style="left:75%"></span></span><span class="uv">88%</span></div>
+                <div class="ubar"><span class="ul">Strategy</span><span class="ut"><i style="width:74%"></i><span class="tgt" style="left:75%"></span></span><span class="uv">74%</span></div>
+                <div class="ubar"><span class="ul">Development</span><span class="ut"><i style="width:63%"></i><span class="tgt" style="left:75%"></span></span><span class="uv">63%</span></div>
+                <div class="ubar"><span class="ul">Accounts</span><span class="ut"><i style="width:81%"></i><span class="tgt" style="left:75%"></span></span><span class="uv">81%</span></div>
+                <div class="morerow">Development is 12 points under target for a third week</div>
+              </div>
+              <div class="panel">
+                <div class="p-head"><span class="ph">My billable ratio<span class="p-sub">34.0h of 40.0h</span></span></div>
+                <div style="display:flex;align-items:center;gap:16px">
+                  <div class="donut" style="width:104px;height:104px;margin:0;flex:0 0 104px">
+                    <svg width="104" height="104" viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="15.9" fill="none" stroke="#EDEBF4" stroke-width="6"/><circle cx="21" cy="21" r="15.9" fill="none" stroke="#6657EE" stroke-width="6" stroke-dasharray="85 100" stroke-linecap="round"/></svg>
+                    <div class="dn"><b style="font-size:1.35rem">85%</b></div>
+                  </div>
+                  <div style="font-size:var(--fs-xs);color:var(--muted);line-height:1.9">
+                    <div><span class="chip vio" style="margin-inline-end:5px"><i></i></span> Billable 34.0h</div>
+                    <div><span class="chip neu" style="margin-inline-end:5px"><i></i></span> Not billable 6.0h</div>
+                    <div style="margin-top:6px;color:var(--muted2)">Estimate accuracy <b style="color:var(--mintIc)">+6%</b> this month</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLIENTS AND MARGIN ============ -->
+<section class="section" id="client">
+  <div class="wrap">
+    <div class="chap-stack">
+      <div class="chap-copy rev">
+        <span class="eyebrow">Clients and margin</span>
+        <h2>The account review writes itself.</h2>
+        <p class="lead">Services, campaigns, budgets and the hours actually spent, reconciled per client. You walk into the review knowing which accounts are paying for themselves.</p>
+      </div>
+      <div class="scene rev soft">
+        <div class="win">
+          <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-crumb">Atlas / Clients / <b>Atlas Retail</b></span><span class="win-kbd">Quarter to date</span></div>
+          <div class="work">
+            <div class="tbar">
+              <span class="seg-view"><span class="on">Overview</span><span>Services</span><span>Campaigns</span><span>Invoices</span></span>
+              <span class="tchip act">Q3 <b class="x">x</b></span>
+              <span class="right"><span class="chip ok"><i></i> Healthy account</span></span>
+            </div>
+            <div class="kpis">
+              <div class="kpi"><div class="kt"><span class="kic ic-lilac"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V8l7-4 7 4v13"/></svg></span><span class="kl">Signed this quarter</span></div><div class="krow"><span class="kv">SAR 312.0k</span></div><div class="ks">3 services, 1 campaign, 2 projects</div></div>
+              <div class="kpi"><div class="kt"><span class="kic ic-amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg></span><span class="kl">Budget consumed</span></div><div class="krow"><span class="kv">69%</span><span class="kd dn">pace 78%</span></div><div class="ks">Autumn campaign 8% over</div></div>
+              <div class="kpi"><div class="kt"><span class="kic ic-mint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5h4a2 2 0 0 1 0 4h-3a2 2 0 0 0 0 4h4"/></svg></span><span class="kl">Forecast margin</span></div><div class="krow"><span class="kv">31.4%</span><span class="kd up">+2.8</span></div><div class="ks">SAR 90.0k on 286.4k planned</div></div>
+              <div class="kpi"><div class="kt"><span class="kic ic-coral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></span><span class="kl">Waiting on client</span></div><div class="krow"><span class="kv">3</span><span class="kd dn">oldest 3d</span></div><div class="ks">Approvals blocking 6 tasks</div></div>
+            </div>
+            <div class="pgrid-eq">
+              <div class="panel">
+                <div class="p-head"><span class="ph">Margin by month<span class="p-sub">Rolling seven months</span></span><span class="right"><span class="chip ok"><i></i> +2.8 pts</span></span></div>
+                <div class="combars" aria-hidden="true">
+                  <div class="cb"><i style="height:52%"></i><span>Feb</span></div><div class="cb"><i style="height:58%"></i><span>Mar</span></div>
+                  <div class="cb"><i style="height:54%"></i><span>Apr</span></div><div class="cb"><i style="height:68%"></i><span>May</span></div>
+                  <div class="cb"><i style="height:63%"></i><span>Jun</span></div><div class="cb"><i style="height:79%"></i><span>Jul</span></div>
+                  <div class="cb hi"><i style="height:96%"></i><span>Aug</span></div>
+                </div>
+                <div class="axrow"><span>24.1% low</span><span>31.4% now</span></div>
+              </div>
+              <div class="panel">
+                <div class="p-head"><span class="ph">Where the money sits<span class="p-sub">SAR, against 312.0k signed</span></span></div>
+                <div class="moneyrow"><div class="mt"><span>Planned revenue <small>92% of signed</small></span><b>SAR 286.4k</b></div><div class="mb"><i style="width:92%;background:var(--v500)"></i></div></div>
+                <div class="moneyrow"><div class="mt"><span>Approved cost <small>63% of signed</small></span><b>SAR 196.2k</b></div><div class="mb"><i style="width:63%;background:var(--amberIc)"></i></div></div>
+                <div class="moneyrow"><div class="mt"><span>Forecast margin <small>31.4% of planned</small></span><b>SAR 90.0k</b></div><div class="mb"><i style="width:31%;background:var(--mintIc)"></i></div></div>
+                <div class="moneyrow"><div class="mt"><span>Uninvoiced work in progress</span><b>SAR 23.7k</b></div><div class="mb"><i style="width:8%;background:var(--muted2)"></i></div></div>
+              </div>
+            </div>
+            <div class="panel" style="margin-top:12px">
+              <div class="p-head"><span class="ph">Services and campaigns<span class="p-sub">What Atlas Retail is buying, and how it is going</span></span><span class="right"><span class="ilink">Open account plan <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></div>
+              <div class="tblwrap" tabindex="0"><table class="dt">
+                <thead><tr><th>Service or campaign</th><th>Type</th><th>Owner</th><th>Budget used</th><th>Margin</th><th>Status</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="pj">Social retainer</span></td><td class="who">Monthly</td><td class="who"><span class="withav"><span class="avm a3">SA</span> Sara A.</span></td><td><div class="prog"><i style="width:64%"></i></div></td><td>33.8%</td><td><span class="chip ok"><i></i> On track</span></td></tr>
+                  <tr><td><span class="pj">Autumn launch campaign</span></td><td class="who">Campaign</td><td class="who"><span class="withav"><span class="avm a1">LN</span> Lina N.</span></td><td><div class="prog"><i style="width:108%;background:var(--coralIc)"></i></div></td><td>18.2%</td><td><span class="chip risk"><i></i> Over budget</span></td></tr>
+                  <tr><td><span class="pj">Search and SEO</span></td><td class="who">Quarterly</td><td class="who"><span class="withav"><span class="avm a2">OM</span> Omar M.</span></td><td><div class="prog"><i style="width:47%"></i></div></td><td>39.5%</td><td><span class="chip ok"><i></i> On track</span></td></tr>
+                  <tr><td><span class="pj">Brand guideline v2</span></td><td class="who">Project</td><td class="who"><span class="withav"><span class="avm a4">NH</span> Noura H.</span></td><td><div class="prog"><i style="width:82%"></i></div></td><td>27.1%</td><td><span class="chip warn"><i></i> Awaiting approval</span></td></tr>
+                </tbody>
+              </table></div>
+              <div class="morerow">2 more, including one project not yet started</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REPORTS ============ -->
+<section class="section plain" id="reports">
+  <div class="wrap">
+    <div class="chap-stack">
+      <div class="chap-copy rev">
+        <span class="eyebrow">Reports</span>
+        <h2>Start at the number, end at the person and the day.</h2>
+        <p class="lead">Six report types built on the same hours: utilization, logged time by project and by person, estimated against logged, billable against not, and delivery risk. Each one drills down to the row behind it.</p>
+      </div>
+      <div class="scene rev soft">
+        <div class="win">
+          <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-crumb">Atlas / Reports / <b>Operating overview</b></span><span class="win-kbd">Export</span></div>
+          <div class="work">
+            <div class="tbar">
+              <span class="seg-view"><span class="on">Overview</span><span>Utilization</span><span>Hours</span><span>Estimate accuracy</span></span>
+              <span class="tchip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> Last 6 weeks</span>
+              <span class="tchip act">All teams <b class="x">x</b></span>
+              <span class="right"><a class="btn btn-primary">Save view</a></span>
+            </div>
+            <div class="pgrid-eq">
+              <div class="panel">
+                <div class="p-head"><span class="ph">Goals connected to the work<span class="p-sub">Progress is calculated from tasks, not typed in</span></span></div>
+                <div style="border:1px solid var(--line);border-radius:12px;padding:13px">
+                  <div style="display:flex;align-items:center;gap:11px">
+                    <span style="width:32px;height:32px;border-radius:9px;background:var(--v50);display:grid;place-items:center;color:var(--violet-ink);flex:0 0 32px"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg></span>
+                    <div><div style="font-size:var(--fs-micro);letter-spacing:.1em;text-transform:uppercase;color:var(--muted2);font-weight:600">Company objective</div>
+                      <div style="font-weight:600;font-size:var(--fs-sm)">Grow strategic client revenue</div></div>
+                    <span style="margin-inline-start:auto;font-family:var(--display);font-weight:640;color:var(--violet);font-size:1.15rem">68%</span>
+                  </div>
+                  <div class="sigrow" style="padding-inline-start:12px"><span class="chip warn" style="flex:0 0 auto"><i></i></span><div class="sc"><b>Northstar launch</b><span>At risk, client approval 3 days late</span></div><span style="font-weight:600;font-size:var(--fs-xs)">72%</span></div>
+                  <div class="sigrow" style="padding-inline-start:12px"><span class="chip risk" style="flex:0 0 auto"><i></i></span><div class="sc"><b>Namaa transformation</b><span>Off track, scope not locked</span></div><span style="font-weight:600;font-size:var(--fs-xs)">34%</span></div>
+                  <div class="sigrow" style="padding-inline-start:12px"><span class="chip ok" style="flex:0 0 auto"><i></i></span><div class="sc"><b>Atlas rebrand</b><span>On track, asset handover Sep 9</span></div><span style="font-weight:600;font-size:var(--fs-xs)">88%</span></div>
+                </div>
+              </div>
+              <div class="panel">
+                <div class="p-head"><span class="ph">Delivery risk by team and week<span class="p-sub">Count of at risk tasks per cell</span></span><span class="right"><span class="ilink">Drill down <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span></div>
+                <div class="heatwrap" tabindex="0"><div class="heat">
+                  <div></div><div class="hx">W31</div><div class="hx">W32</div><div class="hx">W33</div><div class="hx">W34</div><div class="hx">W35</div><div class="hx">W36</div>
+                  <div class="hy">Design</div><div class="hcell lv0">0</div><div class="hcell lv0">1</div><div class="hcell lv1">4</div><div class="hcell lv2">9</div><div class="hcell lv1">5</div><div class="hcell lv0">2</div>
+                  <div class="hy">Strategy</div><div class="hcell lv0">1</div><div class="hcell lv1">3</div><div class="hcell lv0">1</div><div class="hcell lv0">0</div><div class="hcell lv1">4</div><div class="hcell lv1">3</div>
+                  <div class="hy">Development</div><div class="hcell lv1">4</div><div class="hcell lv2">8</div><div class="hcell lv2">11</div><div class="hcell lv1">5</div><div class="hcell lv0">2</div><div class="hcell lvn">no data</div>
+                  <div class="hy">Accounts</div><div class="hcell lv0">0</div><div class="hcell lv0">1</div><div class="hcell lv0">0</div><div class="hcell lv1">3</div><div class="hcell lv0">1</div><div class="hcell lvn">no data</div>
+                </div></div>
+                <div class="caplegend" style="margin-top:11px">
+                  <span><i style="background:var(--mintBg)"></i> 0 to 2</span><span><i style="background:var(--amberBg)"></i> 3 to 5</span>
+                  <span><i style="background:var(--coralBg)"></i> 6 and above</span><span><i style="background:var(--stage)"></i> Time not submitted</span>
+                </div>
+              </div>
+            </div>
+            <div class="pgrid-eq">
+              <div class="panel">
+                <div class="p-head"><span class="ph">Estimated against logged<span class="p-sub">By project, last 6 weeks</span></span></div>
+                <div class="ubar"><span class="ul">Northstar</span><span class="ut"><i style="width:91%"></i><span class="tgt" style="left:100%"></span></span><span class="uv" style="color:var(--mintIc)">-9%</span></div>
+                <div class="ubar"><span class="ul">Atlas rebrand</span><span class="ut"><i style="width:100%;background:var(--coralIc)"></i><span class="tgt" style="left:100%"></span></span><span class="uv" style="color:var(--coralIc)">+18%</span></div>
+                <div class="ubar"><span class="ul">Namaa</span><span class="ut"><i style="width:96%"></i><span class="tgt" style="left:100%"></span></span><span class="uv" style="color:var(--mintIc)">-4%</span></div>
+                <div class="ubar"><span class="ul">Vega</span><span class="ut"><i style="width:100%;background:var(--amberIc)"></i><span class="tgt" style="left:100%"></span></span><span class="uv" style="color:var(--amberIc)">+7%</span></div>
+                <div class="morerow">Atlas rebrand has overrun its estimate in 4 of the last 6 weeks</div>
+              </div>
+              <div class="panel">
+                <div class="p-head"><span class="ph">Hours by person<span class="p-sub">Billable share, last 4 weeks</span></span></div>
+                <div class="tblwrap" tabindex="0"><table class="dt">
+                  <thead><tr><th>Person</th><th>Logged</th><th>Billable</th><th>Share</th></tr></thead>
+                  <tbody>
+                    <tr><td><span class="withav"><span class="avm a1">LN</span> Lina Noor</span></td><td>118.0h</td><td>102.5h</td><td><span class="chip ok"><i></i> 87%</span></td></tr>
+                    <tr><td><span class="withav"><span class="avm a3">SA</span> Sara Ali</span></td><td>104.0h</td><td>81.0h</td><td><span class="chip ok"><i></i> 78%</span></td></tr>
+                    <tr><td><span class="withav"><span class="avm a2">OM</span> Omar Malik</span></td><td>86.0h</td><td>57.0h</td><td><span class="chip warn"><i></i> 66%</span></td></tr>
+                    <tr><td><span class="withav"><span class="avm a4">NH</span> Noura Hassan</span></td><td>96.0h</td><td>78.5h</td><td><span class="chip ok"><i></i> 82%</span></td></tr>
+                  </tbody>
+                </table></div>
+                <div class="morerow">30 more people</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ CAPABILITIES ============ -->
+<section class="section stage" id="capabilities">
+  <div class="wrap">
+    <div class="center rev">
+      <span class="eyebrow">Everything in one place</span>
+      <h2 class="h2">The project tool, and the two layers it usually leaves out.</h2>
+      <p class="lead">Boards and lists are table stakes. What decides whether a services business is healthy is capacity and margin, and those normally live in spreadsheets nobody trusts.</p>
+    </div>
+    <div class="caps rev">
+      <div class="capcard">
+        <div class="ch"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="5" height="16" rx="1.5"/><rect x="10" y="4" width="5" height="11" rx="1.5"/><rect x="17" y="4" width="4" height="7" rx="1.5"/></svg></span><h3>Plan and deliver</h3></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Board, list and timeline on shared stages</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Subtasks, custom fields and task conversations</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Templates for the work you repeat monthly</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> My work, delegation and handover</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Milestones, dependencies and portfolio view</li>
+        </ul>
+      </div>
+      <div class="capcard">
+        <div class="ch"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 9v11"/></svg></span><h3>People and time</h3></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Contracted hours, part time and dated exceptions</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Leave, cover and open task handover</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Workload by person and by day, five weeks out</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> A timer on the task, personal and company timesheets</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Utilization, billability and estimate accuracy</li>
+        </ul>
+      </div>
+      <div class="capcard">
+        <div class="ch"><span class="ci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V8l7-4 7 4v13"/></svg></span><h3>Clients and money</h3></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Client, partner and internal account types</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Services with a cadence, campaigns with dates</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Budgets, consumption and delivery health per account</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Rates, delivery cost and forecast margin</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Six report types, each drilling to the row behind it</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOLUTIONS ============ -->
+<section class="section plain" id="solutions">
+  <div class="wrap">
+    <div class="center rev">
+      <span class="eyebrow">Who runs on Raqeb</span>
+      <h2 class="h2">Built for teams where the project is the product.</h2>
+      <p class="lead">If your revenue comes from delivering work rather than shipping a licence, the same four questions repeat every week. Raqeb is arranged around them.</p>
+    </div>
+    <div class="sol rev">
+      <div class="solrow">
+        <div class="st"><span class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21v-7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7"/><circle cx="12" cy="7" r="3.2"/></svg></span><h3>Professional services</h3></div>
+        <div><p class="sd">You quoted a fixed fee three months ago. Raqeb tells you today whether the estimate is holding, who is absorbing the overrun, and what it is doing to the margin on that engagement.</p>
+          <div class="stags"><span>Estimates against actuals</span><span>Staffing</span><span>Client budgets</span><span>Profitability</span></div></div>
+        <a class="lnk arrow" href="#demo">Talk it through <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="solrow">
+        <div class="st"><span class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 11 18-5v12L3 13z"/></svg></span><h3>Agencies</h3></div>
+        <div><p class="sd">Retainers that quietly grow, campaigns that overrun, approvals that sit for a week. Raqeb ties every account to the hours it actually consumed, so the renewal conversation starts from evidence.</p>
+          <div class="stags"><span>Retainers and scope creep</span><span>Campaign budgets</span><span>Client approvals</span><span>Recurring work</span></div></div>
+        <a class="lnk arrow" href="#demo">Talk it through <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="solrow">
+        <div class="st"><span class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h6"/></svg></span><h3>Project management offices</h3></div>
+        <div><p class="sd">Forty projects, forty ways of working. Raqeb gives every one the same stages, the same fields and the same definition of done, so a portfolio report is a read rather than a reconciliation.</p>
+          <div class="stags"><span>Standard workflows</span><span>Portfolio view</span><span>Cross project risk</span><span>Governance</span></div></div>
+        <a class="lnk arrow" href="#demo">Talk it through <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="solrow">
+        <div class="st"><span class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="4"/></svg></span><h3>Operations teams</h3></div>
+        <div><p class="sd">The monthly report, the quarterly review, the onboarding checklist. Raqeb generates the work from a template on schedule, assigns it, and shows you what did not get done before anyone asks.</p>
+          <div class="stags"><span>Reusable templates</span><span>Scheduled work</span><span>Leave cover</span><span>Delegation</span></div></div>
+        <a class="lnk arrow" href="#demo">Talk it through <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECURITY ============ -->
+<section class="section stage" id="security">
+  <div class="wrap">
+    <div class="center rev">
+      <span class="eyebrow">Access and governance</span>
+      <h2 class="h2">Cost and margin are visible to the people you choose. Nobody else.</h2>
+      <p class="lead">Financial visibility is the reason a tool like this gets rejected. Raqeb treats it as a permission boundary enforced on the server, not a hidden column in the interface.</p>
+    </div>
+    <div class="secgrid rev">
+      <div class="seccard"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>
+        <div><h3>Role based access, enforced server side</h3><p>Rates, cost and profitability are gated by role at the API, so hiding a screen is not the control. A user without the role cannot request the data at all.</p></div></div>
+      <div class="seccard"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 6v6c0 5 3.8 8.9 9 10 5.2-1.1 9-5 9-10V6z"/></svg></span>
+        <div><h3>Every workspace is isolated at the database</h3><p>Tenant separation is enforced by row level security on every query, not by a filter the application remembers to apply.</p></div></div>
+      <div class="seccard"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+        <div><h3>Traceable history</h3><p>Task changes, time entries and approvals keep who did what and when, so an operating review or an audit does not depend on memory.</p></div></div>
+      <div class="seccard"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15V5a2 2 0 0 0-2-2H9"/><path d="M3 9v10a2 2 0 0 0 2 2h10"/></svg></span>
+        <div><h3>Clients and guests never take a paid seat</h3><p>Reviewers see only what you share with them. It is a database constraint, not a pricing promise we could quietly change later.</p></div></div>
+      <div class="seccard"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M8 11l4 4 4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg></span>
+        <div><h3>Your data leaves whenever you want</h3><p>Export works on every plan, including a lapsed one. If billing stops, the workspace becomes read only rather than locked.</p></div></div>
+      <div class="seccard"><span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18"/></svg></span>
+        <div><h3>Built in Riyadh, planned for Saudi requirements</h3><p>Raqeb can be planned to support applicable Saudi data protection, governance and residency requirements. Exact controls and deployment scope are confirmed during enterprise planning.</p></div></div>
+    </div>
+    <p class="secnote">We do not claim certifications we have not completed. If your procurement process needs a specific standard or a named hosting region, bring it to the walkthrough and we will tell you plainly what is in place today and what is on the roadmap.</p>
+  </div>
+</section>
+<!-- ============ PRICING ============ -->
+<section class="section plain" id="pricing">
+  <div class="wrap">
+    <div class="center rev">
+      <span class="eyebrow">Pricing</span>
+      <h2 class="h2">Pay for the people doing the work.</h2>
+      <p class="lead">No seat minimums, no mandatory onboarding fee, and no tier where your own data becomes hostage.</p>
+    </div>
+    <div class="prctrl rev">
+      <div class="seg" id="cycle" role="radiogroup" aria-label="Billing cycle">
+        <button role="radio" aria-checked="true" data-cycle="annual">Annual <span class="segsave">Save up to 25%</span></button>
+        <button role="radio" aria-checked="false" data-cycle="monthly">Monthly</button>
+      </div>
+      <div class="seg" id="curr" role="radiogroup" aria-label="Currency">
+        <button role="radio" aria-checked="true" data-curr="usd">USD</button>
+        <button role="radio" aria-checked="false" data-curr="sar">SAR</button>
+      </div>
+    </div>
+    <div class="pgrid rev">
+      <div class="plan">
+        <h3>Free</h3><p class="pd">For a small team that just needs one list everyone actually trusts.</p>
+        <div class="pp"><span class="amt" data-price data-usd-a="0" data-usd-m="0" data-sar-a="0" data-sar-m="0">$0</span><span class="per">per user, month</span></div>
+        <div class="psar">Up to 5 people</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Boards, lists and My work</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Subtasks and comments</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Basic time entry</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Essential dashboard</li>
+        </ul>
+        <a class="btn btn-ghost" href="#demo">Start free</a>
+      </div>
+      <div class="plan">
+        <h3>Essentials</h3><p class="pd">For a growing team that needs structure, templates and real timesheets.</p>
+        <div class="pp"><span class="amt" data-price data-usd-a="6" data-usd-m="8" data-sar-a="23" data-sar-m="30">$6</span><span class="per">per user, month</span></div>
+        <div class="psar" data-sarnote data-sar-a="23" data-sar-m="30">about SAR 23 per user, month</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Everything in Free</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Custom stages and fields</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Task templates and recurring work</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Team timesheets and approvals</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Standard reports</li>
+        </ul>
+        <a class="btn btn-ghost" href="#demo">Choose Essentials</a>
+      </div>
+      <div class="plan reco">
+        <span class="flagline">Most teams start here</span>
+        <h3>Operations</h3><p class="pd">For service teams that have to defend both the deadline and the margin.</p>
+        <div class="pp"><span class="amt" data-price data-usd-a="11" data-usd-m="14" data-sar-a="41" data-sar-m="53">$11</span><span class="per">per user, month</span></div>
+        <div class="psar" data-sarnote data-sar-a="41" data-sar-m="53">about SAR 41 per user, month</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Everything in Essentials</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Capacity and workload planning</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Task fit: the earliest feasible date, not a hopeful one</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Clients, services, campaigns and budgets</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Utilization, billability and estimate accuracy</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Cost and margin, visible only to the roles you grant</li>
+        </ul>
+        <a class="btn btn-primary" href="#demo">Choose Operations</a>
+      </div>
+      <div class="plan">
+        <h3>Enterprise</h3><p class="pd">For scaled operations that need governance, rollout and a support commitment.</p>
+        <div class="pp"><span class="amt">Custom</span></div>
+        <div class="psar">Priced on your rollout</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Everything in Operations</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Advanced permission design</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Deployment and residency options</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Structured onboarding and migration</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg> Quarterly operating reviews</li>
+        </ul>
+        <a class="btn btn-ghost" href="#demo">Talk to us</a>
+      </div>
+    </div>
+    <p class="vh" role="status" id="priceMsg"></p>
+    <p class="pricenote"><b>A user is a person who logs in and does work.</b> Clients, guests and reviewers are free and always will be. Prices are per user on the cycle you select and exclude 15% VAT for customers in Saudi Arabia.</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section stage" id="faq">
+  <div class="wrap">
+    <div class="center rev">
+      <span class="eyebrow">Before you ask</span>
+      <h2 class="h2">The questions that decide it.</h2>
+    </div>
+    <div class="faq rev">
+      <details open><summary>Is this employee monitoring?</summary><p>No, and it is built so it cannot become that. Raqeb measures work: tasks, estimates, hours against a project. It does not log keystrokes, capture screens, track idle time or produce a productivity score for a person. Managers see load so they can move work, not so they can rank people.</p></details>
+      <details><summary>We already use a project tool. Why change?</summary><p>Most teams do not have a project tool problem, they have a seam problem. The board says green, the spreadsheet says the job lost money, and the two never meet. If your delivery, capacity and margin already live in one place and reconcile, you do not need Raqeb. If they do not, that seam is what this is for.</p></details>
+      <details><summary>How long does it take to get real value?</summary><p>A team can run their first week of work in an afternoon. Capacity planning is useful once contracted hours and leave are in, usually a few days. Margin reporting needs a month of logged time before the numbers are worth acting on, because it reads from real hours rather than an assumption.</p></details>
+      <details><summary>Who can see cost and profitability?</summary><p>Only the roles you grant. It is enforced on the server, so a user without the role cannot retrieve the data even if they know the address. Most teams give it to owners, finance and account leads, and nobody else notices it exists.</p></details>
+      <details><summary>What about Arabic?</summary><p>Raqeb is designed bilingual, with a full right to left interface rather than a mirrored English one. The Arabic release ships this quarter. If you plan to roll out in Arabic first, tell us in the walkthrough and we will show you the current state honestly.</p></details>
+      <details><summary>We are on monday.com today. How hard is the move?</summary><p>Bring an export and we will map it with you during the walkthrough: projects, tasks, owners, dates, custom fields and historical time. Most teams move one live project first, run both tools for two weeks, then switch the rest. We will tell you honestly which fields do not have a home in Raqeb before you commit to anything.</p></details>
+      <details><summary>What happens if we stop paying?</summary><p>Your workspace becomes read only and export keeps working. We do not lock data behind a lapsed invoice, and we do not pause automations to force an upgrade.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REFUSALS ============ -->
+<section class="section band" style="padding:var(--s-wide) 0">
+  <div class="wrap">
+    <div class="rev refuse-wrap">
+     <div>
+      <span class="eyebrow dk">The Raqeb principle</span>
+      <h2 class="h2" style="max-width:20ch">Watch the work, never the people.</h2>
+      <p class="lead" style="max-width:46ch">Plenty of tools in this category sell the opposite. Here is what we will not build, so you can hold us to it.</p>
+      <p class="refuse-foot" style="font-size:var(--fs-sm);color:var(--p200);margin-top:22px;max-width:44ch">Raqeb measures work, not people. That is a product decision, not a setting an administrator can quietly switch on.</p>
+     </div>
+     <div>
+      <ul class="refuse">
+        <li>Keystroke and activity logging</li>
+        <li>Screenshot capture</li>
+        <li>Idle and away timers</li>
+        <li>Productivity scores for individuals</li>
+        <li>Private manager only surveillance reports</li>
+      </ul>
+     </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="finalcta band" id="demo">
+  <div class="wrap">
+    <div class="cta-in">
+      <div class="rev">
+        <span class="eyebrow dk">Book a walkthrough</span>
+        <h2>Bring one real operating question. We will answer it inside the product.</h2>
+        <p class="lead">Not a slide deck and not a feature tour. Pick something that actually bothers you this week, and we will show you where the answer lives, or tell you Raqeb is not the right fit.</p>
+        <div class="agenda">
+          <div><span class="mins">5 min</span> You describe the question and how you answer it today</div>
+          <div><span class="mins">15 min</span> We follow it through the product with your kind of data</div>
+          <div><span class="mins">7 min</span> We shape what a first month would actually look like</div>
+          <div><span class="mins">3 min</span> You decide the next step, including no</div>
+        </div>
+      </div>
+      <form class="demoform rev" id="demoForm" novalidate>
+        <h3>Request a session</h3>
+        <div class="hostline"><span class="av">RQ</span><div><b>Run by the Raqeb product team, not a sales development rep</b><p>Bring a messy question. The useful ones usually are.</p></div></div>
+        <div class="ff">
+          <div class="fld"><label for="fn">First name</label><input id="fn" name="first_name" autocomplete="given-name" required placeholder="First name"></div>
+          <div class="fld"><label for="ln">Last name</label><input id="ln" name="last_name" autocomplete="family-name" required placeholder="Last name"></div>
+          <div class="fld full"><label for="em">Work email</label><input id="em" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="you@company.com"></div>
+          <div class="fld"><label for="co">Company</label><input id="co" name="company" autocomplete="organization" placeholder="Company"></div>
+          <div class="fld"><label for="ph">Phone (optional)</label><input id="ph" name="phone" type="tel" autocomplete="tel" placeholder="+966"></div>
+          <div class="fld"><label for="sz">Team size</label><select id="sz" name="team_size"><option>1 to 10</option><option>11 to 50</option><option>51 to 200</option><option>More than 200</option></select></div>
+          <div class="fld"><label for="lg">Preferred language</label><select id="lg" name="language"><option>English</option><option lang="ar">العربية</option></select></div>
+          <div class="fld full"><label for="nt">What would you like to solve</label><textarea id="nt" name="notes" rows="3" placeholder="For example: we never know if a retainer is profitable until the quarter closes"></textarea></div>
+        </div>
+        <button class="btn btn-primary" type="submit">Request a session</button>
+        <p class="formnote">We use these details only to arrange your session. No newsletter and no sequence. See our <a href="#security">privacy and access notes</a>.</p>
+        <p class="formmsg" id="formMsg" role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot" aria-label="Site footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <svg class="wordmark" role="img" aria-label="Raqeb"><use href="#rq-word"/></svg>
+        <p class="foot-about">Delivery, capacity, time, clients and margin in one connected view for project led service teams.</p>
+        <div class="foot-lock"><span class="ar-word" lang="ar">رقيب</span><span class="sep"></span><span style="font-size:var(--fs-xs);color:#A99FD6">Bilingual by design, built in Riyadh</span></div>
+      </div>
+      <div><span class="ph">Product</span><ul>
+        <li><a href="#platform">How it works</a></li><li><a href="#execution">Project delivery</a></li>
+        <li><a href="#timeline">Timeline</a></li><li><a href="#capacity">Capacity</a></li>
+        <li><a href="#time">Time and utilization</a></li><li><a href="#client">Clients and margin</a></li>
+        <li><a href="#reports">Reports</a></li></ul></div>
+      <div><span class="ph">Solutions</span><ul>
+        <li><a href="#solutions">Professional services</a></li><li><a href="#solutions">Agencies</a></li>
+        <li><a href="#solutions">Project offices</a></li><li><a href="#solutions">Operations teams</a></li></ul></div>
+      <div><span class="ph">Company</span><ul>
+        <li><a href="#pricing">Pricing</a></li><li><a href="#security">Security and access</a></li>
+        <li><a href="#faq">Questions</a></li><li><a href="#demo">Book a walkthrough</a></li>
+        <li><a href="#">Sign in</a></li><li><a href="#" id="langsw2" lang="ar">العربية</a></li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>Raqeb, <b>by MAZNEXA</b>. Built in Riyadh by a team that ran agencies before it built software.</span>
+      <span>2026 MAZNEXA. All figures shown on this page are illustrative.</span>
+    </div>
+  </div>
+</footer>
+<script>
+(function(){
+  "use strict";
+  function boot(){
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+    /* sticky header */
+    var hdr = document.getElementById('hdr');
+    if(hdr){
+      var onScroll = function(){ hdr.classList.toggle('scrolled', window.scrollY > 8); };
+      onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+    }
+
+    /* mega menus: hover, click and keyboard, and usable on touch */
+    document.querySelectorAll('.nav-item[data-mega]').forEach(function(item){
+      var btn = item.querySelector('.nav-btn');
+      function open(v){ item.classList.toggle('open', v); btn.setAttribute('aria-expanded', v?'true':'false'); }
+      item.addEventListener('mouseenter', function(){ if(!window.matchMedia('(hover:none)').matches) open(true); });
+      item.addEventListener('mouseleave', function(){ open(false); });
+      btn.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); open(!item.classList.contains('open')); });
+      item.addEventListener('keydown', function(e){ if(e.key==='Escape'){ open(false); btn.focus(); } });
+    });
+    document.addEventListener('click', function(e){
+      if(!e.target.closest('.nav-item[data-mega]')){
+        document.querySelectorAll('.nav-item.open').forEach(function(i){
+          i.classList.remove('open'); i.querySelector('.nav-btn').setAttribute('aria-expanded','false');
+        });
+      }
+    });
+
+    /* mobile sheet */
+    var sheet=document.getElementById('msheet'), mt=document.getElementById('menuToggle'), mc=document.getElementById('mclose');
+    function openSheet(v){
+      if(!sheet) return;
+      sheet.classList.toggle('open', v);
+      sheet.setAttribute('aria-hidden', v?'false':'true');
+      if(mt) mt.setAttribute('aria-expanded', v?'true':'false');
+      document.body.style.overflow = v ? 'hidden' : '';
+    }
+    if(mt) mt.addEventListener('click', function(){ openSheet(true); });
+    if(mc) mc.addEventListener('click', function(){ openSheet(false); });
+    document.querySelectorAll('[data-mnav]').forEach(function(a){ a.addEventListener('click', function(){ openSheet(false); }); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') openSheet(false); });
+
+    /* hero console tabs */
+    var tabs=[].slice.call(document.querySelectorAll('.contab'));
+    var crumb=document.getElementById('crumbView');
+    function selectTab(tab){
+      tabs.forEach(function(t){
+        var on = t===tab;
+        t.setAttribute('aria-selected', on?'true':'false');
+        var panel=document.getElementById(t.getAttribute('aria-controls'));
+        if(panel) panel.hidden = !on;
+      });
+      if(crumb) crumb.textContent = tab.textContent.trim();
+      var idx = tabs.indexOf(tab)+1;
+      document.querySelectorAll('.rail a[data-rail]').forEach(function(a){
+        a.classList.toggle('on', a.getAttribute('data-rail')===String(idx));
+      });
+    }
+    tabs.forEach(function(tab,i){
+      tab.addEventListener('click', function(){ selectTab(tab); });
+      tab.addEventListener('keydown', function(e){
+        var n=null;
+        if(e.key==='ArrowRight') n=tabs[(i+1)%tabs.length];
+        if(e.key==='ArrowLeft')  n=tabs[(i-1+tabs.length)%tabs.length];
+        if(n){ e.preventDefault(); n.focus(); selectTab(n); }
+      });
+    });
+
+    /* pricing toggles */
+    var cycle='annual', curr='usd';
+    function fmt(v){ return curr==='usd' ? ('$'+v) : ('SAR '+v); }
+    function paint(){
+      document.querySelectorAll('[data-price]').forEach(function(el){
+        var v=el.getAttribute('data-'+curr+'-'+(cycle==='annual'?'a':'m'));
+        if(v!==null) el.textContent=fmt(v);
+      });
+      var pm=document.getElementById('priceMsg');
+      if(pm) pm.textContent='Prices updated to '+cycle+' billing in '+curr.toUpperCase()+'.';
+      document.querySelectorAll('[data-sarnote]').forEach(function(el){
+        var v=el.getAttribute('data-sar-'+(cycle==='annual'?'a':'m'));
+        el.style.visibility = curr==='usd' ? '' : 'hidden';
+        el.textContent = 'about SAR '+v+' per user, month';
+      });
+    }
+    function wireSeg(id, apply){
+      var box=document.getElementById(id); if(!box) return;
+      box.querySelectorAll('button').forEach(function(b){
+        b.addEventListener('click', function(){
+          box.querySelectorAll('button').forEach(function(x){ x.setAttribute('aria-checked','false'); });
+          b.setAttribute('aria-checked','true'); apply(b); paint();
+        });
+      });
+    }
+    wireSeg('cycle', function(b){ cycle=b.dataset.cycle; });
+    wireSeg('curr',  function(b){ curr=b.dataset.curr; });
+    paint();
+
+    /* language switch, honest state */
+    function langNote(e){
+      if(e) e.preventDefault();
+      var t=document.createElement('div');
+      t.lang='ar'; t.dir='rtl';
+      t.textContent='النسخة العربية الكاملة بواجهة من اليمين إلى اليسار تصدر هذا الربع.';
+      t.style.cssText='position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#1E1233;color:#fff;'+
+        'padding:13px 20px;border-radius:12px;font-family:"IBM Plex Sans Arabic",sans-serif;font-size:14px;font-weight:600;'+
+        'z-index:200;box-shadow:0 14px 44px rgba(20,9,35,.42);max-width:90vw;text-align:center';
+      document.body.appendChild(t);
+      setTimeout(function(){ t.remove(); }, 3600);
+    }
+    ['langsw','langsw2'].forEach(function(id){
+      var el=document.getElementById(id); if(el) el.addEventListener('click', langNote);
+    });
+
+    /* demo form */
+    var form=document.getElementById('demoForm');
+    if(form) form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var msg=document.getElementById('formMsg');
+      var fn=document.getElementById('fn').value.trim();
+      var em=document.getElementById('em').value.trim();
+      msg.style.display='block';
+      if(!fn || !/.+@.+\..+/.test(em)){
+        msg.style.color='#F3C9BE';
+        msg.textContent='Please add your first name and a work email so we can reply.';
+        return;
+      }
+      /* TODO before launch: POST to the scheduling endpoint */
+      msg.style.color='#C9F0DD';
+      msg.textContent='Thank you. We will reply within one business day with two time slots.';
+      form.querySelector('button[type=submit]').textContent='Request sent';
+    });
+
+    /* footer anchors jump instantly, header anchors glide */
+    document.querySelectorAll('.foot a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        var h=a.getAttribute('href'); if(!h||h.length<2) return;
+        var t=document.querySelector(h);
+        if(t){ e.preventDefault(); t.scrollIntoView({behavior:'auto',block:'start'}); }
+      });
+    });
+
+    /* reveals, staggered inside each block */
+    var revs=[].slice.call(document.querySelectorAll('.rev'));
+    if('IntersectionObserver' in window && !reduce){
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(!en.isIntersecting) return;
+          en.target.classList.add('in');
+          io.unobserve(en.target);
+        });
+      },{threshold:.08, rootMargin:'0px 0px -5% 0px'});
+      revs.forEach(function(el){ io.observe(el); });
+    } else {
+      revs.forEach(function(el){ el.classList.add('in'); });
+    }
+  }
+
+  try{
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  }catch(err){
+    document.querySelectorAll('.rev').forEach(function(el){ el.classList.add('in'); });
+  }
+})();
+</script>
