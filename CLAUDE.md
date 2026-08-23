@@ -65,3 +65,14 @@ lint + typecheck + build + `pnpm test` green (RLS suite included), and for API/U
 runtime smoke: signup → provision → project → create/status/reorder task, in `en` AND `ar`,
 plus the same via curl with a PAT. Commit and push to the working branch as milestones land —
 the repo must always be resumable from a fresh clone.
+
+## Writing & branding rules (AI-authored text and generated assets) — binding
+
+1. Do NOT use the em dash (U+2014 "—") or en dash (U+2013 "–") anywhere: website copy,
+   docs, UI strings, code comments, commit messages, or chat. They read as an AI tell.
+   Use a comma, a colon, parentheses, a period, or the word "to" for ranges. A normal
+   hyphen "-" is fine.
+2. Brand name is "Raqeb" (ONE e). English wordmark: RAQEB. Arabic: رقيب. Never "Raqeeb".
+3. The RAQEB mark is a monoline geometric wordmark whose signature letter is the Q
+   (a circle with a short vertical stem below it). The Q alone is the app icon. Accent
+   color violet #6657EE.
