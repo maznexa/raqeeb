@@ -110,13 +110,28 @@ The `.h2` incident is worth remembering: the heatmap band class was named `h2`, 
 the global `.h2` section heading utility (a clamp up to 3rem), so three cells inherited heading size
 and burst out of their boxes. Scene component classes must not reuse global utility names.
 
+## Pricing (decided 2026-08-23)
+
+No free plan. Essentials 12 USD per user per month annual, 15 monthly (about SAR 45/56).
+Operations 20 annual, 25 monthly (about SAR 75/94), recommended tier. Enterprise custom.
+Both paid tiers save exactly 20 percent on annual, so the badge says "Save 20%".
+
+## Arabic page
+
+`marketing/ar.html` is the full Arabic homepage: dir=rtl, lang=ar, IBM Plex Sans Arabic,
+Arabic-Indic digits in all marketing copy and pricing, and natural Arabic rather than
+translated English. The product scenes and the floating toast deliberately stay in English
+with lang="en" dir="ltr", because the shipping product UI is English today and an Arabic UI
+screenshot would fabricate an unshipped capability. The language switch is a real link both
+ways (index.html and ar.html).
+
 ## Open items, in priority order
 
 These are commercial facts nobody has supplied yet, and they matter more than further polish. The
 buyer critic (role playing an operations director in Riyadh on monday.com Pro) concluded the page
 currently **wins the argument in the room and loses the deal in procurement**.
 
-1. **"Start free" does not start anything.** It links to `#pricing`. Needs a real signup URL.
+1. The hero CTA links to `#pricing`. A real signup URL is still needed.
 2. **No privacy notice, terms or DPA.** The demo form collects name, work email and phone with no
    privacy link. This fails a PDPL review outright.
 3. **No import or migration story.** First question every switcher asks. A FAQ entry exists but the
