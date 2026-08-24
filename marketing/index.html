@@ -1586,6 +1586,24 @@ section[id]{scroll-margin-top:86px}
   function boot(){
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
+
+    /* language switch: relative links work on a real host or a local folder,
+       but in the Claude artifact preview each page has its own URL, so jump
+       to the other language's artifact there instead. */
+    (function(){
+      var h=location.hostname||'';
+      if(!/claude|usercontent/i.test(h)) return;
+      var target='https://claude.ai/code/artifact/3d8cb115-4a75-4057-80fc-00f305ed733d';
+      document.querySelectorAll('.langsw,#langsw2').forEach(function(a){
+        a.setAttribute('href',target);
+        a.setAttribute('target','_top');
+        a.addEventListener('click',function(e){
+          e.preventDefault();
+          try{ window.open(target,'_blank','noopener'); }catch(err){ location.href=target; }
+        });
+      });
+    })();
+
     /* sticky header */
     var hdr = document.getElementById('hdr');
     if(hdr){

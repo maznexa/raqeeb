@@ -1602,6 +1602,24 @@ p,.bene p,.faq p,.sd{line-height:1.8}
   function boot(){
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
 
+
+    /* language switch: relative links work on a real host or a local folder,
+       but in the Claude artifact preview each page has its own URL, so jump
+       to the other language's artifact there instead. */
+    (function(){
+      var h=location.hostname||'';
+      if(!/claude|usercontent/i.test(h)) return;
+      var target='https://claude.ai/code/artifact/cc4453b2-e00d-4d5e-b914-be14597b6b91';
+      document.querySelectorAll('.langsw,#langsw2').forEach(function(a){
+        a.setAttribute('href',target);
+        a.setAttribute('target','_top');
+        a.addEventListener('click',function(e){
+          e.preventDefault();
+          try{ window.open(target,'_blank','noopener'); }catch(err){ location.href=target; }
+        });
+      });
+    })();
+
     /* sticky header */
     var hdr = document.getElementById('hdr');
     if(hdr){
