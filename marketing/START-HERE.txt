@@ -1,0 +1,44 @@
+RAQEB (رقيب) - marketing site, English and Arabic
+==================================================
+
+TO LOOK AT IT
+-------------
+Double click index.html for the English page.
+Double click ar.html for the Arabic page (right to left).
+The "AR / EN" switch in the header moves between the two, so keep both files
+in this same folder.
+
+Nothing to install, nothing to build, no server. Each page is one file with
+its CSS and JavaScript inside it. Everything works offline except the three
+fonts (Inter, Inter Tight, IBM Plex Sans Arabic), which load from Google Fonts
+when you are online.
+
+TO PUT IT ONLINE
+----------------
+Upload this folder to any static host (Cloudflare Pages, Netlify, S3, nginx).
+index.html at the root, ar.html beside it. That is the whole deployment.
+
+WHAT IS IN HERE
+---------------
+index.html      the English homepage
+ar.html         the Arabic homepage, full RTL
+README.md       what the folder is and the rules the pages follow
+HANDOFF.md      every decision, open question and instruction for the next round
+brand/          the RAQEB wordmark and the Q app icon as SVG, light and dark
+screenshots/    reference renders, desktop and mobile, both languages
+build/          the source parts the English page was assembled from
+tools/          Playwright scripts that check contrast, overflow and RTL parity
+audits/         the critic audit that drove the rebuild
+
+TWO THINGS WAITING ON YOU
+-------------------------
+1. The violet. The supplied logo file uses #5053c8, the site interface uses
+   #6657EE. They sat close enough to read as a mistake, so the site currently
+   renders the Q in #6657EE. Tell me which one is authoritative and I will make
+   the logo files and the site agree. Details in brand/README.md.
+2. The pricing figures and the numbers inside the product screens are placeholder
+   values that all reconcile with each other. Replace them with your real numbers
+   and I will recheck the totals on both languages.
+
+Also on GitHub: maznexa/raqeeb, branch claude/maznexa-pm-review-1lt7an,
+in the marketing/ folder.
